@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../../config'
 
 export default class CloudinaryWidget extends React.Component {
 
@@ -18,7 +19,7 @@ export default class CloudinaryWidget extends React.Component {
 
   checkUploadResult = (resultEvent) => {
     if (resultEvent.event === 'success') {
-      console.log('uploading...')
+      console.log(resultEvent.info.url)
     }
   }
 
@@ -27,7 +28,7 @@ export default class CloudinaryWidget extends React.Component {
   }
   render() {
     let widget = window.cloudinary.createUploadWidget({
-      cloudName: 'dws2woreg',
+      cloudName: config.CLOUD_NAME,
       uploadPreset: 'ufhbnsnq' },
       (error, result) => { this.checkUploadResult(result) }
     )
