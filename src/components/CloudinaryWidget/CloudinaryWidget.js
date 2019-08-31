@@ -2,21 +2,6 @@ import React from 'react'
 import config from '../../config'
 
 export default class CloudinaryWidget extends React.Component {
-
-//   uploadWidget = () => {
-//     let _this = this
-//     window.cloudinary.openUploadWidget({ 
-//         cloud_name: 'Keegan', 
-//         upload_preset: 'dgevt3cmj',
-//         sources: ['local', 'url', 'camera']},
-//         function(error, result) {
-//           if (result) {
-//             _this.props.updateFaceUrl(result[0].url)
-//           }
-//         }
-//     )
-//   }
-
   checkUploadResult = (resultEvent) => {
     if (resultEvent.event === 'success') {
       console.log(resultEvent.info.url)
