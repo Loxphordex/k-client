@@ -1,8 +1,26 @@
 import config from '../config'
+import TokenServices from './token-services'
 
 const ApiServices = {
   getImages() {
     return fetch(`${config.API_ENDPOINT}/api/images`)
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
+  postImage(image) {
+    return fetch(`${config.API_ENDPOINT}/api/images`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${TokenServices.getJwt()}`
+      },
+      body: JSON.stringify(image)
+    })
     .then(res => {
       return (!res.ok)
         ? res.json().then(e => Promise.reject(e))
