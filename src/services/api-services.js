@@ -1,6 +1,15 @@
 import config from '../config'
 
 const ApiServices = {
+  getImages() {
+    return fetch(`${config.API_ENDPOINT}/api/images`)
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
   userRegistration(username, password) {
     return fetch(`${config.API_ENDPOINT}/api/auth/register`, {
       method: 'POST',
