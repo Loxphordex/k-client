@@ -5,7 +5,11 @@
   flex-flow: column;
 }
 
-.generated-images img {
+.img-container {
+  position: relative;
+}
+
+.img-container img {
   width: 100%;
   max-width: 420px;
   display: block;
@@ -16,8 +20,15 @@
     flex-flow: wrap;
   }
 
-  .generated-images img {
+  .img-container {
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr;
+    position: relative;
     max-width: 300px;
     margin: 2%;
+  }
+
+  .img-container img {
+    grid-row: 1/3;
   }
 }
