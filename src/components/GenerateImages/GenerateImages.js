@@ -1,5 +1,5 @@
 import React from 'react'
-import TokenServices from '../../services/token-services'
+//import TokenServices from '../../services/token-services'
 import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
 
 export default class GenerateImages extends React.Component {
