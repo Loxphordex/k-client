@@ -1,0 +1,12 @@
+.generated-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.generated-images img {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+}

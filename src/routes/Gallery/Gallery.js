@@ -2,6 +2,7 @@ import React from 'react'
 import config from '../../config'
 import { CloudinaryContext } from 'cloudinary-react'
 import ApiServices from '../../services/api-services'
+import './Gallery.css'
 
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
