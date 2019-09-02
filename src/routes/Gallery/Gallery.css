@@ -10,3 +10,14 @@
   max-width: 420px;
   display: block;
 }
+
+@media only screen and (min-width: 760px) {
+  .generated-images {
+    flex-flow: wrap;
+  }
+
+  .generated-images img {
+    max-width: 300px;
+    margin: 2%;
+  }
+}
