@@ -1,0 +1,29 @@
+.auth-footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 200;
+}
+
+.auth-footer button {
+  border: none;
+  height: 8vh;
+  color: white;
+  font-size: 0.8em;
+}
+
+.footer-add-image {
+  background-color: rgb(44, 43, 43);
+  width: 60%;
+}
+
+.footer-logout {
+  background-color: rgb(100, 8, 8);
+  width: 40%;
+}
+
+@media only screen and (min-width: 760px) {
+  .auth-footer button {
+    height: 4vh;
+  }
+}

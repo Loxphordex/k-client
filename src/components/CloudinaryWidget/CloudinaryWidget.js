@@ -3,8 +3,9 @@ import config from '../../config'
 
 export default class CloudinaryWidget extends React.Component {
   checkUploadResult = (resultEvent) => {
+    const { setImageUrl } = this.props
     if (resultEvent.event === 'success') {
-      console.log(resultEvent.info.url)
+      setImageUrl(resultEvent.info.url)
     }
   }
 
