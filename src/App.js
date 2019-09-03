@@ -18,7 +18,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route path='/' render={() => <Header />} />
-        <Route exact path='/' render={() => <Gallery />} />
+        <Route exact path='/' render={({ history }) => <Gallery history={history} />} />
         <Route path='/new' render={() => <NewImageRoute />} />
         <Route path='/auth' render={({ history }) => <AuthRoute history={history} />} />
         <Route path='/login' render={({ history }) => <LoginRoute history={history} />} />

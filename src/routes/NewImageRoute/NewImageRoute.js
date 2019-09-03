@@ -1,6 +1,7 @@
 import React from 'react'
 import CloudinaryWidget from '../../components/CloudinaryWidget/CloudinaryWidget'
 import ApiServices from '../../services/api-services'
+import '../../templates/form.css'
 
 export default class NewImageRoute extends React.Component {
   constructor(props) {
@@ -49,12 +50,16 @@ export default class NewImageRoute extends React.Component {
 
   render() {
     return(
-      <section className='new-image-area'>
-        <fieldset>
-          <form onSubmit={(event) => this.handleSubmit(event)}>
+      <section className='new-image-area t-form-container'>
+        <fieldset className='t-fieldset'>
+          <h2>NEW IMAGE</h2>
+          <form
+          className='t-form'
+          onSubmit={(event) => this.handleSubmit(event)}>
             <label htmlFor='imageName'>NAME</label>
             <input 
               type='text'
+              className='t-input'
               name='imageName'
               id='imageName'
               onChange={(event) => this.setImageName(event.target.value)}
@@ -63,6 +68,7 @@ export default class NewImageRoute extends React.Component {
             <label htmlFor='imageLink'>STORE LINK</label>
             <input 
               type='text'
+              className='t-input'
               name='imageLink'
               id='imageLink'
               onChange={(event) => this.setImageLink(event.target.link)}

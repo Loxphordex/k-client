@@ -2,10 +2,12 @@ import React from 'react'
 import config from '../../config'
 import { CloudinaryContext } from 'cloudinary-react'
 import ApiServices from '../../services/api-services'
+import TokenServices from '../../services/token-services'
 import './Gallery.css'
 
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
+import AuthFooter from '../../components/AuthFooter/AuthFooter'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -43,12 +45,15 @@ export default class Gallery extends React.Component {
   }
 
   render() {
+    const { history } = this.props
     const { images } = this.state
+    const token = TokenServices.getJwt()
     return(
       <section className='gallery-area'>
         <CloudinaryContext cloudName={config.CLOUD_NAME} className='cloud-context'>
           <GenerateImages images={images} />
         </CloudinaryContext>
+        { token &&  <AuthFooter history={history} />}
       </section>
     )
   }
