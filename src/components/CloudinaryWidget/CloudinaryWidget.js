@@ -19,9 +19,7 @@ export default class CloudinaryWidget extends React.Component {
       (error, result) => { this.checkUploadResult(result) }
     )
     return(
-      <div className='cloud-button'>
-        <button onClick={() => this.showWidget(widget)}>ADD IMAGE</button>
-      </div>
+      <button className='t-button' onClick={() => this.showWidget(widget)}>SELECT IMAGE</button>
     )
   }
 }

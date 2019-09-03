@@ -13,7 +13,6 @@ export default class Header extends React.Component {
             <li><Link to='/'>T-SHIRTS</Link></li>
             <li><Link to='/contact'>CONTACT</Link></li>
           </ul>
-          <div className='hl' />
         </nav>
       </header>
     )

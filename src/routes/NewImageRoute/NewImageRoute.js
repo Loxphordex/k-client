@@ -52,11 +52,12 @@ export default class NewImageRoute extends React.Component {
     return(
       <section className='new-image-area t-form-container'>
         <fieldset className='t-fieldset'>
-          <h2>NEW IMAGE</h2>
+          <h2 className='t-header'>NEW IMAGE</h2>
+          <CloudinaryWidget setImageUrl={this.setImageUrl} />
           <form
           className='t-form'
           onSubmit={(event) => this.handleSubmit(event)}>
-            <label htmlFor='imageName'>NAME</label>
+            <label htmlFor='imageName' className='t-label'>NAME</label>
             <input 
               type='text'
               className='t-input'
@@ -65,7 +66,7 @@ export default class NewImageRoute extends React.Component {
               onChange={(event) => this.setImageName(event.target.value)}
               placeholder='OPTIONAL'
             />
-            <label htmlFor='imageLink'>STORE LINK</label>
+            <label htmlFor='imageLink' className='t-label'>STORE LINK</label>
             <input 
               type='text'
               className='t-input'
@@ -74,9 +75,8 @@ export default class NewImageRoute extends React.Component {
               onChange={(event) => this.setImageLink(event.target.link)}
               placeholder='OPTIONAL'
             />
-            <button type='submit'>SUBMIT</button>
+            <button type='submit' className='t-button-submit'>SUBMIT</button>
           </form>
-          <CloudinaryWidget setImageUrl={this.setImageUrl} />
         </fieldset>
       </section>
     )
