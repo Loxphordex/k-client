@@ -28,6 +28,36 @@ const ApiServices = {
     })
   },
 
+  updateImage(id, name, link) {
+    return fetch(`${config.API_ENDPOINT}/api/images?id=${id}&name=${name}&link=${link}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getJwt()}`
+      }
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
+  deleteImage(id) {
+    return fetch(`${config.API_ENDPOINT}/api/images?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getJwt()}`
+      }
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
   userRegistration(username, password) {
     return fetch(`${config.API_ENDPOINT}/api/auth/register`, {
       method: 'POST',

@@ -8,6 +8,7 @@ import './Gallery.css'
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
+import EditorForm from '../../components/EditorForm/EditorForm'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -18,6 +19,9 @@ export default class Gallery extends React.Component {
       images: [],
       allImages: [],
       imagesPerPage: 12,
+
+      editorImageId: null,
+      editorOpen: false,
     }
   }
 
@@ -44,15 +48,36 @@ export default class Gallery extends React.Component {
     this.setState({ error: null })
   }
 
+  // EDITOR
+  setEditorImageId = (id) => {
+    this.setState({ 
+      editorImageId: id,
+      editorOpen: true,
+    })
+  }
+
+  disableEditor = () => {
+    this.setState({
+      editorImageId: null,
+      editorOpen: false,
+    })
+  }
+
   render() {
     const { history } = this.props
-    const { images } = this.state
+    const { images, editorOpen } = this.state
     const token = TokenServices.getJwt()
     return(
       <section className='gallery-area'>
+
+        { editorOpen && <EditorForm disableEditor={this.disableEditor} /> }
+
         <CloudinaryContext cloudName={config.CLOUD_NAME} className='cloud-context'>
-          <GenerateImages images={images} />
+          <GenerateImages 
+            images={images} 
+            setEditorImageId={this.setEditorImageId} />
         </CloudinaryContext>
+
         { token &&  <AuthFooter history={history} />}
       </section>
     )
