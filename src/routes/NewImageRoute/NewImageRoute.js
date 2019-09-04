@@ -11,6 +11,7 @@ export default class NewImageRoute extends React.Component {
       url: '',
       name: '',
       link: '',
+      confirmation: '',
     }
   }
 
@@ -26,6 +27,13 @@ export default class NewImageRoute extends React.Component {
     this.setState({ link })
   }
 
+  setConfirmation = () => {
+    const { name } = this.state
+    this.setState({
+      confirmation: `Success! Added "${name}" to the gallery.`
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
     const { url, name, link } = this.state
@@ -37,6 +45,7 @@ export default class NewImageRoute extends React.Component {
     }
 
     ApiServices.postImage(newImage)
+      .then(() => this.setConfirmation())
       .then(() => {
         this.setState({
           error: null,
@@ -49,9 +58,12 @@ export default class NewImageRoute extends React.Component {
   }
 
   render() {
+    const { error, confirmation } = this.state
     return(
       <section className='new-image-area t-form-container'>
         <fieldset className='t-fieldset'>
+          <div className='t-confirmation'>{confirmation}</div>
+          <div className='t-error'>{error}</div>
           <h2 className='t-header'>NEW IMAGE</h2>
           <CloudinaryWidget setImageUrl={this.setImageUrl} />
           <form

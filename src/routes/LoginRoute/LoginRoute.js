@@ -1,5 +1,6 @@
 import React from 'react'
 import ApiServices from '../../services/api-services'
+import '../../templates/form.css'
 
 export default class LoginRoute extends React.Component {
   constructor(props) {
@@ -49,22 +50,29 @@ export default class LoginRoute extends React.Component {
 
   render() {
     return(
-      <div className='login-area'>
-        <fieldset className='login-field'>
+      <div className='login-area t-form-container'>
+        <fieldset className='login-field t-fieldset'>
+          <h2 className='t-header'>LOGIN</h2>
           <form onSubmit={(event) => this.handleSubmitLogin(event)}>
-            <label>USERNAME</label>
+            <label htmlFor='username' className='t-label'>USERNAME</label>
             <input 
               type='text'
+              id='username'
+              name='username'
+              className='t-input'
               onChange={(event) => this.updateUsername(event.target.value)}
               required
             />
-            <label>PASSWORD</label>
+            <label htmlFor='pass' className='t-label'>PASSWORD</label>
             <input 
               type='password'
+              id='pass'
+              name='pass'
+              className='t-input'
               onChange={(event) => this.updatePassword(event.target.value)}
               required
             />
-            <button type='submit'>SIGN IN</button>
+            <button type='submit' className='t-button'>SIGN IN</button>
           </form>
         </fieldset>
       </div>

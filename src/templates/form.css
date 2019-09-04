@@ -8,9 +8,7 @@
   border: none;
   display: inline-block;
   margin: auto;
-  margin-top: 2vh;
 
-  height: 60vh;
   width: 100%;
 
   background-color: rgb(255, 247, 240);
@@ -18,6 +16,13 @@
   -webkit-box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
   -moz-box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
   box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
+}
+
+.t-confirmation {
+  width: 100%;
+  text-align: center;
+  background-color: #f2ffaf;
+  color: #005800;
 }
 
 .t-header {
@@ -66,5 +71,13 @@
     width: 50%;
     min-width: 300px;
     max-width: 500px;
+    min-height: 450px;
+  }
+  .t-input {
+    height: 30px;
+  }
+  .t-button,
+  .t-button-submit {
+    cursor: pointer;
   }
 }
