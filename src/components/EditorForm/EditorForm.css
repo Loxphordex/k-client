@@ -28,6 +28,11 @@
   z-index: 500;
 }
 
+.delete-field {
+  min-height: 0;
+  padding-bottom: 6%;
+}
+
 .editor-button {
   background-color: rgb(207, 236, 250);
   color: rgb(36, 36, 36);

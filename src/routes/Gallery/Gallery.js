@@ -9,6 +9,7 @@ import './Gallery.css'
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
+import DeleteForm from '../../components/DeleteForm/DeleteForm'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ export default class Gallery extends React.Component {
       editorImageId: null,
       editorImageName: '',
       editorImageLink: '',
+
+      deleteFormOpen: false,
+      deleteImageId: null,
     }
   }
 
@@ -89,9 +93,38 @@ export default class Gallery extends React.Component {
       .catch((e) => this.handleError(e))
   }
 
+  // DELETE
+  openDeleteForm = () => {
+    this.setState({ deleteFormOpen: true })
+  }
+
+  closeDeleteForm = () => {
+    this.setState({ 
+      deleteFormOpen: false,
+      deleteImageId: null,
+    })
+  }
+
+  setDeleteId = async(id) => {
+    await this.setState({ deleteImageId: id })
+    await this.openDeleteForm()
+  }
+
+  handleDelete = (event) => {
+    event.preventDefault()
+
+    const id = this.state.deleteImageId
+    if (id) {
+      ApiServices.deleteImage(id)
+        .then(() => this.closeDeleteForm())
+        .then(() => this.getAndDisplayImages())
+        .catch((e) => this.handleError(e))
+    }
+  }
+
   render() {
     const { history } = this.props
-    const { images, editorOpen } = this.state
+    const { images, editorOpen, deleteFormOpen } = this.state
     const token = TokenServices.getJwt()
     return(
       <section className='gallery-area'>
@@ -103,10 +136,16 @@ export default class Gallery extends React.Component {
           updateNewLink={this.updateNewLink}
           handleSubmitEdit={this.handleSubmitEdit} /> }
 
+        { deleteFormOpen &&
+        <DeleteForm
+          closeDeleteForm={this.closeDeleteForm}
+          handleDelete={this.handleDelete} /> }
+
         <CloudinaryContext cloudName={config.CLOUD_NAME} className='cloud-context'>
           <GenerateImages 
             images={images} 
-            setEditorImageId={this.setEditorImageId} />
+            setEditorImageId={this.setEditorImageId}
+            setDeleteId={this.setDeleteId} />
         </CloudinaryContext>
 
         { token &&  <AuthFooter history={history} />}
