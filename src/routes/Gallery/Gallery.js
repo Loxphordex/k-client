@@ -20,17 +20,15 @@ export default class Gallery extends React.Component {
       allImages: [],
       imagesPerPage: 12,
 
-      editorImageId: null,
       editorOpen: false,
+      editorImageId: null,
+      editorImageName: '',
+      editorImageLink: '',
     }
   }
 
   componentDidMount = () => {
-    ApiServices.getImages()
-      .then((allImages) => this.setState({ allImages: allImages.images }))
-      .then(() => this.setDisplayedImages())
-      .then(() => this.clearError())
-      .catch((e) => this.handleError(e))
+    this.getAndDisplayImages()
   }
 
   setDisplayedImages = () => {
@@ -48,19 +46,47 @@ export default class Gallery extends React.Component {
     this.setState({ error: null })
   }
 
+  getAndDisplayImages = () => {
+    ApiServices.getImages()
+      .then((allImages) => this.setState({ allImages: allImages.images }))
+      .then(() => this.setDisplayedImages())
+      .then(() => this.clearError())
+      .catch((e) => this.handleError(e))
+  }
+
   // EDITOR
-  setEditorImageId = (id) => {
-    this.setState({ 
-      editorImageId: id,
-      editorOpen: true,
+  disableEditor = () => {
+    this.setState({
+      editorOpen: false,
+      editorImageId: null,
+      editorImageName: '',
+      editorImageLink: '',
     })
   }
 
-  disableEditor = () => {
-    this.setState({
-      editorImageId: null,
-      editorOpen: false,
+  setEditorImageId = (id) => {
+    this.setState({ 
+      editorOpen: true,
+      editorImageId: id,
     })
+  }
+
+  updateNewName = (name) => {
+    this.setState({ editorImageName: name })
+  }
+
+  updateNewLink = (link) => {
+    this.setState({ editorImageLink: link })
+  }
+
+  handleSubmitEdit = (event) => {
+    event.preventDefault()
+
+    const { editorImageId, editorImageName, editorImageLink } = this.state
+    ApiServices.updateImage(editorImageId, editorImageName, editorImageLink)
+      .then(() => this.disableEditor())
+      .then(() => this.getAndDisplayImages())
+      .catch((e) => this.handleError(e))
   }
 
   render() {
@@ -70,7 +96,12 @@ export default class Gallery extends React.Component {
     return(
       <section className='gallery-area'>
 
-        { editorOpen && <EditorForm disableEditor={this.disableEditor} /> }
+        { editorOpen && 
+        <EditorForm 
+          disableEditor={this.disableEditor}
+          updateNewName={this.updateNewName}
+          updateNewLink={this.updateNewLink}
+          handleSubmitEdit={this.handleSubmitEdit} /> }
 
         <CloudinaryContext cloudName={config.CLOUD_NAME} className='cloud-context'>
           <GenerateImages 
