@@ -8,6 +8,7 @@
   border: none;
   display: inline-block;
   margin: auto;
+  padding-bottom: 6%;
 
   width: 100%;
 
@@ -31,21 +32,25 @@
 }
 
 .t-input {
-  width: 82%;
+  width: 86%;
   display: block;
   margin: auto;
   height: 2.8em;
-  padding: 2%;
+  font-size: 1em;
+  padding: 0;
   border-radius: 70px;
   border: 2px solid rgb(196, 195, 195);
   outline: none;
+  text-align: center;
 }
 
 .t-label {
-  display: inline-block;
+  display: block;
   margin: 0 7%;
   margin-top: 4%;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
 }
 
 /* BUTTONS */
@@ -54,10 +59,14 @@
   width: 86%;
   display: block;
   margin: 2% auto;
+  margin-top: 6%;
+  padding: 0;
   height: 2.8em;
+  font-weight: bold;
   background-color: rgb(18, 48, 129);
   color: white;
-  font-size: 0.8em;
+  font-size: 0.9em;
+  border: none;
   border-radius: 3px;
 }
 
@@ -71,13 +80,19 @@
     width: 50%;
     min-width: 300px;
     max-width: 500px;
-    min-height: 450px;
+    min-height: 400px;
+    padding-bottom: 0;
+  }
+  .t-label {
+    margin-top: 0;
   }
   .t-input {
     height: 30px;
+    margin-bottom: 5%;
   }
   .t-button,
   .t-button-submit {
     cursor: pointer;
+    margin-top: 2%;
   }
 }
