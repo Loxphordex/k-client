@@ -5,14 +5,19 @@ import ImageEdit from '../../components/ImageEdit/ImageEdit'
 
 export default class GenerateImages extends React.Component {
   render() {
-    const { images } = this.props
+    const { images, setEditorImageId, setDeleteId } = this.props
     const token = TokenServices.getJwt()
     return(
       <section className='generated-images'>
         {images && images.map(image => {
           return(
-            <div className='img-container'>
-              { token && <ImageEdit /> }
+            <div className='img-container' key={image.url}>
+              { token && 
+              <ImageEdit 
+                id={image.id} 
+                setEditorImageId={setEditorImageId}
+                setDeleteId={setDeleteId}
+              /> }
               <GenerateImageElement pic={image} />
             </div>
           )

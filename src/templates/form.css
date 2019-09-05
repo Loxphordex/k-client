@@ -8,16 +8,27 @@
   border: none;
   display: inline-block;
   margin: auto;
-  margin-top: 5vh;
+  padding-bottom: 6%;
 
-  height: 60vh;
   width: 100%;
 
-  background-color: rgb(252, 246, 228);
+  background-color: rgb(255, 247, 240);
 
   -webkit-box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
   -moz-box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
   box-shadow: 0px 10px 34px -16px rgba(133,134,148,1);
+}
+
+.t-confirmation {
+  width: 100%;
+  text-align: center;
+  background-color: #f2ffaf;
+  color: #005800;
+}
+
+.t-header {
+  margin: 5% 7%;
+  text-align: center;
 }
 
 .t-input {
@@ -25,8 +36,63 @@
   display: block;
   margin: auto;
   height: 2.8em;
-  padding: 2%;
+  font-size: 1em;
+  padding: 0;
   border-radius: 70px;
   border: 2px solid rgb(196, 195, 195);
   outline: none;
+  text-align: center;
+}
+
+.t-label {
+  display: block;
+  margin: 0 7%;
+  margin-top: 4%;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* BUTTONS */
+.t-button,
+.t-button-submit {
+  width: 86%;
+  display: block;
+  margin: 2% auto;
+  margin-top: 6%;
+  padding: 0;
+  height: 2.8em;
+  font-weight: bold;
+  background-color: rgb(18, 48, 129);
+  color: white;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 3px;
+}
+
+.t-button-submit {
+  margin: 8% auto;
+  background-color: rgb(74, 115, 228);
+}
+
+@media only screen and (min-width: 760px) {
+  .t-fieldset {
+    width: 50%;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 400px;
+    padding-bottom: 0;
+  }
+  .t-label {
+    margin-top: 0;
+  }
+  .t-input {
+    height: 30px;
+    margin-bottom: 5%;
+  }
+  .t-button,
+  .t-button-submit {
+    cursor: pointer;
+    margin-top: 2%;
+  }
 }

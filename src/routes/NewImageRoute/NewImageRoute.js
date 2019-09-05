@@ -11,6 +11,7 @@ export default class NewImageRoute extends React.Component {
       url: '',
       name: '',
       link: '',
+      confirmation: '',
     }
   }
 
@@ -26,6 +27,13 @@ export default class NewImageRoute extends React.Component {
     this.setState({ link })
   }
 
+  setConfirmation = () => {
+    const { name } = this.state
+    this.setState({
+      confirmation: `Success! Added "${name}" to the gallery.`
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
     const { url, name, link } = this.state
@@ -37,6 +45,7 @@ export default class NewImageRoute extends React.Component {
     }
 
     ApiServices.postImage(newImage)
+      .then(() => this.setConfirmation())
       .then(() => {
         this.setState({
           error: null,
@@ -49,14 +58,18 @@ export default class NewImageRoute extends React.Component {
   }
 
   render() {
+    const { error, confirmation } = this.state
     return(
       <section className='new-image-area t-form-container'>
         <fieldset className='t-fieldset'>
-          <h2>NEW IMAGE</h2>
+          <div className='t-confirmation'>{confirmation}</div>
+          <div className='t-error'>{error}</div>
+          <h2 className='t-header'>NEW IMAGE</h2>
+          <CloudinaryWidget setImageUrl={this.setImageUrl} />
           <form
           className='t-form'
           onSubmit={(event) => this.handleSubmit(event)}>
-            <label htmlFor='imageName'>NAME</label>
+            <label htmlFor='imageName' className='t-label'>NAME</label>
             <input 
               type='text'
               className='t-input'
@@ -65,7 +78,7 @@ export default class NewImageRoute extends React.Component {
               onChange={(event) => this.setImageName(event.target.value)}
               placeholder='OPTIONAL'
             />
-            <label htmlFor='imageLink'>STORE LINK</label>
+            <label htmlFor='imageLink' className='t-label'>STORE LINK</label>
             <input 
               type='text'
               className='t-input'
@@ -74,9 +87,8 @@ export default class NewImageRoute extends React.Component {
               onChange={(event) => this.setImageLink(event.target.link)}
               placeholder='OPTIONAL'
             />
-            <button type='submit'>SUBMIT</button>
+            <button type='submit' className='t-button-submit'>SUBMIT</button>
           </form>
-          <CloudinaryWidget setImageUrl={this.setImageUrl} />
         </fieldset>
       </section>
     )
