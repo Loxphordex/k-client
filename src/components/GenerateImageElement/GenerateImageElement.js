@@ -6,7 +6,7 @@ export default class GenerateImageElement extends React.Component {
     const { pic } = this.props
     return (
       <Image publicId={pic.url} type='fetch' name={pic.url}>
-        <Transformation width='420' crop='scale' />
+        <Transformation quality='50' width='420' crop='scale' />
       </Image>
     )
   }
