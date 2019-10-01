@@ -1,0 +1,12 @@
+.bio-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
+.bio-container h2 {
+  padding: 30px;
+  border: 2px dotted rgb(156, 161, 182);
+}

@@ -7,11 +7,13 @@ export default class Contact extends React.Component {
       <section className='contact-container'>
         <h2 className='contact-header'>Contact</h2>
         <hr className='contact-hr' />
-        <h3>Business Inquiry</h3>
-        <a href='mailto: pearegrineofficial@outlook.com'>pearegrineofficial@outlook.com</a>
-        <a href='mailto: keeganholcombharris@outlook.com'>keeganholcombharris@outlook.com</a>
+        <h3 className='contact-sub-head'>Business Inquiry</h3>
+        <a target='_blank' rel='noopener noreferrer' 
+          href='mailto: pearegrineofficial@outlook.com'>pearegrineofficial@outlook.com</a>
+        <a target='_blank' rel='noopener noreferrer' 
+          href='mailto: keeganholcombharris@outlook.com'>keeganholcombharris@outlook.com</a>
         <hr className='contact-hr' />
-        <h3>Social Media</h3>
+        <h3 className='contact-sub-head'>Social Media</h3>
         <a target='_blank' rel='noopener noreferrer' 
           href='https://www.instagram.com/pearegrineofficial/'>Instagram</a>
       </section>

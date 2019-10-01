@@ -18,6 +18,21 @@
 
 .contact-container a {
   display: inline-block;
-  margin: 1%;
+  width: 100%;
+  margin: 1% auto;
   color: rgb(65, 70, 90);
+}
+
+@media only screen and (min-width: 768px) {
+  .contact-container {
+    margin: 0 25%;
+  }
+  .contact-header {
+    font-size: 3em;
+    margin: 4% auto;
+  }
+  .contact-sub-head {
+    font-size: 1.5em;
+    margin: 2% auto;
+  }
 }
