@@ -1,0 +1,23 @@
+.contact-container {
+  text-align: center;
+  margin: 0 5%;
+  margin-bottom: 15vh;
+}
+
+.contact-header {
+  font-size: 3em;
+  margin: 8% auto;
+  margin-top: 10%;
+}
+
+.contact-hr {
+  margin: 25px 0;
+  border-style: solid;
+  border-color: rgb(156, 161, 182);
+}
+
+.contact-container a {
+  display: inline-block;
+  margin: 1%;
+  color: rgb(65, 70, 90);
+}

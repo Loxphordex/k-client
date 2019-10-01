@@ -1,8 +1,7 @@
 .main-header-nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 0.2fr;
-  margin-bottom: 4%;
+  grid-template-rows: 2fr 0.5fr;
 }
 
 .main-header-nav h1 {
