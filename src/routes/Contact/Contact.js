@@ -12,7 +12,8 @@ export default class Contact extends React.Component {
         <a href='mailto: keeganholcombharris@outlook.com'>keeganholcombharris@outlook.com</a>
         <hr className='contact-hr' />
         <h3>Social Media</h3>
-        <a target='_blank' href='www.instagram.com/pearegrineofficial'>Instagram</a>
+        <a target='_blank' rel='noopener noreferrer' 
+          href='https://www.instagram.com/pearegrineofficial/'>Instagram</a>
       </section>
     )
   }
