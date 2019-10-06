@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gallery renders the complete page 1`] = `
+<div>
+  <h2>
+    Auth
+  </h2>
+  <fieldset>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="USERNAME"
+        required={true}
+        type="text"
+      />
+      <input
+        onChange={[Function]}
+        placeholder="PASSWORD"
+        required={true}
+        type="password"
+      />
+      <button
+        type="submit"
+      >
+        SUBMIT
+      </button>
+    </form>
+  </fieldset>
+</div>
+`;

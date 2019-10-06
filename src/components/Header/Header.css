@@ -49,4 +49,8 @@
   .main-header-nav ul {
     margin: 0 12%;
   }
+
+  .main-header-nav ul li a:hover {
+    opacity: 0.65;
+  }
 }
