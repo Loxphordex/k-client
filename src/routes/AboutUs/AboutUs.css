@@ -3,10 +3,8 @@
   justify-content: center;
   align-items: center;
   min-height: 40vh;
-  width: 70%;
-  min-width: 400px;
   display: block;
-  margin: auto;
+  margin: 0 5%;
   margin-bottom: 150px;
   margin-top: 50px;
 }
@@ -39,3 +37,13 @@
   padding: 30px;
   border: 2px dotted rgb(156, 161, 182);
 } */
+
+@media only screen and (min-width: 768px) {
+  .bio-container {
+    min-width: 400px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 150px;
+    margin-top: 50px;
+  }
+}
