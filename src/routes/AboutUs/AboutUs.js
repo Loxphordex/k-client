@@ -7,39 +7,39 @@ export default class Bio extends React.Component {
     return(
       <section className='bio-container'>
 
-        <h2>PEAREGRINE IN A FEW SLICES
+        <h3>Pearegrine In A Few Slices 
           <span role='img' aria-label='pear'>&#127824;</span>
-        </h2>
+        </h3>
         <hr className='contact-hr about-hr' />
         <p>Every day we produce designs within a variety of lifestyle goods, 
           through independent manufacturing located in Seattle, WA, USA.
         </p>
 
-        <h2>OUR MISSION
+        <h3>Our Mission 
           <span role='img' aria-label='pear'>&#127824;</span>
-        </h2>
+        </h3>
         <hr className='contact-hr about-hr' />
-        <p>TO BECOME THE WORLD'S TOP LIFESTYLE BRAND.</p>
+        <p>To become the world's top lifestyle brand.</p>
 
-        <h2>OUR BELIEF
+        <h3>Our Belief 
           <span role='img' aria-label='pear'>&#127824;</span>
-        </h2>
+        </h3>
         <hr className='contact-hr about-hr' />
-        <p>ART HAS THE POWER TO CHANGE THIS WORLD AND ANY 
-          UNDISCOVERED AS OF YET WORLDS.
+        <p>Art has the power to change this world and any 
+          undiscovered as of yet worlds.
         </p>
 
-        <h2>OUR CORE VALUES
+        <h3>Our Core Values 
           <span role='img' aria-label='pear'>&#127824;</span>
-        </h2>
+        </h3>
         <hr className='contact-hr about-hr' />
-        <p>QUALITY, INNOVATIVE GOODS, CUSTOMER BLISS.</p>
+        <p>Quality. Innovative goods. Customer bliss.</p>
 
-        <h2>FOUNDER
+        <h3>Founder 
           <span role='img' aria-label='pear'>&#127824;</span>
-        </h2>
+        </h3>
         <hr className='contact-hr about-hr' />
-        <p>KEEGAN HOLCOMB-HARRIS</p>
+        <p>Keegan Holcolmb-Harris</p>
       </section>
     )
   }
