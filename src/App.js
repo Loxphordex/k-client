@@ -7,7 +7,7 @@ import NewImageRoute from './routes/NewImageRoute/NewImageRoute'
 import AuthRoute from './routes/AuthRoute/AuthRoute'
 import LoginRoute from './routes/LoginRoute/LoginRoute'
 import Contact from './routes/Contact/Contact'
-import Bio from './routes/Bio/Bio'
+import AboutUs from './routes/AboutUs/AboutUs'
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class App extends React.Component {
         <Route path='/auth' render={({ history }) => <AuthRoute history={history} />} />
         <Route path='/login' render={({ history }) => <LoginRoute history={history} />} />
         <Route path='/contact' render={() => <Contact />} />
-        <Route path='/bio' render={() => <Bio />} />
+        <Route path='/aboutus' render={() => <AboutUs />} />
       </div>
     );
   }

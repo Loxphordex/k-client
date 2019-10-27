@@ -10,7 +10,7 @@ export default class Header extends React.Component {
         <nav role='navigation' className='main-header-nav'>
           <h1><img src={logo} alt='Pearegrine' /></h1>
           <ul>
-            <li><Link to='/bio'>BIO</Link></li>
+            <li><Link to='/aboutus'>ABOUT US</Link></li>
             <li><Link to='/'>T-SHIRTS</Link></li>
             <li><Link to='/contact'>CONTACT</Link></li>
           </ul>
