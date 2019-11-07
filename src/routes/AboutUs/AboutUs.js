@@ -7,7 +7,7 @@ export default class Bio extends React.Component {
     return(
       <section className='bio-container'>
 
-        <h3>Pearegrine In A Few Slices 
+        <h3>Pearegrine in a Few Slices 
           <span role='img' aria-label='pear'>&#127824;</span>
         </h3>
         <hr className='contact-hr about-hr' />
@@ -39,7 +39,7 @@ export default class Bio extends React.Component {
           <span role='img' aria-label='pear'>&#127824;</span>
         </h3>
         <hr className='contact-hr about-hr' />
-        <p>Keegan Holcolmb-Harris</p>
+        <p>Keegan Holcomb-Harris</p>
       </section>
     )
   }
