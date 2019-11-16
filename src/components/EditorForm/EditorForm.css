@@ -19,7 +19,8 @@
 
 .editor-field {
   background-color: rgb(36, 36, 36);
-  color: white;
+  color: #f8f9fe;
+  margin-top: 10%;
 
   -webkit-box-shadow: 0px 10px 34px -16px rgb(34, 34, 36);
   -moz-box-shadow: 0px 10px 34px -16px rgb(34, 34, 36);
@@ -31,6 +32,7 @@
 .delete-field {
   min-height: 0;
   padding-bottom: 6%;
+  margin-top: 10%;
 }
 
 .editor-button {
@@ -43,5 +45,5 @@
 
 .cancel-button {
   background-color: rgb(228, 17, 27);
-  color: white;
+  color: #f8f9fe;
 }

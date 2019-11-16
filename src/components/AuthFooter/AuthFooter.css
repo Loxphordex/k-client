@@ -8,17 +8,17 @@
 .auth-footer button {
   border: none;
   height: 8vh;
-  color: white;
+  color: #f8f9fe;
   font-size: 0.8em;
 }
 
 .footer-add-image {
-  background-color: rgb(44, 43, 43);
+  background-color: rgb(116, 116, 116);
   width: 60%;
 }
 
 .footer-logout {
-  background-color: rgb(100, 8, 8);
+  background-color: rgb(255, 0, 0);
   width: 40%;
 }
 
