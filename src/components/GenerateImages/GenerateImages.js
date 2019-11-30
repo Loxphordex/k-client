@@ -9,7 +9,7 @@ export default class GenerateImages extends React.Component {
     const token = TokenServices.getJwt()
     return(
       <section className='generated-images'>
-        {images && images.map(image => {
+        { images && images.map(image => {
           return(
             <div className='img-container' key={image.url}>
               { token && 

@@ -148,7 +148,7 @@ export default class Gallery extends React.Component {
             setDeleteId={this.setDeleteId} />
         </CloudinaryContext>
 
-        { token &&  <AuthFooter history={history} />}
+        { token &&  <AuthFooter history={history} /> }
       </section>
     )
   }
