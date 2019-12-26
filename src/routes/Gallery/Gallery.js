@@ -120,6 +120,9 @@ export default class Gallery extends React.Component {
         .then(() => this.getAndDisplayImages())
         .catch((e) => this.handleError(e))
     }
+    else {
+      console.log('Delete Failed, no ID')
+    }
   }
 
   render() {
