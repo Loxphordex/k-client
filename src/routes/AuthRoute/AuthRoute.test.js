@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import AuthRoute from './AuthRoute'
-import Enzyme from 'enzyme'
-import { shallow } from 'enzyme'
+import { shallow, configure } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
-Enzyme.configure({ adapter: new Adapter() })
+configure({ adapter: new Adapter() })
 
 describe('Gallery', () => {
   it('renders the complete page', () => {

@@ -10,12 +10,6 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      images: {},
-    }
-  }
   render() {
     return (
       <div className="App">
