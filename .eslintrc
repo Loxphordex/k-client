@@ -28,6 +28,7 @@
       ],
       "react/prefer-stateless-function": 0,
       "react/no-unescaped-entities": 0,
+      "react/no-unused-state": 1,
       "prettier/prettier": [
         "error",
         {
@@ -43,7 +44,9 @@
         "required": {
           "some": [ "nesting", "id"  ]
         }
-      }]
+      }],
+      "jsx-a11y/no-static-element-interactions": 1,
+      "jsx-a11y/click-events-have-key-events": 1
     },
     "plugins": ["prettier", "jasmine"],
     "parser": "babel-eslint"
