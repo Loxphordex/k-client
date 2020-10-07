@@ -3,12 +3,9 @@ import TokenServices from './token-services'
 
 const ApiServices = {
   getImages() {
-    return fetch(`${config.API_ENDPOINT}/api/images`)
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    return fetch(`${config.API_ENDPOINT}/api/images`).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    )
   },
 
   postImage(image) {
@@ -17,15 +14,10 @@ const ApiServices = {
       headers: {
         'content-type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'Authorization': `Bearer ${TokenServices.getJwt()}`
+        Authorization: `Bearer ${TokenServices.getJwt()}`
       },
       body: JSON.stringify(image)
-    })
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   updateImage(id, name, link) {
@@ -33,14 +25,9 @@ const ApiServices = {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenServices.getJwt()}`
+        Authorization: `Bearer ${TokenServices.getJwt()}`
       }
-    })
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   deleteImage(id) {
@@ -48,14 +35,9 @@ const ApiServices = {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenServices.getJwt()}`
+        Authorization: `Bearer ${TokenServices.getJwt()}`
       }
-    })
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   userRegistration(username, password) {
@@ -63,15 +45,10 @@ const ApiServices = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({ username, password })
-    })
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   userLogin(username, password) {
@@ -79,15 +56,10 @@ const ApiServices = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({ username, password })
-    })
-    .then(res => {
-      return (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   }
 }
 

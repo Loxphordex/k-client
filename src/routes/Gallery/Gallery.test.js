@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Gallery from './Gallery'
-import Enzyme from 'enzyme'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
+import Gallery from './Gallery'
 
-Enzyme.configure({ adapter: new Adapter() })
+configure({ adapter: new Adapter() })
 
 describe('Gallery', () => {
   it('renders the complete page', () => {

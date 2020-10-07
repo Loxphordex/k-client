@@ -11,30 +11,30 @@ export default class NewImageRoute extends React.Component {
       url: '',
       name: '',
       link: '',
-      confirmation: '',
+      confirmation: ''
     }
   }
 
-  setImageUrl = (url) => {
+  setImageUrl = url => {
     this.setState({ url })
   }
 
-  setImageName = (name) => {
+  setImageName = name => {
     this.setState({ name })
   }
 
-  setImageLink = (link) => {
+  setImageLink = link => {
     this.setState({ link })
   }
 
   setConfirmation = () => {
     const { name } = this.state
     this.setState({
-      confirmation: `Success! Added "${name}" to the gallery.`
+      confirmation: `Success! Added '${name}' to the gallery.`
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
     const { url, name, link } = this.state
     const newImage = { url, name, link }
@@ -51,7 +51,7 @@ export default class NewImageRoute extends React.Component {
           error: null,
           url: '',
           name: '',
-          link: '',
+          link: ''
         })
       })
       .catch(e => this.setState({ error: e }))
@@ -59,35 +59,39 @@ export default class NewImageRoute extends React.Component {
 
   render() {
     const { error, confirmation } = this.state
-    return(
-      <section className='new-image-area t-form-container'>
-        <fieldset className='t-fieldset'>
-          <div className='t-confirmation'>{confirmation}</div>
-          <div className='t-error'>{error}</div>
-          <h2 className='t-header'>NEW IMAGE</h2>
+    return (
+      <section className="new-image-area t-form-container">
+        <fieldset className="t-fieldset">
+          <div className="t-confirmation">{confirmation}</div>
+          <div className="t-error">{error}</div>
+          <h2 className="t-header">NEW IMAGE</h2>
           <CloudinaryWidget setImageUrl={this.setImageUrl} />
-          <form
-          className='t-form'
-          onSubmit={(event) => this.handleSubmit(event)}>
-            <label htmlFor='imageName' className='t-label'>NAME</label>
-            <input 
-              type='text'
-              className='t-input'
-              name='imageName'
-              id='imageName'
-              onChange={(event) => this.setImageName(event.target.value)}
-              placeholder='OPTIONAL'
+          <form className="t-form" onSubmit={event => this.handleSubmit(event)}>
+            <label id="t-label" htmlFor="imageName" className="t-label">
+              NAME
+            </label>
+            <input
+              type="text"
+              className="t-input"
+              name="imageName"
+              id="imageName"
+              onChange={event => this.setImageName(event.target.value)}
+              placeholder="OPTIONAL"
             />
-            <label htmlFor='imageLink' className='t-label'>STORE LINK</label>
-            <input 
-              type='text'
-              className='t-input'
-              name='imageLink'
-              id='imageLink'
-              onChange={(event) => this.setImageLink(event.target.link)}
-              placeholder='OPTIONAL'
+            <label htmlFor="imageLink" className="t-label">
+              STORE LINK
+            </label>
+            <input
+              type="text"
+              className="t-input"
+              name="imageLink"
+              id="imageLink"
+              onChange={event => this.setImageLink(event.target.link)}
+              placeholder="OPTIONAL"
             />
-            <button type='submit' className='t-button-submit'>SUBMIT</button>
+            <button type="submit" className="t-button-submit">
+              SUBMIT
+            </button>
           </form>
         </fieldset>
       </section>

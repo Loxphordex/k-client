@@ -7,19 +7,19 @@ export default class AuthRoute extends React.Component {
     this.state = {
       username: '',
       password: '',
-      error: null,
+      error: null
     }
   }
 
-  updateUsername = (username) => {
+  updateUsername = username => {
     this.setState({ username })
   }
 
-  updatePassword = (password) => {
+  updatePassword = password => {
     this.setState({ password })
   }
 
-  handleError = (error) => {
+  handleError = error => {
     console.log(error)
   }
 
@@ -30,11 +30,11 @@ export default class AuthRoute extends React.Component {
   clearCreds = () => {
     this.setState({
       username: '',
-      password: '',
+      password: ''
     })
   }
 
-  handleSubmitUser = (event) => {
+  handleSubmitUser = event => {
     event.preventDefault()
 
     const { username, password } = this.state
@@ -49,23 +49,25 @@ export default class AuthRoute extends React.Component {
 
   render() {
     const { error } = this.state
-    return(
+    return (
       <div>
         <h2>Auth</h2>
-        { error && <div>{ error }</div> }
+        {error && <div>{error}</div>}
         <fieldset>
-          <form onSubmit={(event) => this.handleSubmitUser(event)}>
-            <input 
-              type='text' 
+          <form onSubmit={event => this.handleSubmitUser(event)}>
+            <input
+              type="text"
               onChange={event => this.updateUsername(event.target.value)}
-              placeholder='USERNAME'
-              required />
-            <input 
-              type='password' 
+              placeholder="USERNAME"
+              required
+            />
+            <input
+              type="password"
               onChange={event => this.updatePassword(event.target.value)}
-              placeholder='PASSWORD'
-              required />
-            <button type='submit'>SUBMIT</button>
+              placeholder="PASSWORD"
+              required
+            />
+            <button type="submit">SUBMIT</button>
           </form>
         </fieldset>
       </div>
