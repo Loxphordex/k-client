@@ -1,6 +1,7 @@
 import React from 'react'
 import TokenServices from '../../services/token-services'
 import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
+import FalseDisplacementImage from '../FalseDisplacementImage/FalseDisplacementImage'
 import ImageEdit from '../ImageEdit/ImageEdit'
 
 export default class GenerateImages extends React.Component {
@@ -23,6 +24,7 @@ export default class GenerateImages extends React.Component {
               <h2>{!!image.name && image.name}</h2>
             </div>
           ))}
+        <FalseDisplacementImage num={images.count} />
       </section>
     )
   }

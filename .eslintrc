@@ -13,6 +13,8 @@
       "import/no-extraneous-dependencies": "off",
       "global-require": "off",
       "consistent-return": "off",
+      "no-unused-vars": 1,
+      "no-plusplus": 0,
       "react/destructuring-assignment": "off",
       "react/prop-types": 0,
       "no-use-before-define": [
@@ -28,8 +30,9 @@
       ],
       "react/prefer-stateless-function": 0,
       "react/no-unescaped-entities": 0,
+      "react/no-unused-state": 1,
       "prettier/prettier": [
-        "error",
+        1,
         {
           "printWidth": 100
         }
@@ -43,7 +46,9 @@
         "required": {
           "some": [ "nesting", "id"  ]
         }
-      }]
+      }],
+      "jsx-a11y/no-static-element-interactions": 1,
+      "jsx-a11y/click-events-have-key-events": 1
     },
     "plugins": ["prettier", "jasmine"],
     "parser": "babel-eslint"
