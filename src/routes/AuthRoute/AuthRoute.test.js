@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AuthRoute from './AuthRoute'
 import { shallow, configure } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
+import AuthRoute from './AuthRoute'
 
 configure({ adapter: new Adapter() })
 
