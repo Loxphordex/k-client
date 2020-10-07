@@ -7,7 +7,7 @@
 
 .auth-footer button {
   border: none;
-  height: 8vh;
+  height: 45px;
   color: #f8f9fe;
   font-size: 0.8em;
 }
@@ -24,7 +24,7 @@
 
 @media only screen and (min-width: 760px) {
   .auth-footer button {
-    height: 4vh;
+    height: 50px;
     cursor: pointer;
   }
 }

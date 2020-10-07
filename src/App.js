@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
@@ -10,25 +10,19 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      images: {},
-    }
-  }
   render() {
     return (
       <div className="App">
-        <Route path='/' render={() => <Header />} />
-        <Route exact path='/' render={({ history }) => <Gallery history={history} />} />
-        <Route path='/new' render={() => <NewImageRoute />} />
-        <Route path='/auth' render={({ history }) => <AuthRoute history={history} />} />
-        <Route path='/login' render={({ history }) => <LoginRoute history={history} />} />
-        <Route path='/contact' render={() => <Contact />} />
-        <Route path='/aboutus' render={() => <AboutUs />} />
+        <Route path="/" render={() => <Header />} />
+        <Route exact path="/" render={({ history }) => <Gallery history={history} />} />
+        <Route path="/new" render={() => <NewImageRoute />} />
+        <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />
+        <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
+        <Route path="/contact" render={() => <Contact />} />
+        <Route path="/aboutus" render={() => <AboutUs />} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

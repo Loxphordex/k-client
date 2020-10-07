@@ -8,20 +8,20 @@ export default class LoginRoute extends React.Component {
     this.state = {
       username: '',
       password: '',
-      error: null,
+      error: null
     }
   }
 
-  updateUsername = (username) => {
+  updateUsername = username => {
     this.setState({ username })
   }
 
-  updatePassword = (password) => {
+  updatePassword = password => {
     this.setState({ password })
   }
 
-  handleError = (error) => {
-    console.log(error)
+  handleError = error => {
+    this.setState(error)
   }
 
   clearError = () => {
@@ -31,50 +31,65 @@ export default class LoginRoute extends React.Component {
   clearCreds = () => {
     this.setState({
       username: '',
-      password: '',
+      password: ''
     })
   }
 
-  handleSubmitLogin = (event) => {
+  handleSubmitLogin = event => {
     event.preventDefault()
 
     const { username, password } = this.state
     const { history } = this.props
     ApiServices.userLogin(username, password)
-      .then((res) => window.localStorage.setItem('pearegrineKey', res.authToken))
+      .then(res => window.localStorage.setItem('pearegrineKey', res.authToken))
       .then(() => this.clearCreds())
       .then(() => this.clearError())
       .then(() => history.push('/'))
-      .catch((e) => this.handleError(e))
+      .catch(e => this.handleError(e))
+  }
+
+  displayError = () => {
+    if (!this.state.error) {
+      return <></>
+    }
+
+    return <div>Login error, call Silas</div>
   }
 
   render() {
-    return(
-      <div className='login-area t-form-container'>
-        <fieldset className='login-field t-fieldset'>
-          <h2 className='t-header'>LOGIN</h2>
-          <form onSubmit={(event) => this.handleSubmitLogin(event)}>
-            <label htmlFor='username' className='t-label'>USERNAME</label>
-            <input 
-              type='text'
-              id='username'
-              name='username'
-              className='t-input'
-              onChange={(event) => this.updateUsername(event.target.value)}
+    return (
+      <div className="login-area t-form-container">
+        <fieldset className="login-field t-fieldset">
+          <h2 className="t-header">LOGIN</h2>
+          <form onSubmit={event => this.handleSubmitLogin(event)}>
+            <label htmlFor="username" className="t-label">
+              USERNAME
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className="t-input"
+              onChange={event => this.updateUsername(event.target.value)}
               required
             />
-            <label htmlFor='pass' className='t-label'>PASSWORD</label>
-            <input 
-              type='password'
-              id='pass'
-              name='pass'
-              className='t-input'
-              onChange={(event) => this.updatePassword(event.target.value)}
+            <label htmlFor="pass" className="t-label">
+              PASSWORD
+            </label>
+            <input
+              type="password"
+              id="pass"
+              name="pass"
+              className="t-input"
+              onChange={event => this.updatePassword(event.target.value)}
               required
             />
-            <button type='submit' className='t-button'>SIGN IN</button>
+            <button type="submit" className="t-button">
+              SIGN IN
+            </button>
           </form>
         </fieldset>
+        {this.displayError()}
       </div>
     )
   }

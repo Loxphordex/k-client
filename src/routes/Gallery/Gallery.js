@@ -1,6 +1,6 @@
 import React from 'react'
-import config from '../../config'
 import { CloudinaryContext } from 'cloudinary-react'
+import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'
@@ -27,7 +27,7 @@ export default class Gallery extends React.Component {
       editorImageLink: '',
 
       deleteFormOpen: false,
-      deleteImageId: null,
+      deleteImageId: null
     }
   }
 
@@ -42,7 +42,7 @@ export default class Gallery extends React.Component {
     this.setState({ images })
   }
 
-  handleError = (error) => {
+  handleError = error => {
     this.setState({ error })
   }
 
@@ -52,10 +52,10 @@ export default class Gallery extends React.Component {
 
   getAndDisplayImages = () => {
     ApiServices.getImages()
-      .then((allImages) => this.setState({ allImages: allImages.images }))
+      .then(allImages => this.setState({ allImages: allImages.images }))
       .then(() => this.setDisplayedImages())
       .then(() => this.clearError())
-      .catch((e) => this.handleError(e))
+      .catch(e => this.handleError(e))
   }
 
   // EDITOR
@@ -64,33 +64,33 @@ export default class Gallery extends React.Component {
       editorOpen: false,
       editorImageId: null,
       editorImageName: '',
-      editorImageLink: '',
+      editorImageLink: ''
     })
   }
 
-  setEditorImageId = (id) => {
-    this.setState({ 
+  setEditorImageId = id => {
+    this.setState({
       editorOpen: true,
-      editorImageId: id,
+      editorImageId: id
     })
   }
 
-  updateNewName = (name) => {
+  updateNewName = name => {
     this.setState({ editorImageName: name })
   }
 
-  updateNewLink = (link) => {
+  updateNewLink = link => {
     this.setState({ editorImageLink: link })
   }
 
-  handleSubmitEdit = (event) => {
+  handleSubmitEdit = event => {
     event.preventDefault()
 
     const { editorImageId, editorImageName, editorImageLink } = this.state
     ApiServices.updateImage(editorImageId, editorImageName, editorImageLink)
       .then(() => this.disableEditor())
       .then(() => this.getAndDisplayImages())
-      .catch((e) => this.handleError(e))
+      .catch(e => this.handleError(e))
   }
 
   // DELETE
@@ -99,18 +99,18 @@ export default class Gallery extends React.Component {
   }
 
   closeDeleteForm = () => {
-    this.setState({ 
+    this.setState({
       deleteFormOpen: false,
-      deleteImageId: null,
+      deleteImageId: null
     })
   }
 
-  setDeleteId = async(id) => {
+  setDeleteId = async id => {
     await this.setState({ deleteImageId: id })
     await this.openDeleteForm()
   }
 
-  handleDelete = (event) => {
+  handleDelete = event => {
     event.preventDefault()
 
     const id = this.state.deleteImageId
@@ -118,7 +118,9 @@ export default class Gallery extends React.Component {
       ApiServices.deleteImage(id)
         .then(() => this.closeDeleteForm())
         .then(() => this.getAndDisplayImages())
-        .catch((e) => this.handleError(e))
+        .catch(e => this.handleError(e))
+    } else {
+      console.log('Delete Failed, no ID')
     }
   }
 
@@ -126,29 +128,30 @@ export default class Gallery extends React.Component {
     const { history } = this.props
     const { images, editorOpen, deleteFormOpen } = this.state
     const token = TokenServices.getJwt()
-    return(
-      <section className='gallery-area'>
+    return (
+      <section className="gallery-area">
+        {editorOpen && (
+          <EditorForm
+            disableEditor={this.disableEditor}
+            updateNewName={this.updateNewName}
+            updateNewLink={this.updateNewLink}
+            handleSubmitEdit={this.handleSubmitEdit}
+          />
+        )}
 
-        { editorOpen && 
-        <EditorForm 
-          disableEditor={this.disableEditor}
-          updateNewName={this.updateNewName}
-          updateNewLink={this.updateNewLink}
-          handleSubmitEdit={this.handleSubmitEdit} /> }
+        {deleteFormOpen && (
+          <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
+        )}
 
-        { deleteFormOpen &&
-        <DeleteForm
-          closeDeleteForm={this.closeDeleteForm}
-          handleDelete={this.handleDelete} /> }
-
-        <CloudinaryContext cloudName={config.CLOUD_NAME} className='cloud-context'>
-          <GenerateImages 
-            images={images} 
+        <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
+          <GenerateImages
+            images={images}
             setEditorImageId={this.setEditorImageId}
-            setDeleteId={this.setDeleteId} />
+            setDeleteId={this.setDeleteId}
+          />
         </CloudinaryContext>
 
-        { token &&  <AuthFooter history={history} />}
+        {token && <AuthFooter history={history} />}
       </section>
     )
   }
