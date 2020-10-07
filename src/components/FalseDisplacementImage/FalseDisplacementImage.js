@@ -2,7 +2,7 @@ import React from 'react'
 
 // num: number of images
 export default function FalseDisplacementImage({ num }) {
-  // generates false images to properly offset final images in the gallery
+  // generates false images to properly offset the final images in the gallery
   let divisibleCounter = num
   while (divisibleCounter % 4 !== 0) {
     divisibleCounter++
