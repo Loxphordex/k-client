@@ -1,14 +1,15 @@
 .main-header-nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2fr 0.5fr;
+  grid-template-columns: 1fr 300px 1fr;
+  grid-template-rows: 150px 50px;
 }
 
 .main-header-nav h1 {
   grid-column: 1/4;
   grid-row: 1/2;
   display: block;
-  margin: 0;
+  margin: auto;
+  max-width: 380px;
 }
 
 .main-header-nav h1 img {
@@ -40,6 +41,10 @@
 }
 
 @media only screen and (min-width: 760px) {
+  .main-header-nav {
+    grid-template-columns: 1fr 300px 1fr;
+    grid-template-rows: 140px 12px;
+  }
   .main-header-nav h1 {
     grid-column: 2/3;
     grid-row: 1/2;

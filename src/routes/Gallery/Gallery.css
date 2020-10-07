@@ -1,6 +1,7 @@
 .generated-images {
   display: flex;
   flex-flow: wrap;
+  justify-content: space-evenly;
   margin-top: 24px;
   margin-bottom: 8vh;
 }
@@ -9,7 +10,6 @@
   display: inline-block;
   position: relative;
   width: 40vw;
-  margin: 5vw;
 }
 
 .img-container img {
@@ -40,8 +40,7 @@
     display: flex;
     flex-flow: wrap;
     justify-content: center;
-    align-items: flex-end;
-    max-width: 80%;
+    max-width: 1120px;
     margin: auto;
     margin-bottom: 15vh;
   }
@@ -52,7 +51,7 @@
     grid-template-rows: 0.5fr 0.5fr;
     position: relative;
     max-width: 300px;
-    margin: 24px;
+    margin: 24px -10px;
   }
 
   .img-container img {
