@@ -1,9 +1,9 @@
 import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
-import GenerateImageElement from '../../components/GenerateImageElement/GenerateImageElement'
+import DetailsImage from '../../components/DetailsImage/DetailsImage'
+import './Details.css'
 
-// props?.location?.state?.image
 export default class Details extends React.Component {
   state = {
     image: null
@@ -21,14 +21,19 @@ export default class Details extends React.Component {
   render() {
     const { image } = this.state
 
-    return (
-      <div>
-        {image && (
+    if (image) {
+      return (
+        <div className="details-container">
           <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
-            <GenerateImageElement pic={image} width="400" />
+            <div className="details-main">
+              <DetailsImage pic={image} />
+              <h2 className="details-main-header">{image.name}</h2>
+            </div>
           </CloudinaryContext>
-        )}
-      </div>
-    )
+        </div>
+      )
+    }
+
+    return <></>
   }
 }

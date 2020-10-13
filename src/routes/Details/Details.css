@@ -1,0 +1,28 @@
+.details-image {
+  margin-top: 2%;
+}
+
+.details-image img {
+  width: 80%;
+  margin: auto;
+  display: block;
+}
+
+.details-main-header {
+  width: 80%;
+  margin: auto;
+  margin-top: 2%;
+  text-align: center;
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .details-container {
+    max-width: 1120px;
+    margin: auto;
+  }
+  
+  .details-image img {
+    width: 400px;
+  }
+}
