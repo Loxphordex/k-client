@@ -26,8 +26,8 @@ export default class Details extends React.Component {
         <div className="details-container">
           <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
             <div className="details-main">
-              <DetailsImage pic={image} />
               <h2 className="details-main-header">{image.name}</h2>
+              <DetailsImage pic={image} />
             </div>
           </CloudinaryContext>
         </div>
