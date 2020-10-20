@@ -2,6 +2,7 @@ import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
+import ApiServices from '../../services/api-services'
 import './Details.css'
 
 export default class Details extends React.Component {
@@ -26,8 +27,10 @@ export default class Details extends React.Component {
         <div className="details-container">
           <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
             <div className="details-main">
-              <h2 className="details-main-header">{image.name}</h2>
               <DetailsImage pic={image} />
+              <div className="details-info-container">
+                <h2 className="details-main-header">{image.name}</h2>
+              </div>
             </div>
           </CloudinaryContext>
         </div>

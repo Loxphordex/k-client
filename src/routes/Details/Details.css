@@ -23,9 +23,21 @@
   .details-container {
     max-width: 1120px;
     margin: auto;
+    margin-top: 5px;
+  }
+
+  .details-main {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
   }
   
   .details-image img {
     max-width: 700px;
+    display: inline-block;
+  }
+
+  .details-info-container {
+    display: inline-block;
   }
 }
