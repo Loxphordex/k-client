@@ -2,7 +2,6 @@ import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
-import ApiServices from '../../services/api-services'
 import './Details.css'
 
 export default class Details extends React.Component {
