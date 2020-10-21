@@ -1,0 +1,43 @@
+.details-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.details-image {
+  margin-top: 2%;
+}
+
+.details-image img {
+  width: 80%;
+  display: block;
+}
+
+.details-main-header {
+  margin: auto;
+  margin-top: 2%;
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .details-container {
+    max-width: 1120px;
+    margin: auto;
+    margin-top: 5px;
+  }
+
+  .details-main {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+  }
+  
+  .details-image img {
+    max-width: 700px;
+    display: inline-block;
+  }
+
+  .details-info-container {
+    display: inline-block;
+  }
+}

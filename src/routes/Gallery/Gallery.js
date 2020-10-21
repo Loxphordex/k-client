@@ -25,6 +25,8 @@ export default class Gallery extends React.Component {
       editorImageId: null,
       editorImageName: '',
       editorImageLink: '',
+      editorImageDescription: '',
+      editorImageType: '',
 
       deleteFormOpen: false,
       deleteImageId: null
@@ -64,7 +66,9 @@ export default class Gallery extends React.Component {
       editorOpen: false,
       editorImageId: null,
       editorImageName: '',
-      editorImageLink: ''
+      editorImageLink: '',
+      editorImageDescription: '',
+      editorImageType: ''
     })
   }
 
@@ -83,11 +87,25 @@ export default class Gallery extends React.Component {
     this.setState({ editorImageLink: link })
   }
 
+  updateNewDescription = description => {
+    this.setState({ editorImageDescription: description })
+  }
+
+  updateNewType = type => {
+    this.setState({ editorImageType: type })
+  }
+
   handleSubmitEdit = event => {
     event.preventDefault()
 
-    const { editorImageId, editorImageName, editorImageLink } = this.state
-    ApiServices.updateImage(editorImageId, editorImageName, editorImageLink)
+    const updateData = {
+      id: this.state.editorImageId,
+      name: this.state.editorImageName,
+      link: this.state.editorImageLink,
+      description: this.state.editorImageDescription,
+      type: this.state.editorImageType
+    }
+    ApiServices.updateImage(updateData)
       .then(() => this.disableEditor())
       .then(() => this.getAndDisplayImages())
       .catch(e => this.handleError(e))
@@ -135,6 +153,8 @@ export default class Gallery extends React.Component {
             disableEditor={this.disableEditor}
             updateNewName={this.updateNewName}
             updateNewLink={this.updateNewLink}
+            updateNewDescription={this.updateNewDescription}
+            updateNewType={this.updateNewType}
             handleSubmitEdit={this.handleSubmitEdit}
           />
         )}

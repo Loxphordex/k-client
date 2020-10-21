@@ -34,13 +34,13 @@
 
 @media only screen and (min-width: 760px) {
   .gallery-area {
-    margin-top: 30px;
+    padding-top: 5px;
   }
   .generated-images {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
-    max-width: 1120px;
+    max-width: 1050px;
     margin: auto;
     margin-bottom: 15vh;
   }
@@ -48,10 +48,10 @@
   .img-container {
     box-sizing: border-box;
     display: grid;
-    grid-template-rows: 0.5fr 0.5fr;
     position: relative;
     max-width: 300px;
-    margin: 24px -10px;
+    margin: 6px 0px;
+    width: 260px;
   }
 
   .img-container img {

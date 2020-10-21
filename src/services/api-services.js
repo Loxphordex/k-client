@@ -20,14 +20,17 @@ const ApiServices = {
     }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
-  updateImage(id, name, link) {
-    return fetch(`${config.API_ENDPOINT}/api/images?id=${id}&name=${name}&link=${link}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${TokenServices.getJwt()}`
+  updateImage(data) {
+    return fetch(
+      `${config.API_ENDPOINT}/api/images?id=${data.id}&name=${data.name}&link=${data.link}&description=${data.description}&type=${data.type}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${TokenServices.getJwt()}`
+        }
       }
-    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
+    ).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   deleteImage(id) {

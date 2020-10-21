@@ -8,8 +8,9 @@ export default function FalseDisplacementImage({ num }) {
     divisibleCounter++
     return (
       <>
-        <section className="img-container" />
-        <h2> </h2>
+        <div className="img-container">
+          <h2> </h2>
+        </div>
       </>
     )
   }

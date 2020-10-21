@@ -8,6 +8,7 @@ import AuthRoute from './routes/AuthRoute/AuthRoute'
 import LoginRoute from './routes/LoginRoute/LoginRoute'
 import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
+import Details from './routes/Details/Details'
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
+        <Route path="/details" component={Details} />
       </div>
     )
   }
