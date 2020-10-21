@@ -4,7 +4,14 @@ import './EditorForm.css'
 
 export default class EditorForm extends React.Component {
   render() {
-    const { disableEditor, updateNewName, updateNewLink, handleSubmitEdit } = this.props
+    const {
+      disableEditor,
+      updateNewName,
+      updateNewLink,
+      updateNewDescription,
+      updateNewType,
+      handleSubmitEdit
+    } = this.props
     return (
       <section className="editor-container">
         <div className="editor-background" onClick={() => disableEditor()} />
@@ -30,6 +37,26 @@ export default class EditorForm extends React.Component {
               name="new-link"
               className="t-input"
               onChange={event => updateNewLink(event.target.value)}
+            />
+            <label htmlFor="new-description" className="t-label">
+              DESCRIPTION
+            </label>
+            <input
+              type="text"
+              id="new-description"
+              name="new-description"
+              className="t-input"
+              onChange={event => updateNewDescription(event.target.value)}
+            />
+            <label htmlFor="new-type" className="t-label">
+              TYPE
+            </label>
+            <input
+              type="text"
+              id="new-type"
+              name="new-type"
+              className="t-input"
+              onChange={event => updateNewType(event.target.value)}
             />
             <button type="submit" className="t-button editor-button">
               SUBMIT

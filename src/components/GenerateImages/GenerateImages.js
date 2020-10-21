@@ -20,7 +20,7 @@ export default class GenerateImages extends React.Component {
                   setDeleteId={setDeleteId}
                 />
               )}
-              <GenerateImageElement pic={image} />
+              <GenerateImageElement pic={image} width="250" />
               <h2>{!!image.name && image.name}</h2>
             </div>
           ))}

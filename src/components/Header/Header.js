@@ -9,7 +9,9 @@ export default class Header extends React.Component {
       <header role="heading">
         <nav role="navigation" className="main-header-nav">
           <h1>
-            <img src={logo} alt="Pearegrine" />
+            <Link to="/">
+              <img src={logo} alt="Pearegrine" />
+            </Link>
           </h1>
           <ul>
             <li>
