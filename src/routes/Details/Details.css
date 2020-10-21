@@ -9,7 +9,6 @@
 }
 
 .details-image img {
-  width: 80%;
   display: block;
 }
 
@@ -29,15 +28,29 @@
   .details-main {
     display: flex;
     flex-flow: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details-image {
+    width: 50%;
   }
   
   .details-image img {
-    max-width: 700px;
     display: inline-block;
+    width: 100%;
   }
 
   .details-info-container {
     display: inline-block;
+    margin-left: 5%;
+  }
+
+  .details-main-header {
+    font-size: 20pt;
+  }
+
+  .details-main-desc {
+    font-size: 12pt;
   }
 }

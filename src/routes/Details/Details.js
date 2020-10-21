@@ -29,6 +29,9 @@ export default class Details extends React.Component {
               <DetailsImage pic={image} />
               <div className="details-info-container">
                 <h2 className="details-main-header">{image.name}</h2>
+                <p className="details-main-desc">
+                  {image.description ? image.description : String()}
+                </p>
               </div>
             </div>
           </CloudinaryContext>
