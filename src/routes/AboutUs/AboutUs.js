@@ -15,7 +15,7 @@ export default class Bio extends React.Component {
         <hr className="contact-hr about-hr" />
         <p>
           Every day we produce designs within a variety of lifestyle goods, through independent
-          manufacturing located in Seattle, WA, USA.
+          manufacturing located in Brooklyn, NY, USA.
         </p>
 
         <h3>
