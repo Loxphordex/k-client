@@ -13,7 +13,7 @@ export default class Bio extends React.Component {
           </span>
         </h3>
         <hr className="contact-hr about-hr" />
-        <p>
+        <p className="main-paragraph">
           Every day we produce designs within a variety of lifestyle goods, through independent
           manufacturing located in Brooklyn, NY, USA.
         </p>
@@ -25,7 +25,7 @@ export default class Bio extends React.Component {
           </span>
         </h3>
         <hr className="contact-hr about-hr" />
-        <p>To become the world's top lifestyle brand.</p>
+        <p className="main-paragraph">To become the world's top lifestyle brand.</p>
 
         <h3>
           Our Belief
@@ -34,7 +34,7 @@ export default class Bio extends React.Component {
           </span>
         </h3>
         <hr className="contact-hr about-hr" />
-        <p>Art has the power to change this world and any undiscovered as of yet worlds.</p>
+        <p className="main-paragraph">Art has the power to change this world and any undiscovered as of yet worlds.</p>
 
         <h3>
           Our Core Values
@@ -43,7 +43,7 @@ export default class Bio extends React.Component {
           </span>
         </h3>
         <hr className="contact-hr about-hr" />
-        <p>Quality. Innovative goods. Customer bliss.</p>
+        <p className="main-paragraph">Quality. Innovative goods. Customer bliss.</p>
 
         <h3>
           Founder
@@ -52,7 +52,7 @@ export default class Bio extends React.Component {
           </span>
         </h3>
         <hr className="contact-hr about-hr" />
-        <p>Keegan Holcomb-Harris</p>
+        <p className="main-paragraph">Keegan Holcomb-Harris</p>
       </section>
     )
   }

@@ -4,6 +4,7 @@ import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'
+import './GalleryCard.css'
 
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
