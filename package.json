@@ -25,7 +25,10 @@
     "postdeploy": "now alias -A ./build/now.json"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ]
   },
   "prettier": {
     "singleQuote": true,
