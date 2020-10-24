@@ -33,15 +33,11 @@
 .about-hr {
   margin: 5px 0;
 }
-/* .bio-container h2 {
-  padding: 30px;
-  border: 2px dotted rgb(156, 161, 182);
-} */
 
 @media only screen and (min-width: 768px) {
   .bio-container {
     min-width: 400px;
-    width: 70%;
+    max-width: 1040px;
     margin: auto;
     margin-bottom: 150px;
     margin-top: 50px;
