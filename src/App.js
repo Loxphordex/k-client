@@ -9,6 +9,8 @@ import LoginRoute from './routes/LoginRoute/LoginRoute'
 import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 import Details from './routes/Details/Details'
+import './Fonts.css'
+import './styles/fadeIn.css'
 
 class App extends React.Component {
   render() {

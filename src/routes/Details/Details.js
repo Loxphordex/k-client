@@ -27,8 +27,9 @@ export default class Details extends React.Component {
           <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
             <div className="details-main">
               <DetailsImage pic={image} />
-              <div className="details-info-container">
-                <h2 className="details-main-header">{image.name}</h2>
+              <div className="details-info-container fade-in">
+                <h3 className="secondary-text details-type-header">{image.type ? image.type : String()}</h3>
+                <h2 className="main-secondary-header details-main-header">{image.name}</h2>
                 <p className="details-main-desc">
                   {image.description ? image.description : String()}
                 </p>

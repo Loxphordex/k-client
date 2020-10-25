@@ -7,7 +7,7 @@
   height: 100vh;
   background-color: rgba(36, 36, 36, 0.685);
   top: 0;
-  z-index: 300;
+  z-index: 3000;
 }
 
 .editor-background {
@@ -46,4 +46,19 @@
 .cancel-button {
   background-color: rgb(228, 17, 27);
   color: #f8f9fe;
+}
+
+.new-description {
+  height: 80px;
+  padding: 8px;
+  font-family: inherit;
+  font-weight: inherit;
+  resize: none;
+}
+
+.size-container {
+  margin: auto;
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
 }

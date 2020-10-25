@@ -4,6 +4,7 @@ import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'
+import './GalleryCard.css'
 
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
@@ -27,6 +28,12 @@ export default class Gallery extends React.Component {
       editorImageLink: '',
       editorImageDescription: '',
       editorImageType: '',
+      editorImagePrice: null,
+      small: null,
+      medium: null,
+      large: null,
+      xLarge: null,
+      xxLarge: null,
 
       deleteFormOpen: false,
       deleteImageId: null
@@ -68,7 +75,13 @@ export default class Gallery extends React.Component {
       editorImageName: '',
       editorImageLink: '',
       editorImageDescription: '',
-      editorImageType: ''
+      editorImageType: '',
+      editorImagePrice: null,
+      small: null,
+      medium: null,
+      large: null,
+      xLarge: null,
+      xxLarge: null,
     })
   }
 
@@ -95,6 +108,30 @@ export default class Gallery extends React.Component {
     this.setState({ editorImageType: type })
   }
 
+  updateNewPrice = price => {
+    this.setState({ editorImagePrice: price })
+  }
+
+  updateSmallCount = small => {
+    this.setState({ small })
+  }
+
+  updateMediumCount = medium => {
+    this.setState({ medium })
+  }
+
+  updateLargeCount = large => {
+    this.setState({ large })
+  }
+
+  updateXLargeCount = xLarge => {
+    this.setState({ xLarge })
+  }
+
+  updateXXLargeCount = xxLarge => {
+    this.setState({  xxLarge })
+  }
+
   handleSubmitEdit = event => {
     event.preventDefault()
 
@@ -103,7 +140,13 @@ export default class Gallery extends React.Component {
       name: this.state.editorImageName,
       link: this.state.editorImageLink,
       description: this.state.editorImageDescription,
-      type: this.state.editorImageType
+      type: this.state.editorImageType,
+      price: this.state.editorImagePrice,
+      small: this.state.small,
+      medium: this.state.medium,
+      large: this.state.large,
+      xLarge: this.state.xLarge,
+      xxLarge: this.state.xxLarge
     }
     ApiServices.updateImage(updateData)
       .then(() => this.disableEditor())
@@ -155,6 +198,12 @@ export default class Gallery extends React.Component {
             updateNewLink={this.updateNewLink}
             updateNewDescription={this.updateNewDescription}
             updateNewType={this.updateNewType}
+            updateNewPrice={this.updateNewPrice}
+            updateSmall={this.updateSmallCount}
+            updateMedium={this.updateMediumCount}
+            updateLarge={this.updateLargeCount}
+            updateXLarge={this.updateXLargeCount}
+            updateXXLarge={this.updateXXLargeCount}
             handleSubmitEdit={this.handleSubmitEdit}
           />
         )}
