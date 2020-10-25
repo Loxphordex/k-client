@@ -32,7 +32,8 @@
 
 @media only screen and (min-width: 768px) {
   .contact-container {
-    margin: 0 25%;
+    max-width: 1040px;
+    margin: auto;
     margin-bottom: 4vh;
   }
   .contact-header {
