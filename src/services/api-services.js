@@ -1,5 +1,6 @@
 import config from '../config'
 import TokenServices from './token-services'
+import { generateUpdateEndpoint } from './helper-functions'
 
 const ApiServices = {
   getImages() {
@@ -22,7 +23,7 @@ const ApiServices = {
 
   updateImage(data) {
     return fetch(
-      `${config.API_ENDPOINT}/api/images?id=${data.id}&name=${data.name}&link=${data.link}&description=${data.description}&type=${data.type}`,
+      generateUpdateEndpoint(data),
       {
         method: 'PATCH',
         headers: {

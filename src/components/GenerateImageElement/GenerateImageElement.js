@@ -15,7 +15,7 @@ export default class GenerateImageElement extends React.Component {
               state: { image: pic }
             }}
           >
-            <Image publicId={pic.url} type="fetch" name={pic.url}>
+            <Image publicId={pic.url} type="fetch" name={pic.url} className="fade-in">
               <Transformation quality="90" width={width} crop="scale" fetchFormat="auto" />
             </Image>
           </Link>
