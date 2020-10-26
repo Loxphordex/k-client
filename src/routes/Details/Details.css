@@ -1,3 +1,7 @@
+.details-main {
+  margin-bottom: 10vh;
+}
+
 .details-container {
   width: 90%;
   margin: auto;
@@ -29,12 +33,41 @@
 
 .details-main-header {
   font-size: 16pt;
+  margin-bottom: 4px;
 }
 
 .details-type-header {
   font-size: 12pt;
-  font-weight: 200;
+  font-weight: 400;
   margin: 0;
+}
+
+.details-price {
+  font-size: 14pt;
+  color:rgb(36, 39, 39);
+}
+
+.details-size-container {
+  margin: 18px 0;
+  display: flex;
+}
+
+.size-selection {
+  display: flex;
+  text-align: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  margin: 0;
+  margin-right: 16px;
+  font-size: 12pt;
+  background-color: inherit;
+  border: 1px solid rgb(153, 159, 161);
+  color: rgb(36, 39, 39);
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
@@ -76,5 +109,9 @@
     font-size: 12pt;
     font-weight: 500;
     color: rgb(71, 79, 105);
+  }
+
+  .size-selection:hover {
+    background-color: rgb(241, 251, 255);
   }
 }
