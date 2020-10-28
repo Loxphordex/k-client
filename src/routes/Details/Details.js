@@ -2,6 +2,7 @@ import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
+import { sizes } from '../../constants/sizes'
 import './Details.css'
 
 export default class Details extends React.Component {
@@ -22,7 +23,7 @@ export default class Details extends React.Component {
   }
 
   checkSizeAvailable = size => {
-    if (!this.state.image[size]) return 'no-size'
+    if (!this.state.image[size.toLowerCase()]) return 'no-size'
     return String()
   }
 
@@ -43,11 +44,7 @@ export default class Details extends React.Component {
                   {image.description ? image.description : String()}
                 </p>
                 <section className="details-size-container">
-                  <button className={`size-selection size-small`}>S</button>
-                  <button className={`size-selection size-medium`}>M</button>
-                  <button className={`size-selection size-large`}>L</button>
-                  <button className={`size-selection size-xLarge`}>XL</button>
-                  <button className={`size-selection size-xxLarge`}>XXL</button>
+                  {this.renderSizeSelection()}
                 </section>
               </div>
             </div>
@@ -57,5 +54,18 @@ export default class Details extends React.Component {
     }
 
     return <></>
+  }
+
+  renderSizeSelection = () => {
+    let sizesJsx = []
+    for (const [key, value] of Object.entries(sizes)) {
+      sizesJsx.push(
+        <button className={`size-selection size-${key} ${this.checkSizeAvailable(key)}`}>
+          {value}
+        </button>
+      )
+    }
+    
+    return sizesJsx.map(t => t)
   }
 }

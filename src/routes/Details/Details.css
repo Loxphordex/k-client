@@ -70,6 +70,12 @@
   cursor: pointer;
 }
 
+.no-size {
+  pointer-events: none;
+  border: 1px solid rgb(211, 216, 218);
+  color: rgb(122, 131, 131);
+}
+
 @media only screen and (min-width: 768px) {
   .details-container {
     max-width: 1120px;
