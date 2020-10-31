@@ -68,6 +68,15 @@
   justify-content: center;
   font-family: inherit;
   cursor: pointer;
+  outline: none;
+}
+
+.selected-size {
+  background-color: rgb(132, 220, 255);
+}
+
+.selected-size:hover {
+  background-color: rgb(132, 220, 255);
 }
 
 .no-size {
@@ -119,5 +128,13 @@
 
   .size-selection:hover {
     background-color: rgb(241, 251, 255);
+  }
+
+  .selected-size {
+    background-color: rgb(132, 220, 255);
+  }
+
+  .selected-size:hover {
+    background-color: rgb(132, 220, 255);
   }
 }

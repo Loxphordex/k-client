@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Header.css'
+import { ShoppingCartSimple } from 'phosphor-react'
 import logo from '../../images/PEAREGRINE.jpg'
 
 export default class Header extends React.Component {
@@ -13,6 +14,9 @@ export default class Header extends React.Component {
               <img src={logo} alt="Pearegrine" />
             </Link>
           </h1>
+          <div className="cart-area">
+            <ShoppingCartSimple size={30} />
+          </div>
           <ul>
             <li>
               <Link to="/aboutus">ABOUT US</Link>

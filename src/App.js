@@ -13,6 +13,21 @@ import './Fonts.css'
 import './styles/fadeIn.css'
 
 class App extends React.Component {
+  state = {
+    cart: {}
+  }
+
+  addCart = id => {
+    console.log('addCart ran')
+    if (id) {
+      if (this.state.cart[id]) {
+        this.state.cart[id]++
+      } else {
+        this.state.cart[id] = 1
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,7 +38,7 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
-        <Route path="/details" component={Details} />
+        <Route path="/details" render={({ location }) => <Details location={location} addCart={this.addCart} />} />
       </div>
     )
   }

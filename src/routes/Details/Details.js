@@ -1,6 +1,7 @@
 import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
+import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
 import { sizes } from '../../constants/sizes'
 import './Details.css'
@@ -9,7 +10,8 @@ export default class Details extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      image: null
+      image: null,
+      selectedSize: null
     }
   }
 
@@ -22,13 +24,26 @@ export default class Details extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.setState({ selectedSize: null })
+  }
+
   checkSizeAvailable = size => {
     if (!this.state.image[size.toLowerCase()]) return 'no-size'
     return String()
   }
 
+  checkSizeSelected = size => {
+    if (this.state.selectedSize === size) return 'selected-size'
+    return String()
+  }
+
+  selectSize = size => {
+    this.setState({ selectedSize: size })
+  }
+
   render() {
-    const { image } = this.state
+    const { image, selectedSize } = this.state
 
     if (image) {
       return (
@@ -46,6 +61,7 @@ export default class Details extends React.Component {
                 <section className="details-size-container">
                   {this.renderSizeSelection()}
                 </section>
+                <AddToCart id={image.id} addCart={this.props.addCart} selectedSize={selectedSize} />
               </div>
             </div>
           </CloudinaryContext>
@@ -60,7 +76,9 @@ export default class Details extends React.Component {
     let sizesJsx = []
     for (const [key, value] of Object.entries(sizes)) {
       sizesJsx.push(
-        <button className={`size-selection size-${key} ${this.checkSizeAvailable(key)}`}>
+        <button
+          onClick={() => this.selectSize(key)}
+          className={`size-selection size-${key} ${this.checkSizeAvailable(key)}${this.checkSizeSelected(key)}`}>
           {value}
         </button>
       )
