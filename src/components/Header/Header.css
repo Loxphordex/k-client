@@ -35,6 +35,23 @@
   color: inherit;
 }
 
+.cart-area {
+  color: inherit;
+  background-color: rgb(132, 220, 255);
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4%;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 760px) {
   .main-header-nav {
     max-width: 1032px;

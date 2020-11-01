@@ -13,6 +13,67 @@ import './Fonts.css'
 import './styles/fadeIn.css'
 
 class App extends React.Component {
+  state = {
+    cart: {},
+    error: null
+  }
+
+  handleError = error => {
+    if (error !== undefined) this.setState({ error })
+  }
+
+  addCart = image => {
+    if (image) {
+      const availableProducts = image[image.size.toLowerCase()]
+      console.log(availableProducts)
+      const imageObject = {
+        count: 1,
+        details: image
+      }
+
+      const imageEntry = this.state.cart[image.name]
+      if (imageEntry) { // If this shirt is already in the cart
+        const imageSizeEntry = imageEntry[image.size]
+        if (imageSizeEntry) { // If the size of this shirt is already in the cart
+          imageObject.count = imageSizeEntry.count + 1
+          if (imageObject.count > availableProducts) {
+            this.handleError({
+              type: "cart-unavailable",
+              message: "No additional sizes are available"
+            })
+          } else {
+            this.setState({
+              cart: {
+                ...this.state.cart,
+                [image.name]: {
+                  ...this.state.cart[image.name],
+                  [image.size]: imageObject
+                }
+              }
+            })
+          }
+        } else {  // Shirt is in cart but not in this size
+          this.setState({
+            cart: {
+              [image.name]: {
+                ...this.state.cart[image.name],
+                [image.size]: imageObject
+              }
+            }
+          })
+        }
+      } else { // A new shirt is added to the cart
+        this.setState({
+          cart: {
+            [image.name]: {
+              [image.size]: imageObject
+            }
+          }
+        })
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,7 +84,12 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
-        <Route path="/details" component={Details} />
+        <Route path="/details" 
+          render={({ location }) => <Details 
+            location={location} 
+            addCart={this.addCart}
+            handleError={this.handleError}
+            error={this.state.error} />} />
       </div>
     )
   }

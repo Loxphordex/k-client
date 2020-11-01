@@ -13,11 +13,6 @@ code {
     monospace;
 }
 
-@font-face {
-  font-family: 'Pussycat';
-  src: url('/src/fonts/PUSSSS__.TTF');
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
