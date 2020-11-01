@@ -18,33 +18,25 @@ import './AddToCart.css'
  */
 
 export default class AddToCart extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: null
+  addShirtToCart = () => {
+    const { image, selectedSize, addCart } = this.props
+    if (image && selectedSize) {
+      image.size = selectedSize
+      addCart(image)
     }
   }
 
-  componentDidMount() {
-    const { id } = this.props
-    this.setState({ id })
-  }
-
-  addShirtToCart = id => {
-    if (id && this.props.selectedSize) this.props.addCart(id)
-  }
-
   checkIfDisabled = () => {
-    if (this.props.selectedSize === null) return "add-cart-disabled"
+    const { selectedSize } = this.props
+    if (selectedSize === null) return "add-cart-disabled"
     return String()
   }
 
   render() {
-    const { id } = this.props
     return (
       <button 
         className={`add-to-cart ${this.checkIfDisabled()}`} 
-        onClick={this.addShirtToCart(id)}>
+        onClick={this.addShirtToCart}>
         ADD TO CART
       </button>
     )

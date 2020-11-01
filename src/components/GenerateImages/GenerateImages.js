@@ -21,7 +21,7 @@ export default class GenerateImages extends React.Component {
                 />
               )}
               <div className="hover-background" />
-              <GenerateImageElement pic={image} width="250" />
+              <GenerateImageElement image={image} width="250" />
               <h2>{!!image.name && image.name}</h2>
               <h3 className="secondary-text gallery-type-header">{!!image.type && image.type}</h3>
               <div className="gallery-image-price">{!!image.price && `$${image.price}`}</div>

@@ -3,6 +3,7 @@ import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
+import ErrorAlert from '../../components/Error/ErrorAlert'
 import { sizes } from '../../constants/sizes'
 import './Details.css'
 
@@ -11,7 +12,7 @@ export default class Details extends React.Component {
     super(props)
     this.state = {
       image: null,
-      selectedSize: null
+      selectedSize: null    
     }
   }
 
@@ -44,6 +45,7 @@ export default class Details extends React.Component {
 
   render() {
     const { image, selectedSize } = this.state
+    const { addCart, handleError, error } = this.props
 
     if (image) {
       return (
@@ -60,8 +62,9 @@ export default class Details extends React.Component {
                 </p>
                 <section className="details-size-container">
                   {this.renderSizeSelection()}
+                  {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
                 </section>
-                <AddToCart id={image.id} addCart={this.props.addCart} selectedSize={selectedSize} />
+                <AddToCart image={image} addCart={addCart} selectedSize={selectedSize} />
               </div>
             </div>
           </CloudinaryContext>
