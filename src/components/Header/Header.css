@@ -37,9 +37,9 @@
 
 .cart-area {
   color: inherit;
-  background-color: rgb(132, 220, 255);
   display: flex;
-  position: absolute;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
   margin: 4%;
@@ -50,6 +50,19 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  -webkit-animation: cartColorFadeOut ease-in-out 200ms;
+  -moz-animation: cartColorFadeOut ease-in-out 200ms;
+  -o-animation: cartColorFadeOut ease-in-out 200ms;
+  animation: cartColorFadeOut ease-in-out 200ms;
+}
+
+.cart-scroll {
+  background-color: rgb(132, 220, 255);
+  -webkit-animation: cartColorFadeIn ease-in-out 200ms;
+  -moz-animation: cartColorFadeIn ease-in-out 200ms;
+  -o-animation: cartColorFadeIn ease-in-out 200ms;
+  animation: cartColorFadeIn ease-in-out 200ms;
 }
 
 @media only screen and (min-width: 760px) {
@@ -74,4 +87,49 @@
   .main-header-nav ul li a:hover {
     opacity: 0.65;
   }
+
+  .cart-area {
+    background-color: rgb(132, 220, 255);
+    position: absolute;
+  }
+}
+
+@-webkit-keyframes cartColorFadeIn {
+  0% { background-color: inherit; }
+  100% { background-color: rgb(132, 220, 255); }
+}
+
+@-moz-keyframes cartColorFadeIn {
+  0% { background-color: inherit; }
+  100% { background-color: rgb(132, 220, 255); }
+}
+
+@-o-keyframes cartColorFadeIn {
+  0% { background-color: inherit; }
+  100% { background-color: rgb(132, 220, 255); }
+}
+
+@keyframes cartColorFadeIn {
+  0% { background-color: inherit; }
+  100% { background-color: rgb(132, 220, 255); }
+}
+
+@-webkit-keyframes cartColorFadeOut {
+  0% { background-color: rgb(132, 220, 255); }
+  100% { background-color: inherit; }
+}
+
+@-moz-keyframes cartColorFadeOut {
+  0% { background-color: rgb(132, 220, 255); }
+  100% { background-color: inherit; }
+}
+
+@-o-keyframes cartColorFadeOut {
+  0% { background-color: rgb(132, 220, 255); }
+  100% { background-color: inherit; }
+}
+
+@keyframes cartColorFadeOut {
+  0% { background-color: rgb(132, 220, 255); }
+  100% { background-color: inherit; }
 }

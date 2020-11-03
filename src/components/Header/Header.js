@@ -1,10 +1,15 @@
 import React from 'react'
+import { cartScroll } from './cartScroll'
 import { Link } from 'react-router-dom'
-import './Header.css'
 import { ShoppingCartSimple } from 'phosphor-react'
 import logo from '../../images/PEAREGRINE.jpg'
+import './Header.css'
 
 export default class Header extends React.Component {
+  componentDidMount() {
+    window.onscroll = function() { cartScroll() }
+  }
+
   render() {
     return (
       <header role="heading">
@@ -14,7 +19,7 @@ export default class Header extends React.Component {
               <img src={logo} alt="Pearegrine" />
             </Link>
           </h1>
-          <div className="cart-area">
+          <div className="cart-area" id="cart-area">
             <ShoppingCartSimple size={30} />
           </div>
           <ul>

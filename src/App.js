@@ -19,7 +19,12 @@ class App extends React.Component {
   }
 
   handleError = error => {
-    if (error !== undefined) this.setState({ error })
+    if (error !== undefined) {
+      this.setState({ error })
+      setTimeout(() => {
+        this.setState({ error: null })
+      }, 10_000);
+    }
   }
 
   addCart = image => {
@@ -53,6 +58,7 @@ class App extends React.Component {
             })
           }
         } else {  // Shirt is in cart but not in this size
+          this.handleError(null)
           this.setState({
             cart: {
               [image.name]: {
@@ -63,6 +69,7 @@ class App extends React.Component {
           })
         }
       } else { // A new shirt is added to the cart
+        this.handleError(null)
         this.setState({
           cart: {
             [image.name]: {
@@ -86,7 +93,8 @@ class App extends React.Component {
         <Route path="/aboutus" render={() => <AboutUs />} />
         <Route path="/details" 
           render={({ location }) => <Details 
-            location={location} 
+            location={location}
+            cart={this.state.cart}
             addCart={this.addCart}
             handleError={this.handleError}
             error={this.state.error} />} />

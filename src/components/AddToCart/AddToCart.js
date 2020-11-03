@@ -19,10 +19,13 @@ import './AddToCart.css'
 
 export default class AddToCart extends React.Component {
   addShirtToCart = () => {
-    const { image, selectedSize, addCart } = this.props
+    const { image, selectedSize, cart, addCart } = this.props
     if (image && selectedSize) {
       image.size = selectedSize
       addCart(image)
+      window.localStorage.setItem('pearegrineCart', JSON.stringify(cart))
+      const cartobj = window.localStorage.getItem('pearegrineCart')
+      console.log(cartobj)
     }
   }
 

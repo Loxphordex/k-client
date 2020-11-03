@@ -45,7 +45,7 @@ export default class Details extends React.Component {
 
   render() {
     const { image, selectedSize } = this.state
-    const { addCart, handleError, error } = this.props
+    const { cart, addCart, handleError, error } = this.props
 
     if (image) {
       return (
@@ -64,7 +64,11 @@ export default class Details extends React.Component {
                   {this.renderSizeSelection()}
                   {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
                 </section>
-                <AddToCart image={image} addCart={addCart} selectedSize={selectedSize} />
+                <AddToCart
+                  cart={cart}
+                  image={image}
+                  addCart={addCart}
+                  selectedSize={selectedSize} />
               </div>
             </div>
           </CloudinaryContext>
