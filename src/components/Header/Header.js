@@ -6,6 +6,10 @@ import logo from '../../images/PEAREGRINE.jpg'
 import './Header.css'
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     window.onscroll = function() { cartScroll() }
   }
@@ -20,6 +24,7 @@ export default class Header extends React.Component {
             </Link>
           </h1>
           <div className="cart-area" id="cart-area">
+            {this.showIcon()}
             <ShoppingCartSimple size={30} />
           </div>
           <ul>
@@ -36,5 +41,14 @@ export default class Header extends React.Component {
         </nav>
       </header>
     )
+  }
+
+  showIcon = () => {
+    const { cartCount } = this.props
+    if (cartCount && cartCount > 0) {
+      return (
+        <div className="cart-count">{cartCount}</div>
+      )
+    }
   }
 }

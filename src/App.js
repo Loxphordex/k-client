@@ -15,7 +15,18 @@ import './styles/fadeIn.css'
 class App extends React.Component {
   state = {
     cart: {},
+    cartCount: 0,
     error: null
+  }
+
+  componentDidMount() {
+    const storageCart = window.localStorage.getItem('pearegrineCart')
+    if (storageCart) {
+      const parsedCart = JSON.parse(storageCart)
+      this.setState({
+        cart: parsedCart
+      }, this.addToCartCount)
+    }
   }
 
   handleError = error => {
@@ -27,10 +38,29 @@ class App extends React.Component {
     }
   }
 
+  updateStorageCart = () => {
+    window.localStorage.setItem('pearegrineCart', JSON.stringify(this.state.cart))
+  }
+
+  addToCartCount = () => {
+    const { cart } = this.state
+    let tally = 0
+
+    this.updateStorageCart()
+    for (const [name, size] of Object.entries(cart)) {
+      for (const [key, info] of Object.entries(size)) {
+        tally += info.count
+      }
+    }
+
+    this.setState({
+      cartCount: tally
+    })
+  }
+
   addCart = image => {
     if (image) {
       const availableProducts = image[image.size.toLowerCase()]
-      console.log(availableProducts)
       const imageObject = {
         count: 1,
         details: image
@@ -55,28 +85,30 @@ class App extends React.Component {
                   [image.size]: imageObject
                 }
               }
-            })
+            }, this.addToCartCount)
           }
         } else {  // Shirt is in cart but not in this size
           this.handleError(null)
           this.setState({
             cart: {
+              ...this.state.cart,
               [image.name]: {
                 ...this.state.cart[image.name],
                 [image.size]: imageObject
               }
             }
-          })
+          }, this.addToCartCount)
         }
       } else { // A new shirt is added to the cart
         this.handleError(null)
         this.setState({
           cart: {
+            ...this.state.cart,
             [image.name]: {
               [image.size]: imageObject
             }
           }
-        })
+        }, this.addToCartCount)
       }
     }
   }
@@ -84,7 +116,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Route path="/" render={() => <Header />} />
+        <Route path="/" render={() => <Header cartCount={this.state.cartCount} />} />
         <Route exact path="/" render={({ history }) => <Gallery history={history} />} />
         <Route path="/new" render={() => <NewImageRoute />} />
         <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />

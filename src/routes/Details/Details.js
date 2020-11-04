@@ -84,6 +84,7 @@ export default class Details extends React.Component {
     for (const [key, value] of Object.entries(sizes)) {
       sizesJsx.push(
         <button
+          key={key}
           onClick={() => this.selectSize(key)}
           className={`size-selection size-${key} ${this.checkSizeAvailable(key)}${this.checkSizeSelected(key)}`}>
           {value}

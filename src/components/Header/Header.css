@@ -65,6 +65,24 @@
   animation: cartColorFadeIn ease-in-out 200ms;
 }
 
+.cart-count {
+  background-color: red;
+  border: 2px solid #f8f9fe;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  right: -4px;
+  top: -4px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8f9fe;
+  text-align: center;
+  font-size: 10pt;
+  font-weight: 500;
+}
+
 @media only screen and (min-width: 760px) {
   .main-header-nav {
     max-width: 1032px;

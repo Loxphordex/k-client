@@ -23,12 +23,19 @@
   display: none;
   font-size: 10pt;
   transition: all 500ms;
-  animation: expandMessage ease-in-out 200ms;
   width: 180px;
+
+  -webkit-animation: expandMessage ease-in-out 200ms;
+  -moz-animation: expandMessage ease-in-out 200ms;
+  -o-animation: expandMessage ease-in-out 200ms;
+  animation: expandMessage ease-in-out 200ms;
 }
 
 @media only screen and (min-width: 768px) {
   .error-alert-icon {
+    -webkit-animation: retractMessage ease-in-out 200ms;
+    -moz-animation: retractMessage ease-in-out 200ms;
+    -o-animation: retractMessage ease-in-out 200ms;
     animation: retractMessage ease-in-out 200ms;
   }
 
