@@ -23,10 +23,12 @@ export default class Header extends React.Component {
               <img src={logo} alt="Pearegrine" />
             </Link>
           </h1>
-          <div className="cart-area" id="cart-area">
-            {this.showIcon()}
-            <ShoppingCartSimple size={30} />
-          </div>
+          <Link to="/cart">
+            <div className="cart-area" id="cart-area">
+              {this.showIcon()}
+              <ShoppingCartSimple size={30} color="black" />
+            </div>
+          </Link>
           <ul>
             <li>
               <Link to="/aboutus">ABOUT US</Link>

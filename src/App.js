@@ -8,12 +8,14 @@ import AuthRoute from './routes/AuthRoute/AuthRoute'
 import LoginRoute from './routes/LoginRoute/LoginRoute'
 import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
+import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
 import './Fonts.css'
 import './styles/fadeIn.css'
 
 class App extends React.Component {
   state = {
+    images: null,
     cart: {},
     cartCount: 0,
     error: null
@@ -27,6 +29,10 @@ class App extends React.Component {
         cart: parsedCart
       }, this.addToCartCount)
     }
+  }
+
+  setImages = (images) => {
+    this.setState({ images })
   }
 
   handleError = error => {
@@ -58,76 +64,34 @@ class App extends React.Component {
     })
   }
 
-  addCart = image => {
-    if (image) {
-      const availableProducts = image[image.size.toLowerCase()]
-      const imageObject = {
-        count: 1,
-        details: image
-      }
-
-      const imageEntry = this.state.cart[image.name]
-      if (imageEntry) { // If this shirt is already in the cart
-        const imageSizeEntry = imageEntry[image.size]
-        if (imageSizeEntry) { // If the size of this shirt is already in the cart
-          imageObject.count = imageSizeEntry.count + 1
-          if (imageObject.count > availableProducts) {
-            this.handleError({
-              type: "cart-unavailable",
-              message: "No additional sizes are available"
-            })
-          } else {
-            this.setState({
-              cart: {
-                ...this.state.cart,
-                [image.name]: {
-                  ...this.state.cart[image.name],
-                  [image.size]: imageObject
-                }
-              }
-            }, this.addToCartCount)
-          }
-        } else {  // Shirt is in cart but not in this size
-          this.handleError(null)
-          this.setState({
-            cart: {
-              ...this.state.cart,
-              [image.name]: {
-                ...this.state.cart[image.name],
-                [image.size]: imageObject
-              }
-            }
-          }, this.addToCartCount)
+  handleImage = (image, imageObject) => {
+    this.setState({
+      cart: {
+        ...this.state.cart,
+        [image.name]: {
+          ...this.state.cart[image.name],
+          [image.size]: imageObject
         }
-      } else { // A new shirt is added to the cart
-        this.handleError(null)
-        this.setState({
-          cart: {
-            ...this.state.cart,
-            [image.name]: {
-              [image.size]: imageObject
-            }
-          }
-        }, this.addToCartCount)
       }
-    }
+    }, this.addToCartCount)
   }
 
   render() {
     return (
       <div className="App">
         <Route path="/" render={() => <Header cartCount={this.state.cartCount} />} />
-        <Route exact path="/" render={({ history }) => <Gallery history={history} />} />
+        <Route exact path="/" render={({ history }) => <Gallery history={history} setImages={this.setImages} />} />
         <Route path="/new" render={() => <NewImageRoute />} />
         <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
+        <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} />} />
         <Route path="/details" 
           render={({ location }) => <Details 
             location={location}
             cart={this.state.cart}
-            addCart={this.addCart}
+            handleImage={this.handleImage}
             handleError={this.handleError}
             error={this.state.error} />} />
       </div>

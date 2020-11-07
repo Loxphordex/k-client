@@ -43,9 +43,36 @@ export default class Details extends React.Component {
     this.setState({ selectedSize: size })
   }
 
+  addCart = () => {
+    const { image } = this.state
+    const { cart, handleError, handleImage } = this.props
+
+    if (image && cart && handleError && handleImage) {
+      const availableProducts = image[image.size.toLowerCase()]
+      const imageObject = {
+        count: 1,
+        details: image
+      }
+
+      if (cart[image.name] && cart[image.name][image.size]) {
+        imageObject.count = cart[image.name][image.size].count + 1
+        if (imageObject.count > availableProducts) {
+          handleError({
+            type: "cart-unavailable",
+            message: "No additional sizes are available"
+          })
+          return
+        }
+      }
+
+      handleError(null)
+      handleImage(image, imageObject)
+    }
+  }
+
   render() {
     const { image, selectedSize } = this.state
-    const { cart, addCart, handleError, error } = this.props
+    const { cart, handleError, error } = this.props
 
     if (image) {
       return (
@@ -67,7 +94,7 @@ export default class Details extends React.Component {
                 <AddToCart
                   cart={cart}
                   image={image}
-                  addCart={addCart}
+                  addCart={this.addCart}
                   selectedSize={selectedSize} />
               </div>
             </div>
