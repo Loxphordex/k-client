@@ -1,5 +1,6 @@
 import React from 'react'
 import GenerateCartList from './GenerateCartList'
+import './Cart.css'
 
 export default class Cart extends React.Component {
   constructor(props) {
@@ -17,11 +18,13 @@ export default class Cart extends React.Component {
     const { cart, setCart } = this.props
     return (
       <div className="cart-page">
-        <GenerateCartList 
-          cart={cart} 
-          handleError={this.handleError}
-          setCart={setCart}  
-        />
+        <ul className="cart-list">
+          <GenerateCartList 
+            cart={cart} 
+            handleError={this.handleError}
+            setCart={setCart}  
+          />
+        </ul>
       </div>
     )
   }
