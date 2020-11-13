@@ -4,15 +4,24 @@ import GenerateCartList from './GenerateCartList'
 export default class Cart extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      error: null
+    }
   }
 
-  // iterate through the cart object and display image, count, delete button, add button
+  handleError = error => {
+    this.setState({ error })
+  }
+
   render() {
-    const { cart } = this.props
+    const { cart, setCart } = this.props
     return (
       <div className="cart-page">
-        <GenerateCartList cart={cart} />
+        <GenerateCartList 
+          cart={cart} 
+          handleError={this.handleError}
+          setCart={setCart}  
+        />
       </div>
     )
   }

@@ -1,10 +1,32 @@
 export default function getCartInfo(size) {
-  // select size and extract count and details from size object
+  /**
+   * This function rearranges the default data and returns a
+   * slightly different object structure. The sizes are added
+   * together and returned along with the details
+   */
+  let info = {}
   if (size) {
-    if (size.small)   return { ...size.small,  size: 'Small' }
-    if (size.medium)  return { ...size.medium, size: 'Medium' }
-    if (size.large)   return { ...size.large,  size: 'Large' }
-    if (size.xLarge)  return { ...size.xLarge, size: 'X Large' }
-    if (size.xxLarge) return { ...size.xLarge, size: 'XX Large' }
+    classList.map(s => {
+      if (size[s]) {
+        info = {
+          ...info,
+          details: size[s].details,
+          sizes: {
+            ...info.sizes,
+            [s]: size[s].count
+          }
+        }
+      }
+    })
   }
+
+  return info
 }
+
+export const classList = [
+  'small',
+  'medium',
+  'large',
+  'xLarge',
+  'xxLarge'
+]

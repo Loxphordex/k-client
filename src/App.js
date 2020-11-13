@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-
 import Header from './components/Header/Header'
 import Gallery from './routes/Gallery/Gallery'
 import NewImageRoute from './routes/NewImageRoute/NewImageRoute'
@@ -10,6 +9,7 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
+import { updateStorageCart } from './services/helper-functions'
 import './Fonts.css'
 import './styles/fadeIn.css'
 
@@ -25,9 +25,11 @@ class App extends React.Component {
     const storageCart = window.localStorage.getItem('pearegrineCart')
     if (storageCart) {
       const parsedCart = JSON.parse(storageCart)
-      this.setState({
-        cart: parsedCart
-      }, this.addToCartCount)
+      if (parsedCart && parsedCart !== 'undefined') {
+        this.setState({
+          cart: parsedCart
+        }, this.addToCartCount)
+      }
     }
   }
 
@@ -44,18 +46,16 @@ class App extends React.Component {
     }
   }
 
-  updateStorageCart = () => {
-    window.localStorage.setItem('pearegrineCart', JSON.stringify(this.state.cart))
-  }
-
   addToCartCount = () => {
     const { cart } = this.state
     let tally = 0
 
-    this.updateStorageCart()
-    for (const [name, size] of Object.entries(cart)) {
-      for (const [key, info] of Object.entries(size)) {
-        tally += info.count
+    if (cart) {
+      updateStorageCart(cart)
+      for (const [name, size] of Object.entries(cart)) {
+        for (const [key, info] of Object.entries(size)) {
+          tally += info.count
+        }
       }
     }
 
@@ -76,6 +76,19 @@ class App extends React.Component {
     }, this.addToCartCount)
   }
 
+  setCart = cart => {
+    this.setState({ cart }, () => this.updateCartAndCount(this.state.cart))
+  }
+
+  updateCartAndCount = cart => {
+    let { cartCount } = this.state
+    if (cart && cartCount > 0) {
+      updateStorageCart(cart)
+      cartCount--
+      this.setState({ cartCount })
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -86,14 +99,24 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
-        <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} />} />
+        <Route path="/cart" 
+          render={() => 
+            <Cart 
+              cart={this.state.cart} 
+              images={this.state.images}
+              setCart={this.setCart} 
+            />} 
+        />
         <Route path="/details" 
-          render={({ location }) => <Details 
-            location={location}
-            cart={this.state.cart}
-            handleImage={this.handleImage}
-            handleError={this.handleError}
-            error={this.state.error} />} />
+          render={({ location }) => 
+            <Details 
+              location={location}
+              cart={this.state.cart}
+              handleImage={this.handleImage}
+              handleError={this.handleError}
+              error={this.state.error} 
+            />}
+        />
       </div>
     )
   }
