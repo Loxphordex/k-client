@@ -77,16 +77,7 @@ class App extends React.Component {
   }
 
   setCart = cart => {
-    this.setState({ cart }, () => this.updateCartAndCount(this.state.cart))
-  }
-
-  updateCartAndCount = cart => {
-    let { cartCount } = this.state
-    if (cart && cartCount > 0) {
-      updateStorageCart(cart)
-      cartCount--
-      this.setState({ cartCount })
-    }
+    this.setState({ cart }, this.addToCartCount)
   }
 
   render() {
