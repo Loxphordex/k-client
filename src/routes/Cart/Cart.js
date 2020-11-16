@@ -17,7 +17,8 @@ export default class Cart extends React.Component {
   render() {
     const { cart, setCart } = this.props
     return (
-      <div className="cart-page">
+      <div className="cart-page fade-in">
+        <h2 className="t-header cart-header">Cart</h2>
         <ul className="cart-list">
           <GenerateCartList 
             cart={cart} 

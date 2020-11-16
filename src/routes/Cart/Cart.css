@@ -3,6 +3,12 @@
   margin-top: 24px;
 }
 
+.cart-header {
+  text-align: left;
+  margin-left: -10px;
+  padding: 0 7%;
+}
+
 .cart-list {
   padding-inline-start: 0;
 }
@@ -12,7 +18,7 @@
   display: flex;
   max-width: 400px;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
   border-radius: 20px;
 }
 
@@ -43,11 +49,13 @@
 .cart-main-details {
   width: 64px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .cart-price {
   display: block;
   margin: auto;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -59,8 +67,27 @@
   border: none;
   color: inherit;
   margin: auto;
+  margin-bottom: 0;
 }
 
 .trash-icon {
   padding-top: 4px;
+}
+
+.cart-no-content {
+  height: 50vh;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+.cart-pear {
+  font-size: 28pt;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cart-empty-message {
+  font-weight: 500;
 }

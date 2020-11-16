@@ -3,7 +3,7 @@ import GenerateImageElement from '../../components/GenerateImageElement/Generate
 import { CloudinaryContext } from 'cloudinary-react'
 import getCartInfo from './getCartInfo'
 import SizesInfo from './SizesInfo'
-import { removeFromCart } from '../../services/helper-functions'
+import { removeFromCart, objectIsEmpty } from '../../services/helper-functions'
 import config from '../../config'
 import { TrashSimple } from 'phosphor-react'
 
@@ -11,7 +11,7 @@ export default class GenerateCartList extends React.Component {
   render() {
     const { cart, handleError, setCart } = this.props
     const list = []
-    if (cart) {
+    if (cart && !objectIsEmpty(cart)) {
       for (const [name, size] of Object.entries(cart)) {
         const info = getCartInfo(size)
         list.push(
@@ -41,6 +41,13 @@ export default class GenerateCartList extends React.Component {
       return list.map(l => l)
     }
 
-    return <></>
+    return (
+      <div className="cart-no-content fade-in">
+        <span role="img" aria-label="pear" className="cart-pear">
+          &#127824;
+        </span>
+        <div className="cart-empty-message">Your cart is empty</div>
+      </div>
+    )
   }
 }

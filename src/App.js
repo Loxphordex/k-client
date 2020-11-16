@@ -10,6 +10,7 @@ import AboutUs from './routes/AboutUs/AboutUs'
 import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
 import { updateStorageCart } from './services/helper-functions'
+import './App.css'
 import './Fonts.css'
 import './styles/fadeIn.css'
 

@@ -44,3 +44,7 @@ export function removeFromCart(image, cart, handleError, setCart) {
 export function updateStorageCart(cart) {
   window.localStorage.setItem('pearegrineCart', JSON.stringify(cart))
 }
+
+export function objectIsEmpty(obj) {
+  return Object.keys(obj).length === 0 ? true : false
+}

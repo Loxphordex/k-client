@@ -107,8 +107,16 @@
   }
 
   .cart-area {
+    animation: none;
     background-color: rgb(132, 220, 255);
     position: absolute;
+    margin-top: 30px;
+    margin-bottom: 4px;
+    margin-right: 18%;
+  }
+
+  .cart-scroll {
+    animation: none;
   }
 }
 

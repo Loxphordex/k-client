@@ -56,10 +56,10 @@ export default class Details extends React.Component {
               <div className="details-info-container fade-in">
                 <h3 className="secondary-text details-type-header">{image.type ? image.type : String()}</h3>
                 <h2 className="main-secondary-header details-main-header">{image.name}</h2>
-                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
                 <p className="details-main-desc">
                   {image.description ? image.description : String()}
                 </p>
+                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
                 <section className="details-size-container">
                   {this.renderSizeSelection()}
                   {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
