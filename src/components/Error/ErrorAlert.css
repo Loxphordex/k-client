@@ -1,11 +1,3 @@
-/* .error-alert {
-  min-width: 180px;
-} */
-
-.error-alert-icon {
-  animation: retractMessage 200ms;
-}
-
 .error-alert-icon,
 .error-alert-message {
   box-sizing: border-box;
@@ -31,26 +23,116 @@
   display: none;
   font-size: 10pt;
   transition: all 500ms;
-  animation: expandMessage ease 200ms;
   width: 180px;
+
+  -webkit-animation: expandMessage ease-in-out 200ms;
+  -moz-animation: expandMessage ease-in-out 200ms;
+  -o-animation: expandMessage ease-in-out 200ms;
+  animation: expandMessage ease-in-out 200ms;
 }
 
 @media only screen and (min-width: 768px) {
+  .error-alert-icon {
+    -webkit-animation: retractMessage ease-in-out 200ms;
+    -moz-animation: retractMessage ease-in-out 200ms;
+    -o-animation: retractMessage ease-in-out 200ms;
+    animation: retractMessage ease-in-out 200ms;
+  }
+
   .error-alert:hover .error-alert-icon {
     display: none;
   }
 
   .error-alert:hover .error-alert-message {
-    display: block;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@-webkit-keyframes expandMessage {
+  0% { 
+    width: 40px; 
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 180px;
+    color: #f8f9fe;
+  }
+}
+
+@-moz-keyframes expandMessage {
+  0% { 
+    width: 40px; 
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 180px;
+    color: #f8f9fe;
+  }
+}
+
+@-o-keyframes expandMessage {
+  0% { 
+    width: 40px; 
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 180px;
+    color: #f8f9fe;
   }
 }
 
 @keyframes expandMessage {
-  0% { width: 40px; }
-  100% { width: 180px; }
+  0% { 
+    width: 40px; 
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 180px;
+    color: #f8f9fe;
+  }
 }
   
+@-webkit-keyframes retractMessage {
+  0% { 
+    width: 180px;
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 40px;
+    color: #f8f9fe;
+  }
+}
+
+@-moz-keyframes retractMessage {
+  0% { 
+    width: 180px;
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 40px;
+    color: #f8f9fe;
+  }
+}
+
+@-o-keyframes retractMessage {
+  0% { 
+    width: 180px;
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 40px;
+    color: #f8f9fe;
+  }
+}
+
 @keyframes retractMessage {
-  0% { width: 180px; }
-  100% { width: 40px; }
+  0% { 
+    width: 180px;
+    color: rgba(255, 0, 0, 0)
+  }
+  100% { 
+    width: 40px;
+    color: #f8f9fe;
+  }
 }

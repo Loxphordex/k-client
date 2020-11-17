@@ -45,7 +45,7 @@ export default class Details extends React.Component {
 
   render() {
     const { image, selectedSize } = this.state
-    const { addCart, handleError, error } = this.props
+    const { cart, handleError, handleImage, error } = this.props
 
     if (image) {
       return (
@@ -56,15 +56,20 @@ export default class Details extends React.Component {
               <div className="details-info-container fade-in">
                 <h3 className="secondary-text details-type-header">{image.type ? image.type : String()}</h3>
                 <h2 className="main-secondary-header details-main-header">{image.name}</h2>
-                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
                 <p className="details-main-desc">
                   {image.description ? image.description : String()}
                 </p>
+                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
                 <section className="details-size-container">
                   {this.renderSizeSelection()}
                   {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
                 </section>
-                <AddToCart image={image} addCart={addCart} selectedSize={selectedSize} />
+                <AddToCart
+                  image={image}
+                  cart={cart}
+                  handleError={handleError}
+                  handleImage={handleImage}
+                  selectedSize={selectedSize} />
               </div>
             </div>
           </CloudinaryContext>
@@ -80,6 +85,7 @@ export default class Details extends React.Component {
     for (const [key, value] of Object.entries(sizes)) {
       sizesJsx.push(
         <button
+          key={key}
           onClick={() => this.selectSize(key)}
           className={`size-selection size-${key} ${this.checkSizeAvailable(key)}${this.checkSizeSelected(key)}`}>
           {value}

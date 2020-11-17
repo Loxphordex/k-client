@@ -10,7 +10,7 @@
 }
 
 .details-image {
-  margin-top: 14px;
+  margin-top: 24px;
   margin-bottom: 4%;
   width: 100%;
 }
@@ -27,11 +27,9 @@
 }
 
 .details-main-header {
+  line-height: 46px;
   margin: auto;
   font-size: 1em;
-}
-
-.details-main-header {
   font-size: 16pt;
   margin-bottom: 4px;
 }
@@ -42,9 +40,14 @@
   margin: 0;
 }
 
+.details-main-desc {
+  font-weight: 400;
+}
+
 .details-price {
   font-size: 14pt;
   color:rgb(36, 39, 39);
+  margin-top: 35px;
 }
 
 .details-size-container {
@@ -68,7 +71,6 @@
   justify-content: center;
   font-family: inherit;
   cursor: pointer;
-  outline: none;
 }
 
 .selected-size {

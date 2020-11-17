@@ -46,9 +46,11 @@ export default class Gallery extends React.Component {
 
   setDisplayedImages = () => {
     const { index, allImages, imagesPerPage } = this.state
+    const { setImages } = this.props
     const imagesDisplayed = index * imagesPerPage
     const images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
     this.setState({ images })
+    setImages(allImages)
   }
 
   handleError = error => {
