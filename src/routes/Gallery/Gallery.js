@@ -4,7 +4,7 @@ import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'
-import './GalleryCard.css'
+// import './GalleryCard.css'
 
 // COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
@@ -46,9 +46,11 @@ export default class Gallery extends React.Component {
 
   setDisplayedImages = () => {
     const { index, allImages, imagesPerPage } = this.state
+    const { setImages } = this.props
     const imagesDisplayed = index * imagesPerPage
     const images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
     this.setState({ images })
+    setImages(allImages)
   }
 
   handleError = error => {

@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom'
 
 export default class GenerateImageElement extends React.Component {
   render() {
-    const { pic, width } = this.props
+    const { image, width } = this.props
     return (
       <>
-        {pic && width && (
+        {image && width && (
           <Link
             to={{
               pathname: '/details',
-              search: `?id=${pic.id}`,
-              state: { image: pic }
+              search: `?id=${image.id}`,
+              state: { image }
             }}
           >
-            <Image publicId={pic.url} type="fetch" name={pic.url} className="fade-in">
+            <Image publicId={image.url} type="fetch" name={image.url} className="fade-in">
               <Transformation quality="90" width={width} crop="scale" fetchFormat="auto" />
             </Image>
           </Link>

@@ -1,12 +1,19 @@
 import React from 'react'
 import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
+import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
+import ErrorAlert from '../../components/Error/ErrorAlert'
+import { sizes } from '../../constants/sizes'
 import './Details.css'
 
 export default class Details extends React.Component {
-  state = {
-    image: null
+  constructor(props) {
+    super(props)
+    this.state = {
+      image: null,
+      selectedSize: null    
+    }
   }
 
   componentDidMount() {
@@ -18,8 +25,27 @@ export default class Details extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.setState({ selectedSize: null })
+  }
+
+  checkSizeAvailable = size => {
+    if (!this.state.image[size.toLowerCase()]) return 'no-size'
+    return String()
+  }
+
+  checkSizeSelected = size => {
+    if (this.state.selectedSize === size) return 'selected-size'
+    return String()
+  }
+
+  selectSize = size => {
+    this.setState({ selectedSize: size })
+  }
+
   render() {
-    const { image } = this.state
+    const { image, selectedSize } = this.state
+    const { cart, handleError, handleImage, error } = this.props
 
     if (image) {
       return (
@@ -33,6 +59,17 @@ export default class Details extends React.Component {
                 <p className="details-main-desc">
                   {image.description ? image.description : String()}
                 </p>
+                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
+                <section className="details-size-container">
+                  {this.renderSizeSelection()}
+                  {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
+                </section>
+                <AddToCart
+                  image={image}
+                  cart={cart}
+                  handleError={handleError}
+                  handleImage={handleImage}
+                  selectedSize={selectedSize} />
               </div>
             </div>
           </CloudinaryContext>
@@ -41,5 +78,21 @@ export default class Details extends React.Component {
     }
 
     return <></>
+  }
+
+  renderSizeSelection = () => {
+    let sizesJsx = []
+    for (const [key, value] of Object.entries(sizes)) {
+      sizesJsx.push(
+        <button
+          key={key}
+          onClick={() => this.selectSize(key)}
+          className={`size-selection size-${key} ${this.checkSizeAvailable(key)}${this.checkSizeSelected(key)}`}>
+          {value}
+        </button>
+      )
+    }
+    
+    return sizesJsx.map(t => t)
   }
 }
