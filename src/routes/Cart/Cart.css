@@ -91,3 +91,9 @@
 .cart-empty-message {
   font-weight: 500;
 }
+
+.go-to-checkout {
+  border-radius: 0;
+  background-color: rgb(130, 220, 255);
+  width: 180px;
+}
