@@ -74,11 +74,12 @@
 }
 
 .selected-size {
-  background-color: rgb(132, 220, 255);
+  background-color: rgb(235, 235, 235);
+  outline: none;
 }
 
 .selected-size:hover {
-  background-color: rgb(132, 220, 255);
+  background-color: rgb(235, 235, 235);
 }
 
 .no-size {
@@ -126,17 +127,5 @@
     font-size: 12pt;
     font-weight: 500;
     color: rgb(71, 79, 105);
-  }
-
-  .size-selection:hover {
-    background-color: rgb(241, 251, 255);
-  }
-
-  .selected-size {
-    background-color: rgb(132, 220, 255);
-  }
-
-  .selected-size:hover {
-    background-color: rgb(132, 220, 255);
   }
 }
