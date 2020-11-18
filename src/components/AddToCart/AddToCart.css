@@ -1,18 +1,20 @@
 .add-to-cart {
   font-family: inherit;
-  color: rgb(36, 39, 39);
-  background-color: inherit;
-  border: 1px solid rgb(153, 159, 161);
+  background-color: rgb(132, 220, 255);
+  border: none;
   font-size: 12pt;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 180px;
   min-height: 40px;
+  transition: all 120ms;
 }
 
 .add-cart-disabled {
   pointer-events: none;
+  background-color: #f8f9fe;
   border: 1px solid rgb(211, 216, 218);
   color: rgb(122, 131, 131);
 }
@@ -20,8 +22,5 @@
 @media only screen and (min-width: 768px) {
   .add-to-cart {
     cursor: pointer;
-  }
-  .add-to-cart:hover {
-    background-color: rgb(241, 251, 255);
   }
 }

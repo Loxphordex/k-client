@@ -1,5 +1,6 @@
 import React from 'react'
-import GenerateCartList from './GenerateCartList'
+import GenerateCartList from '../../components/CartComponents/GenerateCartList'
+import GoToCheckout from '../../components/CartComponents/GoToCheckout'
 import './Cart.css'
 
 export default class Cart extends React.Component {
@@ -26,6 +27,7 @@ export default class Cart extends React.Component {
             setCart={setCart}  
           />
         </ul>
+        <GoToCheckout cart={cart} />
       </div>
     )
   }

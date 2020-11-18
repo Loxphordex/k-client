@@ -1,6 +1,7 @@
 .cart-page {
   padding: 0 10px 0 10px;
   margin-top: 24px;
+  height: 80vh;
 }
 
 .cart-header {
@@ -72,6 +73,7 @@
 
 .trash-icon {
   padding-top: 4px;
+  cursor: pointer;
 }
 
 .cart-no-content {
@@ -90,4 +92,10 @@
 
 .cart-empty-message {
   font-weight: 500;
+}
+
+.go-to-checkout {
+  border-radius: 0;
+  background-color: rgb(130, 220, 255);
+  width: 180px;
 }

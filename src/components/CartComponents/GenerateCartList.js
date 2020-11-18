@@ -1,5 +1,5 @@
 import React from 'react'
-import GenerateImageElement from '../../components/GenerateImageElement/GenerateImageElement'
+import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
 import { CloudinaryContext } from 'cloudinary-react'
 import getCartInfo from './getCartInfo'
 import SizesInfo from './SizesInfo'
