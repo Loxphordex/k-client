@@ -9,6 +9,7 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
+import Checkout from './routes/Checkout/Checkout'
 import { updateStorageCart } from './services/helper-functions'
 import './App.css'
 import './Fonts.css'
@@ -91,24 +92,9 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
-        <Route path="/cart" 
-          render={() => 
-            <Cart 
-              cart={this.state.cart} 
-              images={this.state.images}
-              setCart={this.setCart} 
-            />} 
-        />
-        <Route path="/details" 
-          render={({ location }) => 
-            <Details 
-              location={location}
-              cart={this.state.cart}
-              handleImage={this.handleImage}
-              handleError={this.handleError}
-              error={this.state.error} 
-            />}
-        />
+        <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} setCart={this.setCart} />} />
+        <Route path="/details" render={({ location }) => <Details location={location} cart={this.state.cart} handleImage={this.handleImage} handleError={this.handleError} error={this.state.error} />} />
+        <Route path="/checkout" render={() => <Checkout />} />
       </div>
     )
   }

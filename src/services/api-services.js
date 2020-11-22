@@ -64,6 +64,17 @@ const ApiServices = {
       },
       body: JSON.stringify({ username, password })
     }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
+  },
+
+  testLocalPaymentSession() {
+    return fetch(`${config.TEST_API_ENDPOINT}/pay`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify({})
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   }
 }
 
