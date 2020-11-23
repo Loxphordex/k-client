@@ -4,10 +4,9 @@ import './AddToCart.css'
 
 export default class AddToCart extends React.Component {
   addShirtToCart = () => {
-    const { cart, image, selectedSize, handleError, handleImage } = this.props
+    const { cart, image, selectedSize, handleError, setCart } = this.props
     if (image && selectedSize) {
-      image.size = selectedSize
-      addCart(image, cart, handleError, handleImage)
+      addCart(image, cart, handleError, setCart, selectedSize)
     }
   }
 

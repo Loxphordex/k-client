@@ -12,16 +12,15 @@ export default class Details extends React.Component {
     super(props)
     this.state = {
       image: null,
-      selectedSize: null    
+      selectedSize: null,
+      error: null
     }
   }
 
   componentDidMount() {
     if (this.props && this.props.location && this.props.location.state) {
       const { image } = this.props.location.state
-      this.setState({
-        image
-      })
+      this.setState({ image })
     }
   }
 
@@ -43,41 +42,13 @@ export default class Details extends React.Component {
     this.setState({ selectedSize: size })
   }
 
-  render() {
-    const { image, selectedSize } = this.state
-    const { cart, handleError, handleImage, error } = this.props
-
-    if (image) {
-      return (
-        <div className="details-container">
-          <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
-            <div className="details-main">
-              <DetailsImage pic={image} />
-              <div className="details-info-container fade-in">
-                <h3 className="secondary-text details-type-header">{image.type ? image.type : String()}</h3>
-                <h2 className="main-secondary-header details-main-header">{image.name}</h2>
-                <p className="details-main-desc">
-                  {image.description ? image.description : String()}
-                </p>
-                <div className="details-price">{image.price ? `$${image.price}` : String()}</div>
-                <section className="details-size-container">
-                  {this.renderSizeSelection()}
-                  {error && <ErrorAlert errorMessage={error.message} handleError={handleError} />}
-                </section>
-                <AddToCart
-                  image={image}
-                  cart={cart}
-                  handleError={handleError}
-                  handleImage={handleImage}
-                  selectedSize={selectedSize} />
-              </div>
-            </div>
-          </CloudinaryContext>
-        </div>
-      )
+  handleError = (error) => {
+    if (error !== undefined) {
+      this.setState({ error })
+      setTimeout(() => {
+        this.setState({ error: null })
+      }, 10_000);
     }
-
-    return <></>
   }
 
   renderSizeSelection = () => {
@@ -87,12 +58,67 @@ export default class Details extends React.Component {
         <button
           key={key}
           onClick={() => this.selectSize(key)}
-          className={`size-selection size-${key} ${this.checkSizeAvailable(key)}${this.checkSizeSelected(key)}`}>
+          className={`size-selection size-${key} ${this.checkSizeAvailable(
+            key
+          )}${this.checkSizeSelected(key)}`}
+        >
           {value}
         </button>
       )
     }
-    
+
     return sizesJsx.map(t => t)
+  }
+
+  render() {
+    const { image, selectedSize, error } = this.state
+    const { cart, setCart } = this.props
+
+    if (image) {
+      return (
+        <div className="details-container">
+          <CloudinaryContext
+            cloudName={config.CLOUD_NAME}
+            className="cloud-context"
+          >
+            <div className="details-main">
+              <DetailsImage pic={image} />
+              <div className="details-info-container fade-in">
+                <h3 className="secondary-text details-type-header">
+                  {image.type ? image.type : String()}
+                </h3>
+                <h2 className="main-secondary-header details-main-header">
+                  {image.name}
+                </h2>
+                <p className="details-main-desc">
+                  {image.description ? image.description : String()}
+                </p>
+                <div className="details-price">
+                  {image.price ? `$${image.price}` : String()}
+                </div>
+                <section className="details-size-container">
+                  {this.renderSizeSelection()}
+                  {error && (
+                    <ErrorAlert
+                      errorMessage={error.message}
+                      handleError={this.handleError}
+                    />
+                  )}
+                </section>
+                <AddToCart
+                  image={image}
+                  cart={cart}
+                  handleError={this.handleError}
+                  setCart={setCart}
+                  selectedSize={selectedSize}
+                />
+              </div>
+            </div>
+          </CloudinaryContext>
+        </div>
+      )
+    }
+
+    return <></>
   }
 }
