@@ -20,10 +20,9 @@ export default class Cart extends React.Component {
     this.setState({ error })
   }
 
-  handleCheckout = async () => {
+  handleCheckout = async (cart) => {
     const stripe = await stripePromise
-
-    const response = await ApiServices.testLocalPaymentSession()
+    const response = await ApiServices.testLocalPaymentSession(cart)
 
     // Redirect to checkout
     const result = await stripe.redirectToCheckout({
@@ -35,21 +34,36 @@ export default class Cart extends React.Component {
     }
   }
 
+  setTotalCost = (cart) => {
+    let tally = 0
+    cart.forEach(image => {
+      const accumCost = image.price * image.count
+      tally += accumCost
+    })
+    return tally
+  }
+
   render() {
     const { cart, setCart } = this.props
     return ( 
       <div className="cart-page fade-in">
         <h2 className="t-header cart-header">Cart</h2>
-        <ul className="cart-list">
-          <GenerateCartList 
-            cart={cart} 
-            handleError={this.handleError}
-            setCart={setCart}  
-          />
-        </ul>
-        <div className="checkout-route-container">
-          <GoToCheckout cart={cart} handleCheckout={this.handleCheckout} />
-        </div>
+        <section className="cart-main">
+          <ul className="cart-list">
+            <GenerateCartList 
+              cart={cart} 
+              handleError={this.handleError}
+              setCart={setCart}
+              setTotalCost={this.setTotalCost}
+            />
+          </ul>
+          <div className="total">
+            {`Total: $${this.setTotalCost(cart)}`}
+          </div>
+          <div className="checkout-route-container">
+            <GoToCheckout cart={cart} handleCheckout={this.handleCheckout} />
+          </div>
+        </section>
       </div>
     )
   }

@@ -29,7 +29,7 @@ export default class Details extends React.Component {
   }
 
   checkSizeAvailable = size => {
-    if (!this.state.image[size.toLowerCase()]) return 'no-size'
+    if (!this.state.image.availableSizes[size.toLowerCase()]) return 'no-size'
     return String()
   }
 

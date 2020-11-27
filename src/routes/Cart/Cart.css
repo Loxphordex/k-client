@@ -4,6 +4,11 @@
   height: 80vh;
 }
 
+.cart-main {
+  max-width: 400px;
+  margin: auto;
+}
+
 .cart-header {
   text-align: left;
   margin-left: -10px;
@@ -76,6 +81,12 @@
   cursor: pointer;
 }
 
+.total {
+  font-weight: bold;
+  text-align: right;
+  font-size: 14pt;
+}
+
 .cart-no-content {
   height: 50vh;
   text-align: center;
@@ -103,6 +114,7 @@
 
 .go-to-checkout {
   border-radius: 0;
+  color: inherit;
   background-color: rgb(130, 220, 255);
   width: 180px;
   display: inline-block;

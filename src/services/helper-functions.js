@@ -58,15 +58,11 @@ export function addCart(image, cart, handleError, setCart, sizeSelection) {
   }
 }
 
-export function removeFromCart(image, cart, handleError, setCart) {
-  if (
-    image && 
-    image.details && 
-    image.details.name && 
-    cart[image.details.name]) 
-  {
-    delete cart[image.details.name]
-    setCart(cart)
+export function removeFromCart(image, cart, setTotalCost, setCart) {
+  if (image && image.id) {
+    const newCart = cart.filter(x => x.id !== image.id)
+    setCart(newCart)
+    setTotalCost(newCart)
   }
 }
 
@@ -75,5 +71,5 @@ export function updateStorageCart(cart) {
 }
 
 export function objectIsEmpty(obj) {
-  return Object.keys(obj).length === 0 ? true : false
+  return Object.keys(obj).length === 0
 }
