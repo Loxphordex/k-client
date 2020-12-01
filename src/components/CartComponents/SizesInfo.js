@@ -6,7 +6,7 @@ export default function SizesInfo({ info }) {
     for (let [key, value] of Object.entries(info)) {
       allSizes.push(
         <div className="cart-size-container" key={`${key}_${value}`}>
-          <div className="cart-size-count">{`${getShorthandSize(key)}: ${value}`}</div>
+          <div className="cart-size-count secondary-text">{`${getShorthandSize(key)}: ${value}`}</div>
         </div>
       )
     }
