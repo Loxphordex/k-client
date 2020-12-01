@@ -24,12 +24,12 @@ export default class GenerateCartList extends React.Component {
               <SizesInfo info={image.selectedSizes} />
             </div>
             <div className="cart-main-details">
-              <div className="cart-price">{`$${image.price}`}</div>
               <button
                 className="cart-delete"
                 onClick={() => removeFromCart(image, cart, setTotalCost, setCart)}>
                 <TrashSimple className="trash-icon" size={28} />
               </button>
+              <div className="cart-price">{`$${image.price}`}</div>
             </div>
           </li>
         )

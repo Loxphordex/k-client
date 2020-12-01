@@ -67,7 +67,7 @@ const ApiServices = {
   },
 
   testLocalPaymentSession(cart) {
-    return fetch(`${config.TEST_API_ENDPOINT}/pay`, {
+    return fetch(`${config.API_ENDPOINT}/api/pay/create-session`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

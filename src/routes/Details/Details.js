@@ -47,7 +47,7 @@ export default class Details extends React.Component {
       this.setState({ error })
       setTimeout(() => {
         this.setState({ error: null })
-      }, 10_000);
+      }, 10000);
     }
   }
 

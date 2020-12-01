@@ -3,10 +3,9 @@ import GenerateCartList from '../../components/CartComponents/GenerateCartList'
 import ApiServices from '../../services/api-services'
 import GoToCheckout from '../../components/CartComponents/GoToCheckout'
 import { loadStripe } from '@stripe/stripe-js'
-import config from '../../config'
 import './Cart.css'
 
-const stripePromise = loadStripe(config.PUBLISHABLE_KEY)
+const stripePromise = loadStripe('pk_test_51HfmUTEJnkA1sNW4qtl86yU2tVr1Tw5wpxoXzZ4lG3VYu1XetFRMZxyWnlP4LpCeuZNCETv9VunMi63tbZhz5iHh00ercseC9v')
 
 export default class Cart extends React.Component {
   constructor(props) {
@@ -21,8 +20,10 @@ export default class Cart extends React.Component {
   }
 
   handleCheckout = async (cart) => {
+    const request = this.setSessionRequestDefault(cart)
     const stripe = await stripePromise
-    const response = await ApiServices.testLocalPaymentSession(cart)
+    const response = await ApiServices.testLocalPaymentSession(request)
+    console.log(response)
 
     // Redirect to checkout
     const result = await stripe.redirectToCheckout({
@@ -31,6 +32,14 @@ export default class Cart extends React.Component {
 
     if (result.error) {
       console.log(result.error.message)
+    }
+  }
+
+  setSessionRequestDefault = (cart) => {
+    return {
+      cart,
+      currency: 'usd',
+      receiptEmail: 'silasishallahan@gmail.com'
     }
   }
 
