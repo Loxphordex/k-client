@@ -9,6 +9,7 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
+import Checkout from './routes/Checkout/Checkout'
 import { updateStorageCart } from './services/helper-functions'
 import './App.css'
 import './Fonts.css'
@@ -17,7 +18,7 @@ import './styles/fadeIn.css'
 class App extends React.Component {
   state = {
     images: null,
-    cart: {},
+    cart: [],
     cartCount: 0,
     error: null
   }
@@ -29,7 +30,7 @@ class App extends React.Component {
       if (parsedCart && parsedCart !== 'undefined') {
         this.setState({
           cart: parsedCart
-        }, this.addToCartCount)
+        }, () => this.setCartCount(this.state.cart))
       }
     }
   }
@@ -38,47 +39,19 @@ class App extends React.Component {
     this.setState({ images })
   }
 
-  handleError = error => {
-    if (error !== undefined) {
-      this.setState({ error })
-      setTimeout(() => {
-        this.setState({ error: null })
-      }, 10_000);
-    }
+  setCart = async (cart) => {
+    this.setState({ cart }, () => this.setCartCount(cart))
   }
 
-  addToCartCount = () => {
-    const { cart } = this.state
-    let tally = 0
-
-    if (cart) {
-      updateStorageCart(cart)
-      for (const [name, size] of Object.entries(cart)) {
-        for (const [key, info] of Object.entries(size)) {
-          tally += info.count
-        }
-      }
-    }
-
-    this.setState({
-      cartCount: tally
+  setCartCount = (cart) => {
+    updateStorageCart(cart)
+    let count = 0
+    cart.map(c => {
+      count += c.count
     })
-  }
-
-  handleImage = (image, imageObject) => {
     this.setState({
-      cart: {
-        ...this.state.cart,
-        [image.name]: {
-          ...this.state.cart[image.name],
-          [image.size]: imageObject
-        }
-      }
-    }, this.addToCartCount)
-  }
-
-  setCart = cart => {
-    this.setState({ cart }, this.addToCartCount)
+      cartCount: count
+    })
   }
 
   render() {
@@ -91,24 +64,9 @@ class App extends React.Component {
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route path="/aboutus" render={() => <AboutUs />} />
-        <Route path="/cart" 
-          render={() => 
-            <Cart 
-              cart={this.state.cart} 
-              images={this.state.images}
-              setCart={this.setCart} 
-            />} 
-        />
-        <Route path="/details" 
-          render={({ location }) => 
-            <Details 
-              location={location}
-              cart={this.state.cart}
-              handleImage={this.handleImage}
-              handleError={this.handleError}
-              error={this.state.error} 
-            />}
-        />
+        <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} setCart={this.setCart} />} />
+        <Route path="/details" render={({ location }) => <Details location={location} cart={this.state.cart} setCart={this.setCart} />} />
+        <Route path="/checkout" render={() => <Checkout />} />
       </div>
     )
   }

@@ -63,7 +63,7 @@ export default class Gallery extends React.Component {
 
   getAndDisplayImages = () => {
     ApiServices.getImages()
-      .then(allImages => this.setState({ allImages: allImages.images }))
+      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
       .then(() => this.setDisplayedImages())
       .then(() => this.clearError())
       .catch(e => this.handleError(e))

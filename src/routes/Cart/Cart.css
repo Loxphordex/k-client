@@ -1,6 +1,12 @@
 .cart-page {
   padding: 0 10px 0 10px;
   margin-top: 24px;
+  height: 80vh;
+}
+
+.cart-main {
+  max-width: 400px;
+  margin: auto;
 }
 
 .cart-header {
@@ -72,6 +78,13 @@
 
 .trash-icon {
   padding-top: 4px;
+  cursor: pointer;
+}
+
+.total {
+  font-weight: bold;
+  text-align: right;
+  font-size: 14pt;
 }
 
 .cart-no-content {
@@ -90,4 +103,19 @@
 
 .cart-empty-message {
   font-weight: 500;
+}
+
+.checkout-route-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.go-to-checkout {
+  border-radius: 0;
+  color: inherit;
+  background-color: rgb(130, 220, 255);
+  width: 180px;
+  display: inline-block;
 }
