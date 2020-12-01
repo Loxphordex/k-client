@@ -23,7 +23,6 @@ export default class Cart extends React.Component {
     const request = this.setSessionRequestDefault(cart)
     const stripe = await stripePromise
     const response = await ApiServices.testLocalPaymentSession(request)
-    console.log(response)
 
     // Redirect to checkout
     const result = await stripe.redirectToCheckout({
