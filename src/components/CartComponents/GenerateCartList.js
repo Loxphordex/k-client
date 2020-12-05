@@ -20,7 +20,6 @@ export default class GenerateCartList extends React.Component {
             </div>
             <div className="cart-item-details">
               <h2 className="cart-item-header">{image.name}</h2>
-              <div>{image.count}</div>
               <SizesInfo info={image.selectedSizes} />
             </div>
             <div className="cart-main-details">
@@ -29,7 +28,7 @@ export default class GenerateCartList extends React.Component {
                 onClick={() => removeFromCart(image, cart, setTotalCost, setCart)}>
                 <TrashSimple className="trash-icon" size={28} />
               </button>
-              <div className="cart-price">{`$${image.price}`}</div>
+              <div className="cart-price">{`$${image.price * image.count}`}</div>
             </div>
           </li>
         )
