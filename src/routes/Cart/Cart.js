@@ -23,7 +23,6 @@ export default class Cart extends React.Component {
     const request = this.setSessionRequestDefault(cart)
     const stripe = await stripePromise
     const response = await ApiServices.testLocalPaymentSession(request)
-    console.log(response)
 
     // Redirect to checkout
     const result = await stripe.redirectToCheckout({
@@ -38,8 +37,7 @@ export default class Cart extends React.Component {
   setSessionRequestDefault = (cart) => {
     return {
       cart,
-      currency: 'usd',
-      receiptEmail: 'silasishallahan@gmail.com'
+      currency: 'usd'
     }
   }
 
@@ -50,6 +48,11 @@ export default class Cart extends React.Component {
       tally += accumCost
     })
     return tally
+  }
+
+  testSession = () => {
+    ApiServices.testPaySessionEndpoint()
+      .then((res) => console.log(res))
   }
 
   render() {
@@ -71,6 +74,7 @@ export default class Cart extends React.Component {
           </div>
           <div className="checkout-route-container">
             <GoToCheckout cart={cart} handleCheckout={this.handleCheckout} />
+            <button onClick={this.testSession}>TEST ENDPOINT</button>
           </div>
         </section>
       </div>
