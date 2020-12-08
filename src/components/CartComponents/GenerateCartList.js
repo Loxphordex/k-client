@@ -15,7 +15,7 @@ export default class GenerateCartList extends React.Component {
           <li key={image.id} className="cart-item-container">
             <div className="cart-img-container">
               <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
-                <GenerateImageElement image={image} width="120" />
+                <GenerateImageElement image={image} width="160" />
               </CloudinaryContext>
             </div>
             <div className="cart-item-details">

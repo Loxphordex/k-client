@@ -9,7 +9,6 @@ import Contact from './routes/Contact/Contact'
 import AboutUs from './routes/AboutUs/AboutUs'
 import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
-import Checkout from './routes/Checkout/Checkout'
 import Confirm from './routes/Confirm/Confirm'
 import { updateStorageCart } from './services/helper-functions'
 import './App.css'
@@ -67,8 +66,7 @@ class App extends React.Component {
         <Route path="/aboutus" render={() => <AboutUs />} />
         <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} setCart={this.setCart} />} />
         <Route path="/details" render={({ location }) => <Details location={location} cart={this.state.cart} setCart={this.setCart} />} />
-        <Route path="/checkout" render={() => <Checkout />} />
-        <Route path="/confirm"><Confirm /></Route>
+        <Route path="/confirm"><Confirm cart={this.state.cart} /></Route>
       </div>
     )
   }
