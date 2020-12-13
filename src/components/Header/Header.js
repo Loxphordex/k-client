@@ -18,9 +18,9 @@ export default class Header extends React.Component {
     return (
       <header role="heading">
         <nav role="navigation" className="main-header-nav">
-          <h1>
+          <h1 className="main-brand-logo">
             <Link to="/">
-              <img src={logo} alt="Pearegrine" />
+              <img src={logo} className="brand-image" alt="Pearegrine" />
             </Link>
           </h1>
           <Link to="/cart">
@@ -29,7 +29,7 @@ export default class Header extends React.Component {
               <ShoppingCartSimple size={30} color="black" />
             </div>
           </Link>
-          <ul>
+          <ul className="main-nav-links">
             <li>
               <Link to="/aboutus">ABOUT US</Link>
             </li>

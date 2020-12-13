@@ -2,7 +2,7 @@
   padding: 0px 7%;
 }
 
-.main-header-nav h1 {
+.main-brand-logo {
   grid-column: 1/4;
   grid-row: 1/2;
   display: block;
@@ -10,11 +10,11 @@
   max-width: 230px;
 }
 
-.main-header-nav h1 img {
+.brand-image {
   width: 100%;
 }
 
-.main-header-nav ul {
+.main-nav-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,14 +23,14 @@
   padding: 0;
 }
 
-.main-header-nav ul li {
+.main-nav-links li {
   display: inline-block;
   text-align: center;
   font-size: 0.8em;
   font-weight: 500;
 }
 
-.main-header-nav ul li a {
+.main-nav-links li a {
   text-decoration: none;
   color: inherit;
   transition: all 120ms;
@@ -90,20 +90,16 @@
     margin: auto;
     padding: 0px 32px;
   }
-  .main-header-nav h1 {
-    grid-column: 2/3;
-    grid-row: 1/2;
+  .main-brand-logo {
     display: block;
     max-width: 300px;
-    margin-left: -36px;
-    margin-bottom: -10px;
   }
 
-  .main-header-nav ul li {
+  .main-nav-links li {
     font-size: 0.9em;
   }
 
-  .main-header-nav ul li a:hover {
+  .main-nav-links li a:hover {
     color: #FFE45E;
   }
 
