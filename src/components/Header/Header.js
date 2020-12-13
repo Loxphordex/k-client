@@ -29,7 +29,7 @@ export default class Header extends React.Component {
               <ShoppingCartSimple size={30} color="black" />
             </div>
           </Link>
-          <ul className="main-nav-links">
+          {/* <ul className="main-nav-links">
             <li>
               <Link to="/aboutus">ABOUT US</Link>
             </li>
@@ -39,7 +39,7 @@ export default class Header extends React.Component {
             <li>
               <Link to="/contact">CONTACT</Link>
             </li>
-          </ul>
+          </ul> */}
         </nav>
       </header>
     )

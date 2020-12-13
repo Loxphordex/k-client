@@ -1,0 +1,20 @@
+.footer-container {
+  padding: 0 7%;
+  margin-bottom: 8vh;
+}
+
+.social-link * {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-container {
+    padding: 0 7%;
+    max-width: 1050px;
+    margin: auto;
+    margin-bottom: 8vh;
+  }
+}
