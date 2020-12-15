@@ -5,7 +5,7 @@ import GoToCheckout from '../../components/CartComponents/GoToCheckout'
 import { loadStripe } from '@stripe/stripe-js'
 import './Cart.css'
 
-const stripePromise = loadStripe('pk_test_51HfmUTEJnkA1sNW4qtl86yU2tVr1Tw5wpxoXzZ4lG3VYu1XetFRMZxyWnlP4LpCeuZNCETv9VunMi63tbZhz5iHh00ercseC9v')
+const stripePromise = loadStripe('pk_test_51HxvSWFjtBOz9VPTL45hudHSdZP3BC3czhhyAftqE8e4e8t3wcbBB5VBcFzRZFLpfJomCCl8xRkuRHZbfNJPxXmT00kCIffYY9')
 
 export default class Cart extends React.Component {
   constructor(props) {

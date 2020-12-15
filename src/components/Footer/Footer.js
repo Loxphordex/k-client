@@ -5,6 +5,26 @@ export default function Footer() {
   return (
     <section className="footer-container">
       <div className="social-link">
+        {/* <i className="fab fa-twitter" /> */}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.twitter.com/pearegrine"
+        >
+          Twitter
+        </a>
+      </div>
+      <div className="social-link">
+        {/* <i className="fab fa-instagram" /> */}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.instagram.com/pearegrineofficial/"
+        >
+          Instagram
+        </a>
+      </div>
+      <div className="social-link">
         <a
           className="bus-inc"
           target="_blank"
@@ -22,26 +42,6 @@ export default function Footer() {
           href="mailto: keeganholcombharris@outlook.com"
         >
           keeganholcombharris@outlook.com
-        </a>
-      </div>
-      <div className="social-link">
-        {/* <i className="fab fa-instagram" /> */}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.instagram.com/pearegrineofficial/"
-        >
-          Instagram
-        </a>
-      </div>
-      <div className="social-link">
-        {/* <i className="fab fa-twitter" /> */}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.twitter.com/pearegrine"
-        >
-          Twitter
         </a>
       </div>
     </section>

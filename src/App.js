@@ -14,6 +14,13 @@ import './App.css'
 import './Fonts.css'
 import './styles/fadeIn.css'
 
+// TODO
+/***
+ * Replace keys and test
+ * Set up basic cancel and success pages
+ * set up email confirmation
+ */
+
 class App extends React.Component {
   state = {
     images: null,
