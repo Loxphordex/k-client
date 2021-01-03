@@ -11,7 +11,7 @@
 }
 
 .brand-image {
-  width: 100%;
+  width: 80%;
 }
 
 .main-nav-links {
@@ -83,6 +83,7 @@
   font-size: 10pt;
   font-weight: 500;
 }
+
 
 @media only screen and (min-width: 760px) {
   .main-header-nav {

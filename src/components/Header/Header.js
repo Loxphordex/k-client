@@ -2,7 +2,7 @@ import React from 'react'
 import { cartScroll } from './cartScroll'
 import { Link } from 'react-router-dom'
 import { ShoppingCartSimple } from 'phosphor-react'
-import logo from '../../images/PEAREGRINE.jpg'
+import logo from '../../images/Pear.png'
 import './Header.css'
 
 export default class Header extends React.Component {
@@ -29,17 +29,6 @@ export default class Header extends React.Component {
               <ShoppingCartSimple size={30} color="black" />
             </div>
           </Link>
-          {/* <ul className="main-nav-links">
-            <li>
-              <Link to="/aboutus">ABOUT US</Link>
-            </li>
-            <li>
-              <Link to="/">T-SHIRTS</Link>
-            </li>
-            <li>
-              <Link to="/contact">CONTACT</Link>
-            </li>
-          </ul> */}
         </nav>
       </header>
     )

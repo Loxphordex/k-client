@@ -20,7 +20,7 @@ export default class Gallery extends React.Component {
       index: 1,
       images: [],
       allImages: [],
-      imagesPerPage: 12,
+      imagesPerPage: 100,
 
       editorOpen: false,
       editorImageId: null,
