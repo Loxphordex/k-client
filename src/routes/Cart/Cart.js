@@ -69,12 +69,8 @@ export default class Cart extends React.Component {
               setTotalCost={this.setTotalCost}
             />
           </ul>
-          <div className="total">
-            {`Total: $${this.setTotalCost(cart)}`}
-          </div>
           <div className="checkout-route-container">
             <GoToCheckout cart={cart} handleCheckout={this.handleCheckout} />
-            <button onClick={this.testSession}>TEST ENDPOINT</button>
           </div>
         </section>
       </div>

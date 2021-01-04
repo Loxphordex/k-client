@@ -1,6 +1,4 @@
 import React from 'react'
-import './AboutUs.css'
-import '../Contact/Contact.css'
 
 export default class Bio extends React.Component {
   render() {

@@ -24,7 +24,7 @@ export default class GenerateImages extends React.Component {
               <h2>{!!image.name && image.name}</h2>
             </div>
           ))}
-        <FalseDisplacementImage num={images.count} />
+        <FalseDisplacementImage num={images.length} />
       </section>
     )
   }
