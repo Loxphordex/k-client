@@ -34,7 +34,7 @@ export default class GenerateCartList extends React.Component {
               </div>
             </li>
             <div className="total">
-              {`Total: $${this.setTotalCost(cart)}`}
+              {`Total: $${setTotalCost(cart)}`}
             </div>
           </>
         )

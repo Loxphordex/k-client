@@ -4,7 +4,7 @@ import React from 'react'
 export default function FalseDisplacementImage({ num }) {
   // generates false images to properly offset the final images in the gallery
 
-  // keep subtracting the images by 12 until you can't anymore
+  // keep subtracting the images by 4 until you can't anymore
   // the remaining number will be the last row
   // depending on that number, return between 0 and 3 blank divs
 
@@ -12,8 +12,8 @@ export default function FalseDisplacementImage({ num }) {
 
   let numberOfComponents = 0
 
-  while (num - 12 >= 0) { // subtract until the remaining number is less than 12
-    num -= 12
+  while (num - 4 >= 0) { // subtract until the remaining number is less than 4
+    num -= 4
   }
 
   if (num === 0 || num === 4) return <></> // if no displacement is needed, return

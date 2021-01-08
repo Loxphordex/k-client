@@ -1,17 +1,16 @@
 .main-header-nav {
   padding: 0px 7%;
+  display: inline;
 }
 
 .main-brand-logo {
-  grid-column: 1/4;
-  grid-row: 1/2;
   display: block;
-  margin: auto;
-  max-width: 230px;
+  max-width: 120px;
+  margin: 0;
 }
 
 .brand-image {
-  width: 80%;
+  width: 100%;
 }
 
 .main-nav-links {
@@ -19,8 +18,11 @@
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: auto;
+  max-width: 1032px;
+  padding: 0 20px;
+  height: 60px;
+  margin-top: 36px;
 }
 
 .main-nav-links li {
@@ -39,7 +41,7 @@
 .cart-area {
   color: inherit;
   display: flex;
-  position: fixed;
+  position: relative;
   z-index: 1000;
   top: 0;
   right: 0;
@@ -59,6 +61,7 @@
 }
 
 .cart-scroll {
+  position: fixed;
   background-color: rgb(132, 220, 255);
   -webkit-animation: cartColorFadeIn ease-in-out 200ms;
   -moz-animation: cartColorFadeIn ease-in-out 200ms;
@@ -92,8 +95,7 @@
     padding: 0px 32px;
   }
   .main-brand-logo {
-    display: block;
-    max-width: 300px;
+    max-width: 120px;
   }
 
   .main-nav-links li {
@@ -107,14 +109,13 @@
   .cart-area {
     animation: none;
     background-color: rgb(132, 220, 255);
-    position: absolute;
-    margin-top: 30px;
     margin-bottom: 4px;
     margin-right: 18%;
   }
 
   .cart-scroll {
     animation: none;
+    position: relative;
   }
 }
 

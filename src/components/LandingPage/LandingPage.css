@@ -1,0 +1,19 @@
+.landing-page-container {
+  overflow: hidden;
+}
+
+.landing-page-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+}
+
+.landing-page-image {
+  position: fixed;
+  max-width: 100vw;
+  min-width: 1500px;
+  left: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+}
