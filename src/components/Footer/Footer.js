@@ -5,16 +5,6 @@ export default function Footer() {
   return (
     <section className="footer-container">
       <div className="social-link">
-        {/* <i className="fab fa-twitter" /> */}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.twitter.com/pearegrine"
-        >
-          Twitter
-        </a>
-      </div>
-      <div className="social-link">
         {/* <i className="fab fa-instagram" /> */}
         <a
           target="_blank"

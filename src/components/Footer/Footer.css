@@ -1,5 +1,5 @@
 .footer-container {
-  padding: 0 7%;
+  text-align: center;
   margin-bottom: 8vh;
 }
 
@@ -12,7 +12,6 @@
 
 @media only screen and (min-width: 768px) {
   .footer-container {
-    padding: 0 7%;
     max-width: 1050px;
     margin: auto;
     margin-bottom: 8vh;

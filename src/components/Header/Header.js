@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from '../../components/NavBar/NavBar'
 import { cartScroll } from './cartScroll'
 import { Link } from 'react-router-dom'
 import { ShoppingCartSimple } from 'phosphor-react'
@@ -18,17 +19,36 @@ export default class Header extends React.Component {
     return (
       <header role="heading">
         <nav role="navigation" className="main-header-nav">
-          <h1 className="main-brand-logo">
-            <Link to="/">
-              <img src={logo} className="brand-image" alt="Pearegrine" />
-            </Link>
-          </h1>
-          <Link to="/cart">
-            <div className="cart-area" id="cart-area">
-              {this.showIcon()}
-              <ShoppingCartSimple size={30} color="black" />
-            </div>
-          </Link>
+          <ul className="main-nav-links">
+            <li>
+              <h1 className="main-brand-logo">
+                <Link to="/">
+                  <img src={logo} className="brand-image" alt="Pearegrine" />
+                </Link>
+              </h1>
+            </li>
+            <li>
+              <Link to="/sale">Sale</Link>
+            </li>
+            <li>
+              <Link to="/arrivals">New Arrivals</Link>
+            </li>
+            <li>
+              <Link to="/gallery">Clothing</Link>
+            </li>
+            <li>
+              <Link to="discover">Discover</Link>
+            </li>
+            <li>
+              <Link to="/cart">
+                <div className="cart-area" id="cart-area">
+                  {this.showIcon()}
+                  <ShoppingCartSimple size={30} color="black" />
+                </div>
+              </Link>
+            </li>
+          </ul>
+          {/* <NavBar /> */}
         </nav>
       </header>
     )

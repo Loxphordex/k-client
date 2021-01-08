@@ -18,9 +18,10 @@ export default class Gallery extends React.Component {
     this.state = {
       error: null,
       index: 1,
+      pages: 1,
       images: [],
       allImages: [],
-      imagesPerPage: 100,
+      imagesPerPage: 12,
 
       editorOpen: false,
       editorImageId: null,
@@ -64,6 +65,7 @@ export default class Gallery extends React.Component {
   getAndDisplayImages = () => {
     ApiServices.getImages()
       .then(allImages => this.setState({ allImages: allImages.mappedImages }))
+      .then(() => this.setNumberOfPages())
       .then(() => this.setDisplayedImages())
       .then(() => this.clearError())
       .catch(e => this.handleError(e))
@@ -187,9 +189,42 @@ export default class Gallery extends React.Component {
     }
   }
 
+  setNumberOfPages = () => {
+    const { allImages, imagesPerPage } = this.state
+    if (allImages && imagesPerPage) {
+      let maxPages = 0
+      let count = allImages.length
+
+      while (count > imagesPerPage) {
+        maxPages++
+        count = count - imagesPerPage
+      }
+
+      this.setState({ pages: maxPages })
+    } else {
+      this.setState({ pages: 1 })
+    }
+  }
+
+  switchPage = (numToChange) => {
+    const { index } = this.state
+  
+    if (index <= 0) this.setState({ index: 1 })
+    if (numToChange < 0 && index === 1) return
+  
+    this.setState({
+      index: this.state.index + numToChange
+    }, this.setDisplayedImages)
+  }
+
   render() {
     const { history } = this.props
-    const { images, editorOpen, deleteFormOpen } = this.state
+    const {
+      images,
+      editorOpen,
+      deleteFormOpen,
+      index,
+      pages } = this.state
     const token = TokenServices.getJwt()
     return (
       <section className="gallery-area">
@@ -221,6 +256,11 @@ export default class Gallery extends React.Component {
             setDeleteId={this.setDeleteId}
           />
         </CloudinaryContext>
+
+        <div className="page-container">
+          {index > 1 && <button onClick={() => this.switchPage(-1)} className="page-control control-previous">Prev</button>}
+          {pages >= index && <button onClick={() => this.switchPage(1)} className="page-control control-next">Next</button>}
+        </div>
 
         {token && <AuthFooter history={history} />}
       </section>

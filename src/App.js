@@ -9,6 +9,8 @@ import Cart from './routes/Cart/Cart'
 import Details from './routes/Details/Details'
 import Confirm from './routes/Confirm/Confirm'
 import Footer from './components/Footer/Footer'
+import Landing from './routes/Landing/Landing'
+import RedirectFromLanding from './routes/Redirect/RedirectFromLanding'
 import { updateStorageCart } from './services/helper-functions'
 import './App.css'
 import './Fonts.css'
@@ -64,7 +66,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route path="/" render={() => <Header cartCount={this.state.cartCount} />} />
-        <Route exact path="/" render={({ history }) => <Gallery history={history} setImages={this.setImages} />} />
+        <Route exact path="/"><RedirectFromLanding /></Route>
+        <Route exact path="/gallery" render={({ history }) => <Gallery history={history} setImages={this.setImages} />} />
         <Route path="/new" render={() => <NewImageRoute />} />
         <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
