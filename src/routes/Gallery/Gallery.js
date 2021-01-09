@@ -30,6 +30,10 @@ export default class Gallery extends React.Component {
       editorImageDescription: '',
       editorImageType: '',
       editorImagePrice: null,
+      editorImageCategory: null,
+      editorImageSalePrice: null,
+      editorImageNewArrival: false,
+      editorImageSaleEnabled: false,
       small: null,
       medium: null,
       large: null,
@@ -108,12 +112,24 @@ export default class Gallery extends React.Component {
     this.setState({ editorImageDescription: description })
   }
 
-  updateNewType = type => {
-    this.setState({ editorImageType: type })
-  }
-
   updateNewPrice = price => {
     this.setState({ editorImagePrice: price })
+  }
+
+  updateCategory = category => {
+    this.setState({ editorImageCategory: category })
+  }
+
+  updateSalePrice = salePrice => {
+    this.setState({ editorImageSalePrice: salePrice})
+  }
+
+  updateNewArrival = () => {
+    this.setState({ editorImageNewArrival: !this.state.editorImageNewArrival })
+  }
+
+  updateSaleEnabled = () => {
+    this.setState({ editorImageSaleEnabled: !this.state.editorImageSaleEnabled })
   }
 
   updateSmallCount = small => {
@@ -146,6 +162,10 @@ export default class Gallery extends React.Component {
       description: this.state.editorImageDescription,
       type: this.state.editorImageType,
       price: this.state.editorImagePrice,
+      // category: this.state.editorImageCategory,
+      // new_arrival: this.state.editorImageNewArrival,
+      // sale_price: this.state.editorImageSalePrice,
+      // sale_enabled: this.state.editorImageSaleEnabled,
       small: this.state.small,
       medium: this.state.medium,
       large: this.state.large,
@@ -227,15 +247,18 @@ export default class Gallery extends React.Component {
       pages } = this.state
     const token = TokenServices.getJwt()
     return (
-      <section className="gallery-area">
+      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`}>
         {editorOpen && (
           <EditorForm
             disableEditor={this.disableEditor}
             updateNewName={this.updateNewName}
             updateNewLink={this.updateNewLink}
             updateNewDescription={this.updateNewDescription}
-            updateNewType={this.updateNewType}
             updateNewPrice={this.updateNewPrice}
+            updateCategory={this.updateCategory}
+            updateNewArrival={this.updateNewArrival}
+            updateSalePrice={this.updateSalePrice}
+            updateSaleEnabled={this.updateSaleEnabled}
             updateSmall={this.updateSmallCount}
             updateMedium={this.updateMediumCount}
             updateLarge={this.updateLargeCount}

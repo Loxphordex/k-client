@@ -9,8 +9,11 @@ export default class EditorForm extends React.Component {
       updateNewName,
       updateNewLink,
       updateNewDescription,
-      updateNewType,
       updateNewPrice,
+      updateCategory,
+      updateNewArrival,
+      updateSalePrice,
+      updateSaleEnabled,
       updateSmall,
       updateMedium,
       updateLarge,
@@ -52,16 +55,6 @@ export default class EditorForm extends React.Component {
               name="new-description"
               className="t-input new-description"
               onChange={event => updateNewDescription(event.target.value)}
-            />
-            <label htmlFor="new-type" className="t-label">
-              TYPE (Cotton T-Shirt, Hoodie, etc.)
-            </label>
-            <input
-              type="text"
-              id="new-type"
-              name="new-type"
-              className="t-input"
-              onChange={event => updateNewType(event.target.value)}
             />
             <label htmlFor="new-price" className="t-label">PRICE</label>
             <input
@@ -123,6 +116,78 @@ export default class EditorForm extends React.Component {
                 />
               </div>
             </div>
+            <div className="category-container">
+              <h3 className="t-label">CATEGORY</h3>
+              <label htmlFor="category-none" className="t-label t-label-radio">NONE</label>
+              <input
+                type="radio"
+                id="category-none"
+                name="category"
+                className="t-input t-radio t-category"
+                onChange={event => updateCategory(event.target.value)}
+                value={null}
+              />
+              <label htmlFor="category-shirt" className="t-label t-label-radio">SHIRT</label>
+              <input
+                type="radio"
+                id="category-shirt"
+                name="category"
+                className="t-input t-radio t-category"
+                onChange={event => updateCategory(event.target.value)}
+                value="shirt"
+              />
+              <label htmlFor="category-sweatshirt" className="t-label t-label-radio">SWEATSHIRT</label>
+              <input
+                type="radio"
+                id="category-sweatshirt"
+                name="category"
+                className="t-input t-radio t-category"
+                onChange={event => updateCategory(event.target.value)}
+                value="sweatshirt"
+              />
+              <label htmlFor="category-jeans" className="t-label t-label-radio">JEANS</label>
+              <input
+                type="radio"
+                id="category-jeans"
+                name="category"
+                className="t-input t-radio t-category"
+                onChange={event => updateCategory(event.target.value)}
+                value="jeans"
+              />
+              <label htmlFor="category-hat" className="t-label t-label-radio">HAT</label>
+              <input
+                type="radio"
+                id="category-hat"
+                name="category"
+                className="t-input t-radio t-category"
+                onChange={event => updateCategory(event.target.value)}
+                value="hat"
+              />
+            </div>
+            <label htmlFor="sale-price" className="t-label">SALE PRICE</label>
+            <input 
+              type="float"
+              id="sale-price"
+              name="sale-price"
+              className="t-input t-sale-price"
+              onChange={event => updateSalePrice(event.target.value)}
+            />
+            <label htmlFor="enable-sale" className="t-label">ENABLE SALE</label>
+            <input 
+              type="checkbox"
+              id="enable-sale"
+              name="enable_sale"
+              className="t-input t-enable-sale"
+              onChange={updateSaleEnabled}
+            />
+            <label htmlFor="new-arrival" className="t-label">NEW ARRIVAL</label>
+            <input 
+              type="checkbox"
+              id="new-arrival"
+              name="new-arrival"
+              className="t-input t-new-arrival"
+              onChange={updateNewArrival}
+            />
             <button type="submit" className="t-button editor-button">
               SUBMIT
             </button>
