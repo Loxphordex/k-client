@@ -125,7 +125,7 @@ export default class EditorForm extends React.Component {
                 name="category"
                 className="t-input t-radio t-category"
                 onChange={event => updateCategory(event.target.value)}
-                value={null}
+                value=''
               />
               <label htmlFor="category-shirt" className="t-label t-label-radio">SHIRT</label>
               <input

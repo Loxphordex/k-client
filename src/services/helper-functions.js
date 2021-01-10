@@ -3,7 +3,7 @@ import { classList } from '../components/CartComponents/getCartInfo'
 import { sizes } from '../constants/sizes'
 
 export function generateUpdateEndpoint(data) {
-  return `${config.API_ENDPOINT}/api/images?id=${data.id}&name=${data.name}&link=${data.link}&description=${data.description}&type=${data.type}&price=${data.price}&small=${data.small}&medium=${data.medium}&large=${data.large}&xLarge=${data.xLarge}&xxLarge=${data.xxLarge}`
+  return `${config.API_ENDPOINT}/api/images?id=${data.id}&name=${data.name}&link=${data.link}&description=${data.description}&type=${data.type}&price=${data.price}&category=${data.category}&salePrice=${data.salePrice}&saleEnabled=${data.saleEnabled}&newArrival=${data.newArrival}&small=${data.small}&medium=${data.medium}&large=${data.large}&xLarge=${data.xLarge}&xxLarge=${data.xxLarge}`
 }
 
 export function addCart(image, cart, handleError, setCart, sizeSelection) {
