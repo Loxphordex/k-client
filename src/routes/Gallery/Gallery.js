@@ -11,6 +11,7 @@ import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
+import { Link } from 'react-router-dom'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -49,6 +50,54 @@ export default class Gallery extends React.Component {
     this.getAndDisplayImages()
   }
 
+  componentDidUpdate = () => {
+    this.displayImages()
+  }
+
+  displayImages = () => {
+    const { index } = this.state
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = params.get('page')
+      if (currentPage != index) {
+        this.setCurrentPage(this.setDisplayedImages)
+      }
+    }
+  }
+
+  setNumberOfPages = () => {
+    const { allImages, imagesPerPage } = this.state
+    if (allImages && imagesPerPage) {
+      let maxPages = 1
+      let count = allImages.length
+
+      while (count > imagesPerPage) {
+        maxPages++
+        count = count - imagesPerPage
+      }
+
+      this.setState({ pages: maxPages })
+    } else {
+      this.setState({ pages: 1 })
+    }
+  }
+
+  setCurrentPage = (displayCallback = null) => {
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = params.get('page')
+      if (currentPage) {
+        this.setState({ index: params.get('page') }, displayCallback)
+      } else {
+        params.set('page', 1)
+        history.pushState(null, null, '?' + params.toString())
+      }
+    } else {
+      params.set('page', 1)
+      history.pushState(null, null, '?' + params.toString())
+    }
+  }
+
   setDisplayedImages = () => {
     const { index, allImages, imagesPerPage } = this.state
     const { setImages } = this.props
@@ -58,21 +107,22 @@ export default class Gallery extends React.Component {
     setImages(allImages)
   }
 
+  getAndDisplayImages = () => {
+    ApiServices.getImages()
+      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
+      .then(() => this.setNumberOfPages())
+      .then(() => this.setCurrentPage())
+      .then(() => this.setDisplayedImages())
+      .then(() => this.clearError())
+      .catch(e => this.handleError(e))
+  }
+
   handleError = error => {
     this.setState({ error })
   }
 
   clearError = () => {
     this.setState({ error: null })
-  }
-
-  getAndDisplayImages = () => {
-    ApiServices.getImages()
-      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
-      .then(() => this.setNumberOfPages())
-      .then(() => this.setDisplayedImages())
-      .then(() => this.clearError())
-      .catch(e => this.handleError(e))
   }
 
   // EDITOR
@@ -213,32 +263,24 @@ export default class Gallery extends React.Component {
     }
   }
 
-  setNumberOfPages = () => {
-    const { allImages, imagesPerPage } = this.state
-    if (allImages && imagesPerPage) {
-      let maxPages = 0
-      let count = allImages.length
-
-      while (count > imagesPerPage) {
-        maxPages++
-        count = count - imagesPerPage
+  getNextPage = (numToChange) => {
+    const currentUrl = window.location.pathname
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = parseInt(params.get('page'), 10)
+      if (currentPage) {
+        const { pages } = this.state
+        const nextPage = currentPage + numToChange
+        if (nextPage !== 0 && nextPage <= pages) {
+          const newParams = params.toString().replace(`page=${currentPage}`, `page=${nextPage}`)
+          const newUrl = `${currentUrl}?${newParams}`
+          console.log(newUrl)
+          return newUrl
+        }
       }
-
-      this.setState({ pages: maxPages })
-    } else {
-      this.setState({ pages: 1 })
     }
-  }
 
-  switchPage = (numToChange) => {
-    const { index } = this.state
-  
-    if (index <= 0) this.setState({ index: 1 })
-    if (numToChange < 0 && index === 1) return
-  
-    this.setState({
-      index: this.state.index + numToChange
-    }, this.setDisplayedImages)
+    return currentUrl
   }
 
   render() {
@@ -285,8 +327,16 @@ export default class Gallery extends React.Component {
         </CloudinaryContext>
 
         <div className="page-container">
-          {index > 1 && <button onClick={() => this.switchPage(-1)} className="page-control control-previous">Prev</button>}
-          {pages >= index && <button onClick={() => this.switchPage(1)} className="page-control control-next">Next</button>}
+          {index > 1 && 
+            <Link to={this.getNextPage(-1)} className="page-control control-previous">
+              <button className="page-control control-previous">Prev</button>
+            </Link>
+          }
+          {index < pages && 
+            <Link to={this.getNextPage(1)} className="page-control control-next">
+              <button className="page-control control-next">Next</button>
+            </Link>
+          }
         </div>
 
         {token && <AuthFooter history={history} />}
