@@ -19,19 +19,9 @@ export default function Footer() {
           className="bus-inc"
           target="_blank"
           rel="noopener noreferrer"
-          href="mailto: pearegrineofficial@outlook.com"
+          href="mailto: pearegrinenyc@outlook.com"
         >
-          pearegrineofficial@outlook.com
-        </a>
-      </div>
-      <div className="social-link">
-        <a
-          className="bus-inc"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="mailto: keeganholcombharris@outlook.com"
-        >
-          keeganholcombharris@outlook.com
+          Email
         </a>
       </div>
     </section>
