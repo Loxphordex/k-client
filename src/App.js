@@ -67,7 +67,7 @@ class App extends React.Component {
       <div className="App">
         <Route path="/" render={() => <Header cartCount={this.state.cartCount} />} />
         <Route exact path="/"><RedirectFromLanding /></Route>
-        <Route exact path="/gallery" render={({ history }) => <Gallery history={history} setImages={this.setImages} />} />
+        <Route exact path="/gallery/:modifier" render={({ history, match }) => <Gallery history={history} match={match} setImages={this.setImages} />} />
         <Route path="/new" render={() => <NewImageRoute />} />
         <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />

@@ -9,6 +9,29 @@ const ApiServices = {
     )
   },
 
+  getImagesOnSale() {
+    return fetch(`${config.API_ENDPOINT}/api/images/sale`).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    )
+  },
+
+  getImagesOnNewArrival() {
+    return fetch(`${config.API_ENDPOINT}/api/images/arrivals`).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    )
+  },
+
+  postTestEmail() {
+    return fetch(`http://localhost:8000/api/email/test_email`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer ${TokenServices.getJwt()}`
+      },
+    }).then(res => !res.ok ? res.json().then(e => Promise.reject(e)) : res.json())
+  },
+
   postImage(image) {
     return fetch(`${config.API_ENDPOINT}/api/images`, {
       method: 'POST',

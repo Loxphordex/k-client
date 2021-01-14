@@ -3,6 +3,6 @@ import { Redirect } from 'react-router-dom'
 
 export default function RedirectFromLanding() {
   return (
-    <Redirect to={'/gallery'} />
+    <Redirect to={'/gallery/all'} />
   )
 }

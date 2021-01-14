@@ -1,7 +1,14 @@
 import React from 'react'
 import './Footer.css'
+import ApiServices from '../../services/api-services'
 
 export default function Footer() {
+
+  function testEmail() {
+    ApiServices.postTestEmail()
+      .then(res => console.log(res))
+      .catch(er => console.log(er))
+  }
   return (
     <section className="footer-container">
       <div className="social-link">
@@ -19,21 +26,12 @@ export default function Footer() {
           className="bus-inc"
           target="_blank"
           rel="noopener noreferrer"
-          href="mailto: pearegrineofficial@outlook.com"
+          href="mailto: pearegrinenyc@outlook.com"
         >
-          pearegrineofficial@outlook.com
+          Email
         </a>
       </div>
-      <div className="social-link">
-        <a
-          className="bus-inc"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="mailto: keeganholcombharris@outlook.com"
-        >
-          keeganholcombharris@outlook.com
-        </a>
-      </div>
+      {/* <div onClick={testEmail}>Test Email</div> */}
     </section>
   )
 }

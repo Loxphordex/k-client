@@ -11,6 +11,7 @@ import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
+import { Link } from 'react-router-dom'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class Gallery extends React.Component {
       images: [],
       allImages: [],
       imagesPerPage: 12,
+      modifier: '',
 
       editorOpen: false,
       editorImageId: null,
@@ -30,6 +32,10 @@ export default class Gallery extends React.Component {
       editorImageDescription: '',
       editorImageType: '',
       editorImagePrice: null,
+      editorImageCategory: null,
+      editorImageSalePrice: null,
+      editorImageNewArrival: null,
+      editorImageSaleEnabled: null,
       small: null,
       medium: null,
       large: null,
@@ -45,6 +51,56 @@ export default class Gallery extends React.Component {
     this.getAndDisplayImages()
   }
 
+  componentDidUpdate = () => {
+    this.displayImages()
+    this.switchGallery()
+    console.log('update')
+  }
+
+  displayImages = () => {
+    const { index } = this.state
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = params.get('page')
+      if (currentPage != index) {
+        this.setCurrentPage(this.setDisplayedImages)
+      }
+    }
+  }
+
+  setNumberOfPages = () => {
+    const { allImages, imagesPerPage } = this.state
+    if (allImages && imagesPerPage) {
+      let maxPages = 1
+      let count = allImages.length
+
+      while (count > imagesPerPage) {
+        maxPages++
+        count = count - imagesPerPage
+      }
+
+      this.setState({ pages: maxPages })
+    } else {
+      this.setState({ pages: 1 })
+    }
+  }
+
+  setCurrentPage = (displayCallback = null) => {
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = params.get('page')
+      if (currentPage) {
+        this.setState({ index: params.get('page') }, displayCallback)
+      } else {
+        params.set('page', 1)
+        history.pushState(null, null, '?' + params.toString())
+      }
+    } else {
+      params.set('page', 1)
+      history.pushState(null, null, '?' + params.toString())
+    }
+  }
+
   setDisplayedImages = () => {
     const { index, allImages, imagesPerPage } = this.state
     const { setImages } = this.props
@@ -54,21 +110,47 @@ export default class Gallery extends React.Component {
     setImages(allImages)
   }
 
+  switchGallery = () => {
+    const { match } = this.props
+    const { modifier } = this.state
+    if (match && match.params) {
+      const mod = match.params.modifier
+      if (mod) {
+        if (mod === 'sale' && modifier !== 'sale') {
+          this.setState({ modifier: 'sale' }, () => this.switchModifierCallback('sale'))
+        }
+        else if (mod === 'arrivals' && modifier !== 'arrivals') {
+          this.setState({ modifier: 'arrivals' }, () => this.switchModifierCallback('arrivals'))
+        }
+        else if (!mod && !modifier) {
+          this.setState({ modifier: '' }, this.switchModifierCallback)
+        }
+      }
+    }
+  }
+
+  switchModifierCallback = (modifier) => {
+    if (modifier === 'sale') this.getAndDisplayImages(ApiServices.getImagesOnSale)
+    if (modifier === 'arrivals') this.getAndDisplayImages(ApiServices.getImagesOnNewArrival)
+    else this.getAndDisplayImages()
+  }
+
+  getAndDisplayImages = (fetchImages = ApiServices.getImages) => {
+    fetchImages()
+      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
+      .then(() => this.setNumberOfPages())
+      .then(() => this.setCurrentPage())
+      .then(() => this.setDisplayedImages())
+      .then(() => this.clearError())
+      .catch(e => this.handleError(e))
+  }
+
   handleError = error => {
     this.setState({ error })
   }
 
   clearError = () => {
     this.setState({ error: null })
-  }
-
-  getAndDisplayImages = () => {
-    ApiServices.getImages()
-      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
-      .then(() => this.setNumberOfPages())
-      .then(() => this.setDisplayedImages())
-      .then(() => this.clearError())
-      .catch(e => this.handleError(e))
   }
 
   // EDITOR
@@ -81,6 +163,10 @@ export default class Gallery extends React.Component {
       editorImageDescription: '',
       editorImageType: '',
       editorImagePrice: null,
+      editorImageCategory: null,
+      editorImageSalePrice: null,
+      editorImageSaleEnabled: null,
+      editorImageNewArrival: null,
       small: null,
       medium: null,
       large: null,
@@ -108,12 +194,24 @@ export default class Gallery extends React.Component {
     this.setState({ editorImageDescription: description })
   }
 
-  updateNewType = type => {
-    this.setState({ editorImageType: type })
-  }
-
   updateNewPrice = price => {
     this.setState({ editorImagePrice: price })
+  }
+
+  updateCategory = category => {
+    this.setState({ editorImageCategory: category })
+  }
+
+  updateSalePrice = salePrice => {
+    this.setState({ editorImageSalePrice: salePrice})
+  }
+
+  updateNewArrival = () => {
+    this.setState({ editorImageNewArrival: !this.state.editorImageNewArrival })
+  }
+
+  updateSaleEnabled = () => {
+    this.setState({ editorImageSaleEnabled: !this.state.editorImageSaleEnabled })
   }
 
   updateSmallCount = small => {
@@ -146,6 +244,10 @@ export default class Gallery extends React.Component {
       description: this.state.editorImageDescription,
       type: this.state.editorImageType,
       price: this.state.editorImagePrice,
+      category: this.state.editorImageCategory,
+      newArrival: this.state.editorImageNewArrival,
+      salePrice: this.state.editorImageSalePrice,
+      saleEnabled: this.state.editorImageSaleEnabled,
       small: this.state.small,
       medium: this.state.medium,
       large: this.state.large,
@@ -189,32 +291,23 @@ export default class Gallery extends React.Component {
     }
   }
 
-  setNumberOfPages = () => {
-    const { allImages, imagesPerPage } = this.state
-    if (allImages && imagesPerPage) {
-      let maxPages = 0
-      let count = allImages.length
-
-      while (count > imagesPerPage) {
-        maxPages++
-        count = count - imagesPerPage
+  getNextPage = (numToChange) => {
+    const currentUrl = window.location.pathname
+    const params = new URLSearchParams(window.location.search)
+    if (params) {
+      const currentPage = parseInt(params.get('page'), 10)
+      if (currentPage) {
+        const { pages } = this.state
+        const nextPage = currentPage + numToChange
+        if (nextPage !== 0 && nextPage <= pages) {
+          const newParams = params.toString().replace(`page=${currentPage}`, `page=${nextPage}`)
+          const newUrl = `${currentUrl}?${newParams}`
+          return newUrl
+        }
       }
-
-      this.setState({ pages: maxPages })
-    } else {
-      this.setState({ pages: 1 })
     }
-  }
 
-  switchPage = (numToChange) => {
-    const { index } = this.state
-  
-    if (index <= 0) this.setState({ index: 1 })
-    if (numToChange < 0 && index === 1) return
-  
-    this.setState({
-      index: this.state.index + numToChange
-    }, this.setDisplayedImages)
+    return currentUrl
   }
 
   render() {
@@ -227,15 +320,18 @@ export default class Gallery extends React.Component {
       pages } = this.state
     const token = TokenServices.getJwt()
     return (
-      <section className="gallery-area">
+      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`}>
         {editorOpen && (
           <EditorForm
             disableEditor={this.disableEditor}
             updateNewName={this.updateNewName}
             updateNewLink={this.updateNewLink}
             updateNewDescription={this.updateNewDescription}
-            updateNewType={this.updateNewType}
             updateNewPrice={this.updateNewPrice}
+            updateCategory={this.updateCategory}
+            updateNewArrival={this.updateNewArrival}
+            updateSalePrice={this.updateSalePrice}
+            updateSaleEnabled={this.updateSaleEnabled}
             updateSmall={this.updateSmallCount}
             updateMedium={this.updateMediumCount}
             updateLarge={this.updateLargeCount}
@@ -258,8 +354,16 @@ export default class Gallery extends React.Component {
         </CloudinaryContext>
 
         <div className="page-container">
-          {index > 1 && <button onClick={() => this.switchPage(-1)} className="page-control control-previous">Prev</button>}
-          {pages >= index && <button onClick={() => this.switchPage(1)} className="page-control control-next">Next</button>}
+          {index > 1 && 
+            <Link to={this.getNextPage(-1)} className="page-control control-previous">
+              <button className="page-control control-previous">Prev</button>
+            </Link>
+          }
+          {index < pages && 
+            <Link to={this.getNextPage(1)} className="page-control control-next">
+              <button className="page-control control-next">Next</button>
+            </Link>
+          }
         </div>
 
         {token && <AuthFooter history={history} />}
