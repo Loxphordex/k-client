@@ -23,6 +23,7 @@ export default class Gallery extends React.Component {
       images: [],
       allImages: [],
       imagesPerPage: 12,
+      modifier: '',
 
       editorOpen: false,
       editorImageId: null,
@@ -52,6 +53,8 @@ export default class Gallery extends React.Component {
 
   componentDidUpdate = () => {
     this.displayImages()
+    this.switchGallery()
+    console.log('update')
   }
 
   displayImages = () => {
@@ -107,8 +110,33 @@ export default class Gallery extends React.Component {
     setImages(allImages)
   }
 
-  getAndDisplayImages = () => {
-    ApiServices.getImages()
+  switchGallery = () => {
+    const { match } = this.props
+    const { modifier } = this.state
+    if (match && match.params) {
+      const mod = match.params.modifier
+      if (mod) {
+        if (mod === 'sale' && modifier !== 'sale') {
+          this.setState({ modifier: 'sale' }, () => this.switchModifierCallback('sale'))
+        }
+        else if (mod === 'arrivals' && modifier !== 'arrivals') {
+          this.setState({ modifier: 'arrivals' }, () => this.switchModifierCallback('arrivals'))
+        }
+        else if (!mod && !modifier) {
+          this.setState({ modifier: '' }, this.switchModifierCallback)
+        }
+      }
+    }
+  }
+
+  switchModifierCallback = (modifier) => {
+    if (modifier === 'sale') this.getAndDisplayImages(ApiServices.getImagesOnSale)
+    if (modifier === 'arrivals') this.getAndDisplayImages(ApiServices.getImagesOnNewArrival)
+    else this.getAndDisplayImages()
+  }
+
+  getAndDisplayImages = (fetchImages = ApiServices.getImages) => {
+    fetchImages()
       .then(allImages => this.setState({ allImages: allImages.mappedImages }))
       .then(() => this.setNumberOfPages())
       .then(() => this.setCurrentPage())
@@ -274,7 +302,6 @@ export default class Gallery extends React.Component {
         if (nextPage !== 0 && nextPage <= pages) {
           const newParams = params.toString().replace(`page=${currentPage}`, `page=${nextPage}`)
           const newUrl = `${currentUrl}?${newParams}`
-          console.log(newUrl)
           return newUrl
         }
       }

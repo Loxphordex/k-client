@@ -1,7 +1,14 @@
 import React from 'react'
 import './Footer.css'
+import ApiServices from '../../services/api-services'
 
 export default function Footer() {
+
+  function testEmail() {
+    ApiServices.postTestEmail()
+      .then(res => console.log(res))
+      .catch(er => console.log(er))
+  }
   return (
     <section className="footer-container">
       <div className="social-link">
@@ -24,6 +31,7 @@ export default function Footer() {
           Email
         </a>
       </div>
+      {/* <div onClick={testEmail}>Test Email</div> */}
     </section>
   )
 }
