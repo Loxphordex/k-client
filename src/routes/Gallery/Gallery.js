@@ -53,8 +53,14 @@ export default class Gallery extends React.Component {
 
   componentDidUpdate = () => {
     this.displayImages()
-    this.switchGallery()
-    console.log('update')
+    // this.switchGallery()
+    const { match } = this.props
+    const mod = match.params.modifier
+    const { modifier } = this.state
+
+    if (mod !== modifier) {
+      this.setState({ modifier: mod })
+    }
   }
 
   displayImages = () => {
@@ -110,24 +116,24 @@ export default class Gallery extends React.Component {
     setImages(allImages)
   }
 
-  switchGallery = () => {
-    const { match } = this.props
-    const { modifier } = this.state
-    if (match && match.params) {
-      const mod = match.params.modifier
-      if (mod) {
-        if (mod === 'sale' && modifier !== 'sale') {
-          this.setState({ modifier: 'sale' }, () => this.switchModifierCallback('sale'))
-        }
-        else if (mod === 'arrivals' && modifier !== 'arrivals') {
-          this.setState({ modifier: 'arrivals' }, () => this.switchModifierCallback('arrivals'))
-        }
-        else if (!mod && !modifier) {
-          this.setState({ modifier: '' }, this.switchModifierCallback)
-        }
-      }
-    }
-  }
+  // switchGallery = () => {
+  //   const { match } = this.props
+  //   const { modifier } = this.state
+  //   if (match && match.params) {
+  //     const mod = match.params.modifier
+  //     if (mod) {
+  //       if (mod === 'sale' && modifier !== 'sale') {
+  //         this.setState({ modifier: 'sale' }, () => this.switchModifierCallback('sale'))
+  //       }
+  //       else if (mod === 'arrivals' && modifier !== 'arrivals') {
+  //         this.setState({ modifier: 'arrivals' }, () => this.switchModifierCallback('arrivals'))
+  //       }
+  //       else if (!mod && !modifier) {
+  //         this.setState({ modifier: '' }, this.switchModifierCallback)
+  //       }
+  //     }
+  //   }
+  // }
 
   switchModifierCallback = (modifier) => {
     if (modifier === 'sale') this.getAndDisplayImages(ApiServices.getImagesOnSale)
@@ -317,7 +323,8 @@ export default class Gallery extends React.Component {
       editorOpen,
       deleteFormOpen,
       index,
-      pages } = this.state
+      pages,
+      modifier } = this.state
     const token = TokenServices.getJwt()
     return (
       <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`}>
@@ -350,6 +357,7 @@ export default class Gallery extends React.Component {
             images={images}
             setEditorImageId={this.setEditorImageId}
             setDeleteId={this.setDeleteId}
+            modifier={modifier}
           />
         </CloudinaryContext>
 
