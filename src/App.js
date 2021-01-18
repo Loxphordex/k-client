@@ -10,18 +10,13 @@ import Details from './routes/Details/Details'
 import Confirm from './routes/Confirm/Confirm'
 import Footer from './components/Footer/Footer'
 import Landing from './routes/Landing/Landing'
+import Discover from './routes/Discover/Discover'
+import DiscoverEntry from './components/DiscoverEntry/DiscoverEntry'
 import RedirectFromLanding from './routes/Redirect/RedirectFromLanding'
 import { updateStorageCart } from './services/helper-functions'
 import './App.css'
 import './Fonts.css'
 import './styles/fadeIn.css'
-
-// TODO
-/***
- * Replace keys and test
- * Set up basic cancel and success pages
- * set up email confirmation
- */
 
 class App extends React.Component {
   state = {
@@ -68,6 +63,8 @@ class App extends React.Component {
         <Route path="/" render={() => <Header cartCount={this.state.cartCount} />} />
         <Route exact path="/"><RedirectFromLanding /></Route>
         <Route exact path="/gallery/:modifier" render={({ history, match }) => <Gallery history={history} match={match} setImages={this.setImages} />} />
+        <Route path="/discover"><Discover /></Route>
+        <Route path="/new_discover_entry"><DiscoverEntry /></Route>
         <Route path="/new" render={() => <NewImageRoute />} />
         <Route path="/auth" render={({ history }) => <AuthRoute history={history} />} />
         <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
