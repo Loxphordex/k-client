@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import AuthFooter from '../AuthFooter/AuthFooter'
 import { Redirect } from 'react-router-dom'
@@ -17,6 +18,14 @@ export default function DiscoverEntry() {
     }
   }, [])
 
+  function postEntry() {
+    if (editorHtml) {
+      ApiServices.postNewDiscoverEntry({ content: editorHtml })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
+  }
+
   return (
     <div className='discover-entry' id='discover-entry'>
       {token && 
@@ -29,6 +38,7 @@ export default function DiscoverEntry() {
             formats={formats}
             bounds='.discover-entry'
           />
+          <button onClick={postEntry} className='t-button-submit'>Post</button>
           <AuthFooter />
         </>
       }
