@@ -39,12 +39,18 @@ export default class LoginRoute extends React.Component {
     event.preventDefault()
 
     const { username, password } = this.state
-    const { history } = this.props
+    const { history, handleClosePopup } = this.props
     ApiServices.userLogin(username, password)
       .then(res => window.localStorage.setItem('pearegrineKey', res.authToken))
       .then(() => this.clearCreds())
       .then(() => this.clearError())
-      .then(() => history.push('/'))
+      .then(() => {
+        if (handleClosePopup) {
+          handleClosePopup(false)
+        } else {
+          history.push('/')
+        }
+      })
       .catch(e => this.handleError(e))
   }
 

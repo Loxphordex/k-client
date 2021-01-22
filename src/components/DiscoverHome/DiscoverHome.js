@@ -1,43 +1,64 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import ArticleLink from './ArticleLink'
 import AuthFooter from '../AuthFooter/AuthFooter'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
-import parse from 'html-react-parser'
 import './Discover.css'
 
-export default function DiscoverHome() {
-  const [entries, setEntries] = useState(null)
+export default function DiscoverHome({ history }) {
+  const [articles, setArticles] = useState(null)
   const [error, setError] = useState(null)
   const token = TokenServices.getJwt()
 
   useEffect(() => {
-    if (!entries || entries.length === 0) {
-      ApiServices.getDiscoverPosts()
-        .then(res => {setEntries(res.entries)})
-        .then(() => setError(null))
-        .catch(err => setError(err))
-    }
+    getPosts()
 
     return () => {
       setError(null)
     }
-  }, [entries])
+  }, [])
+
+  function getPosts() {
+    ApiServices.getDiscoverPosts()
+      .then(res => setArticles(res.entries))
+      .then(() => setError(null))
+      .catch(err => setError(err))
+  }
 
   function deleteEntry(id) {
-    ApiServices.deleteEntry(id)
-      .then(res => console.log(res))
+    ApiServices.deleteDiscoverEntry(id)
+      .then(() => getPosts())
+      .catch(err => setError(err))
   }
 
   return (
     <div className='discover-home'>
-      {entries && <div>{entries.map(e => <div key={e.id}>{parse(e.content)}</div>)}</div>}
+      {articles && articles.length > 0 &&
+          <div className='discover-list'>
+            {articles.map(article => {
+              return (
+                <div key={article.id} className='post-link-container'>
+                  <Link 
+                    to={{
+                      pathname: '/discover/post',
+                      search: `?id=${article.id}`,
+                      state: { article }
+                    }}
+                  >
+                    <ArticleLink article={article} token={token} deleteEntry={deleteEntry} />
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+      }
       {token && 
         <>
           <Link to='new_discover_entry'>
             <button className='t-button new-discover-create-link'>New Entry</button>
           </Link>
-          <AuthFooter />
+          <AuthFooter history={history} />
         </>
       }
     </div>

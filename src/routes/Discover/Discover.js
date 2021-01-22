@@ -1,10 +1,10 @@
 import React from 'react'
 import DiscoverHome from '../../components/DiscoverHome/DiscoverHome'
 
-export default function Discover() {
+export default function Discover({ history }) {
   return (
     <section className='discover-container'>
-      <DiscoverHome />
+      <DiscoverHome history={history} />
     </section>
   )
 }

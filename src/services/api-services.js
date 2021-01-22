@@ -128,7 +128,14 @@ const ApiServices = {
   },
 
   deleteDiscoverEntry(id) {
-    return fetch(`${config.API_ENDPOINT}/api/discover/${id}`)
+    return fetch(`${config.API_ENDPOINT}/api/discover?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer ${TokenServices.getJwt()}`
+      }
+    })
       .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   }
 }

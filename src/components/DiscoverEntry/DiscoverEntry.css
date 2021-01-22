@@ -1,3 +1,12 @@
 .ql-editor {
-  min-height: 18em;
+  min-height: 38em;
+}
+
+.discover-label {
+  font-size: 1.2em;
+}
+
+.discover-input {
+  margin-bottom: 1.5em;
+  width: 100%;
 }
