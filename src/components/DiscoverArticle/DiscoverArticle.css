@@ -6,6 +6,7 @@
   top: 0;
   margin: auto;
   width: 100vw;
+  max-width: 100%;
   max-height: 50em;
   object-fit: cover;
 }
@@ -40,7 +41,7 @@
 
 .discover-main-article img {
   width: 600px;
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 .discover-main-article p {
@@ -49,4 +50,28 @@
 
 .discover-main-article p:first-child {
   margin-top: 0;
+}
+
+@media only screen and (max-width: 760px) {
+  .discover-header-image {
+    top: 5em;
+  }
+  .discover-article-container {
+    margin-top: 13em;
+  }
+  .article-main-header-container {
+    padding: 1em 1em 2em 1em;
+  }
+  
+  .article-main-header {
+    font-size: 2em;
+  }
+
+  .discover-main-article {
+    padding: 0 1em;
+  }
+
+  .discover-main-article p {
+    font-size: 1em;
+  }
 }
