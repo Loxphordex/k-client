@@ -1,32 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import config from '../../config'
 
-export default class CloudinaryWidget extends React.Component {
-  checkUploadResult = resultEvent => {
-    const { setImageUrl } = this.props
+export default function CloudinaryWidget({ setImageUrl }) {
+  const [widget, setWidget] = useState(null)
+
+  useEffect(() => {
+    if (!widget) {
+      const unsetWidget = window.cloudinary.createUploadWidget(
+        {
+          cloudName: config.CLOUD_NAME,
+          uploadPreset: 'ufhbnsnq'
+        },
+        (error, result) => {
+          checkUploadResult(result)
+        }
+      )
+
+      setWidget(unsetWidget)
+    }
+  }, [])
+
+  function checkUploadResult(resultEvent) {
     if (resultEvent.event === 'success') {
       setImageUrl(resultEvent.info.url)
     }
   }
 
-  showWidget = widget => {
-    widget.open()
+  function showWidget(wid) {
+    wid.open()
   }
 
-  render() {
-    const widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: config.CLOUD_NAME,
-        uploadPreset: 'ufhbnsnq'
-      },
-      (error, result) => {
-        this.checkUploadResult(result)
-      }
-    )
-    return (
-      <button className="t-button" onClick={() => this.showWidget(widget)}>
-        SELECT IMAGE
-      </button>
-    )
-  }
+  return (
+    <button className="t-button" onClick={() => showWidget(widget)}>
+      SELECT IMAGE
+    </button>
+  )
 }

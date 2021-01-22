@@ -115,6 +115,12 @@ const ApiServices = {
       .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
+  getDiscoverPostById(id) {
+    return fetch(`${config.API_ENDPOINT}/api/discover?id=${id}`).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    )
+  },
+
   postNewDiscoverEntry(entry) {
     return fetch(`${config.API_ENDPOINT}/api/discover`, {
       method: 'POST',

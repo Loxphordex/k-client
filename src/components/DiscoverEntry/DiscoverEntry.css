@@ -10,3 +10,9 @@
   margin-bottom: 1.5em;
   width: 100%;
 }
+
+.new-discover-title {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  min-height: 2em;
+}

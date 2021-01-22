@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import CloudinaryWidget from '../CloudinaryWidget/CloudinaryWidget'
 import LoginPopup from '../LoginPopup/LoginPopup'
 import ErrorAlert from '../Error/ErrorAlert'
 import ApiServices from '../../services/api-services'
@@ -12,6 +13,7 @@ import './DiscoverEntry.css'
 
 export default function DiscoverEntry({ history }) {
   const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
   const [editorHtml, setEditorHtml] = useState('')
   const [error, setError] = useState(null)
   const token = TokenServices.getJwt()
@@ -25,17 +27,22 @@ export default function DiscoverEntry({ history }) {
 
   function postEntry() {
     if (!title) {
-      handleErrorWithTimeout('Title must not be blank')
+      handleErrorWithTimeout('Please enter a title')
     }
 
     else if (!editorHtml) {
-      handleErrorWithTimeout('Blog entry must contain content')
+      handleErrorWithTimeout('Please provide content for the blog')
     }
 
-    if (title && editorHtml && !error) {
+    else if (!url) {
+      handleErrorWithTimeout('Please provide a header image')
+    }
+
+    if (title && editorHtml && url) {
       const entry = {
         title,
-        content: editorHtml
+        content: editorHtml,
+        url
       }
       ApiServices.postNewDiscoverEntry(entry)
         .then(() => {
@@ -60,12 +67,14 @@ export default function DiscoverEntry({ history }) {
         <>
           <label htmlFor='new-discover-title' className='t-label discover-label'>Title</label>
           <input
-            className='new-discover-title t-input discover-input'
+            className='t-input discover-input new-discover-title'
             name='new-discover-title'
             id='new-discover-title'
             onChange={event => setTitle(event.target.value)}
             required={true}
           />
+          <label className='t-label t-discover-label'>Header Image</label>
+          <CloudinaryWidget setImageUrl={setUrl} />
           {error && error.message && <ErrorAlert errorMessage={error.message} handleError={setError} />}
           <ReactQuill
             theme='snow'
