@@ -20,6 +20,8 @@ export default function DiscoverEntry({ history }) {
 
   useEffect(() => {
     return () => {
+      setTitle('')
+      setUrl('')
       setEditorHtml('')
       setError(null)
     }
@@ -61,10 +63,17 @@ export default function DiscoverEntry({ history }) {
     }, time);
   }
 
+  function handleCancel() {
+    history.push('/discover')
+  }
+
   return (
     <div className='discover-entry' id='discover-entry'>
       {token && 
         <>
+          <h1 className='t-label discover-hero'>New Discover Article</h1>
+          <label className='t-label discover-label'>Header Image</label>
+          <CloudinaryWidget imageUrl={url} setImageUrl={setUrl} />
           <label htmlFor='new-discover-title' className='t-label discover-label'>Title</label>
           <input
             className='t-input discover-input new-discover-title'
@@ -73,8 +82,6 @@ export default function DiscoverEntry({ history }) {
             onChange={event => setTitle(event.target.value)}
             required={true}
           />
-          <label className='t-label t-discover-label'>Header Image</label>
-          <CloudinaryWidget setImageUrl={setUrl} />
           {error && error.message && <ErrorAlert errorMessage={error.message} handleError={setError} />}
           <ReactQuill
             theme='snow'
@@ -84,7 +91,10 @@ export default function DiscoverEntry({ history }) {
             formats={formats}
             bounds='.discover-entry'
           />
-          <button onClick={postEntry} className='t-button-submit'>Post</button>
+          <div className='discover-button-container'>
+            <button onClick={postEntry} className='discover-button'>Post</button>
+            <button onClick={handleCancel} className='discover-button'>Cancel</button>
+          </div>
           <LoginPopup error={error} setError={setError} />
           <AuthFooter history={history} />
         </>

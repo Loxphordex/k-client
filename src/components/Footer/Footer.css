@@ -1,5 +1,6 @@
 .footer-container {
   text-align: center;
+  margin-top: 1.5em;
   margin-bottom: 8vh;
 }
 
@@ -15,5 +16,6 @@
     max-width: 1050px;
     margin: auto;
     margin-bottom: 8vh;
+    margin-top: 1.5em;
   }
 }
