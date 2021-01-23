@@ -1,0 +1,28 @@
+.cloud-widget-container {
+  margin: 15px auto;
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+.cloud-widget-add-image {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  color: inherit;
+  border: 1px solid rgb(172, 179, 182);
+  background-color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8em;
+  margin: 0 10px;
+  transition: all 150ms;
+  border-radius: 2px;
+}
+
+.widget-preview-image {
+  margin: 0 10px;
+  transition: all 150ms;
+  border-radius: 2px;
+  max-height: 100px;
+}

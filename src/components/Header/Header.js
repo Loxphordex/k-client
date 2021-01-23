@@ -17,7 +17,7 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <header role="heading">
+      <header role="heading" className="main-header">
         <nav role="navigation" className="main-header-nav">
           <ul className="main-nav-links">
             <li>

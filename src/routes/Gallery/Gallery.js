@@ -52,8 +52,8 @@ export default class Gallery extends React.Component {
   }
 
   componentDidUpdate = () => {
+    window.scrollTo(0, 0)
     this.displayImages()
-    // this.switchGallery()
     const { match } = this.props
     const mod = match.params.modifier
     const { modifier } = this.state
@@ -115,25 +115,6 @@ export default class Gallery extends React.Component {
     this.setState({ images })
     setImages(allImages)
   }
-
-  // switchGallery = () => {
-  //   const { match } = this.props
-  //   const { modifier } = this.state
-  //   if (match && match.params) {
-  //     const mod = match.params.modifier
-  //     if (mod) {
-  //       if (mod === 'sale' && modifier !== 'sale') {
-  //         this.setState({ modifier: 'sale' }, () => this.switchModifierCallback('sale'))
-  //       }
-  //       else if (mod === 'arrivals' && modifier !== 'arrivals') {
-  //         this.setState({ modifier: 'arrivals' }, () => this.switchModifierCallback('arrivals'))
-  //       }
-  //       else if (!mod && !modifier) {
-  //         this.setState({ modifier: '' }, this.switchModifierCallback)
-  //       }
-  //     }
-  //   }
-  // }
 
   switchModifierCallback = (modifier) => {
     if (modifier === 'sale') this.getAndDisplayImages(ApiServices.getImagesOnSale)

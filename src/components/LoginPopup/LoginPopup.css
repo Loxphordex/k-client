@@ -1,0 +1,26 @@
+.login-popup-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.login-popup-background {
+  background-color: rgba(36, 36, 36, 0.685);
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.login-route-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20vh;
+  margin: auto;
+  max-width: 500px;
+  z-index: 2000;
+}

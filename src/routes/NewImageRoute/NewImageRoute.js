@@ -64,17 +64,17 @@ export default class NewImageRoute extends React.Component {
   }
 
   render() {
-    const { error, confirmation } = this.state
+    const { error, confirmation, url } = this.state
     return (
       <section className="new-image-area t-form-container">
         <fieldset className="t-fieldset">
           <div className="t-confirmation">{confirmation}</div>
           <div className="t-error">{error}</div>
-          <h2 className="t-header">NEW IMAGE</h2>
-          <CloudinaryWidget setImageUrl={this.setImageUrl} />
+          <h2 className="t-header">New Image</h2>
+          <CloudinaryWidget imageUrl={url} setImageUrl={this.setImageUrl} />
           <form className="t-form" onSubmit={event => this.handleSubmit(event)}>
             <label id="t-label" htmlFor="imageName" className="t-label">
-              NAME
+              Name
             </label>
             <input
               type="text"
@@ -82,10 +82,10 @@ export default class NewImageRoute extends React.Component {
               name="imageName"
               id="imageName"
               onChange={event => this.setImageName(event.target.value)}
-              placeholder="OPTIONAL"
+              placeholder="Optional"
             />
             <label htmlFor="imageLink" className="t-label">
-              STORE LINK
+              Store Link
             </label>
             <input
               type="text"
@@ -93,11 +93,11 @@ export default class NewImageRoute extends React.Component {
               name="imageLink"
               id="imageLink"
               onChange={event => this.setImageLink(event.target.link)}
-              placeholder="OPTIONAL"
+              placeholder="Optional"
             />
             <div className="category-container">
-              <h3 className="t-label">CATEGORY</h3>
-              <label htmlFor="category-none" className="t-label t-label-radio">NONE</label>
+              <h3 className="t-label">Category</h3>
+              <label htmlFor="category-none" className="t-label t-label-radio">None</label>
               <input
                 type="radio"
                 id="category-none"
@@ -106,7 +106,7 @@ export default class NewImageRoute extends React.Component {
                 onChange={event => this.updateCategory(event.target.value)}
                 value=''
               />
-              <label htmlFor="category-shirt" className="t-label t-label-radio">SHIRT</label>
+              <label htmlFor="category-shirt" className="t-label t-label-radio">Shirt</label>
               <input
                 type="radio"
                 id="category-shirt"
@@ -115,7 +115,7 @@ export default class NewImageRoute extends React.Component {
                 onChange={event => this.updateCategory(event.target.value)}
                 value="shirt"
               />
-              <label htmlFor="category-sweatshirt" className="t-label t-label-radio">SWEATSHIRT</label>
+              <label htmlFor="category-sweatshirt" className="t-label t-label-radio">Sweatshirt</label>
               <input
                 type="radio"
                 id="category-sweatshirt"
@@ -124,7 +124,7 @@ export default class NewImageRoute extends React.Component {
                 onChange={event => this.updateCategory(event.target.value)}
                 value="sweatshirt"
               />
-              <label htmlFor="category-jeans" className="t-label t-label-radio">JEANS</label>
+              <label htmlFor="category-jeans" className="t-label t-label-radio">Jeans</label>
               <input
                 type="radio"
                 id="category-jeans"
@@ -133,7 +133,7 @@ export default class NewImageRoute extends React.Component {
                 onChange={event => this.updateCategory(event.target.value)}
                 value="jeans"
               />
-              <label htmlFor="category-hat" className="t-label t-label-radio">HAT</label>
+              <label htmlFor="category-hat" className="t-label t-label-radio">Hat</label>
               <input
                 type="radio"
                 id="category-hat"
@@ -144,7 +144,7 @@ export default class NewImageRoute extends React.Component {
               />
             </div>
             <button type="submit" className="t-button-submit">
-              SUBMIT
+              Submit
             </button>
           </form>
         </fieldset>

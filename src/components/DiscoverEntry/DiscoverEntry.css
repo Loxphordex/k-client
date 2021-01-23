@@ -1,0 +1,52 @@
+.discover-entry {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  background-color: #f2f4f8;
+  border-radius: 2px;
+}
+
+.discover-hero {
+  font-size: 30pt;
+  margin: 0.8em 0;
+}
+
+.discover-entry .ql-editor {
+  min-height: 58em;
+  background-color: white;
+}
+
+.discover-label {
+  font-size: 1.2em;
+}
+
+.discover-input {
+  margin-bottom: 1.5em;
+  width: 100%;
+}
+
+.new-discover-title {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  min-height: 2em;
+}
+
+.discover-button-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em;
+}
+
+.discover-button {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  background-color: white;
+  color: inherit;
+  border: 1px solid rgb(172, 179, 182);
+  cursor: pointer;
+  font-weight: 600;
+}

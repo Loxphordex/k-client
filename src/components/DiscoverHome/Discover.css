@@ -1,0 +1,70 @@
+.discover-home {
+  min-height: 640px;
+}
+
+.discover-list {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.new-discover-create-link {
+  max-width: 240px;
+}
+
+.post-link-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+}
+
+.post-link-container a {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+}
+
+.discover-link-header-container {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  height: 100px;
+  background-color: #f8f9fea2;
+  padding: 8px;
+}
+
+.discover-link-header {
+  margin: 0;
+  color: rgb(39, 47, 78);
+}
+
+.discover-article-link-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.discover-article-link-container img {
+  position: absolute;
+  z-index: -100;
+  left: 0;
+  right: 0;
+  top: 0;
+  max-width: 300px;
+  min-height: 300px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: -6px 12px 27px -11px #10101336;
+}
+
+.delete-discover-entry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 280px;
+}
