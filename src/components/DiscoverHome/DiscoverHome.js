@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CloudinaryContext } from 'cloudinary-react'
+import config from '../../config'
 import ArticleLink from './ArticleLink'
 import AuthFooter from '../AuthFooter/AuthFooter'
 import ApiServices from '../../services/api-services'
@@ -34,33 +36,27 @@ export default function DiscoverHome({ history }) {
 
   return (
     <div className='discover-home'>
-      {articles && articles.length > 0 &&
-          <div className='discover-list'>
-            {articles.map(article => {
-              return (
-                <div key={article.id} className='post-link-container'>
-                  <Link 
-                    to={{
-                      pathname: '/discover/post',
-                      search: `?id=${article.id}`,
-                      state: { article }
-                    }}
-                  >
+      <CloudinaryContext cloudName={config.CLOUD_NAME}>
+        {articles && articles.length > 0 &&
+            <div className='discover-list'>
+              {articles.map(article => {
+                return (
+                  <div key={article.id} className='post-link-container fade-in'>
                     <ArticleLink article={article} token={token} deleteEntry={deleteEntry} />
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-      }
-      {token && 
-        <>
-          <Link to='new_discover_entry'>
-            <button className='t-button new-discover-create-link'>New Entry</button>
-          </Link>
-          <AuthFooter history={history} />
-        </>
-      }
+                  </div>
+                )
+              })}
+            </div>
+        }
+        {token && 
+          <>
+            <Link to='new_discover_entry' className='discover-new-entry'>
+              <button className='t-button new-discover-create-link'>New Entry</button>
+            </Link>
+            <AuthFooter history={history} />
+          </>
+        }
+      </CloudinaryContext>
     </div>
   )
 }
