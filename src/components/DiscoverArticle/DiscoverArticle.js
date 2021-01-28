@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ApiServices from '../../services/api-services'
-import { CloudinaryContext, Image, Transformation } from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react'
 import config from '../../config'
 import parse from 'html-react-parser'
 import './DiscoverArticle.css'
@@ -35,11 +35,9 @@ export default function DiscoverArticle({ location }) {
     return (
       <div className='discover-article-container'>
         <div className='discover-header-image-container'>
-          <CloudinaryContext cloudName={config.CLOUD_NAME}>
-            <Image publicId={mainArticle.header_url} type='fetch' name={mainArticle.header_url} className='discover-header-image'>
-              <Transformation quality='90' crop='scale' fetchFormat='auto' />
-            </Image>
-          </CloudinaryContext>
+          <Image publicId={mainArticle.header_url} type='fetch' name={mainArticle.header_url} className='discover-header-image'>
+            <Transformation quality='90' crop='scale' fetchFormat='auto' />
+          </Image>
         </div>
         <div className='article-main-header-container'>
           <h1 className='article-main-header'>{mainArticle.title}</h1>

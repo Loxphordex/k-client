@@ -1,6 +1,5 @@
 import React from 'react'
 import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
-import { CloudinaryContext } from 'cloudinary-react'
 import SizesInfo from './SizesInfo'
 import { removeFromCart } from '../../services/helper-functions'
 import config from '../../config'
@@ -16,9 +15,9 @@ export default class GenerateCartList extends React.Component {
           <>
             <li key={image.id} className="cart-item-container">
               <div className="cart-img-container">
-                <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
+                <div cloudName={config.CLOUD_NAME} className="cloud-context">
                   <GenerateImageElement image={image} width="160" />
-                </CloudinaryContext>
+                </div>
               </div>
               <div className="cart-item-details">
                 <h2 className="cart-item-header">{image.name}</h2>

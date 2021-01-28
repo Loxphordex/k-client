@@ -1,5 +1,4 @@
 import React from 'react'
-import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
@@ -77,7 +76,7 @@ export default class Details extends React.Component {
     if (image) {
       return (
         <div className="details-container">
-          <CloudinaryContext
+          <div
             cloudName={config.CLOUD_NAME}
             className="cloud-context"
           >
@@ -114,7 +113,7 @@ export default class Details extends React.Component {
                 />
               </div>
             </div>
-          </CloudinaryContext>
+          </div>
         </div>
       )
     }

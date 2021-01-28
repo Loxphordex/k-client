@@ -1,5 +1,4 @@
 import React from 'react'
-import { CloudinaryContext } from 'cloudinary-react'
 import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
@@ -333,14 +332,14 @@ export default class Gallery extends React.Component {
           <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
         )}
 
-        <CloudinaryContext cloudName={config.CLOUD_NAME} className="cloud-context">
+        <div cloudName={config.CLOUD_NAME} className="cloud-context">
           <GenerateImages
             images={images}
             setEditorImageId={this.setEditorImageId}
             setDeleteId={this.setDeleteId}
             modifier={modifier}
           />
-        </CloudinaryContext>
+        </div>
 
         <div className="page-container">
           {index > 1 && 

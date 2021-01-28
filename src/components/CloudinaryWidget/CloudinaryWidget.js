@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CloudinaryContext, Image, Transformation } from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react'
 import config from '../../config'
 import './CloudinaryWidget.css'
 
@@ -37,13 +37,13 @@ export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
       <button className='cloud-widget-add-image' onClick={() => showWidget(widget)}>
         { imageUrl ? 'Replace Image' : 'Select Image' }
       </button>
-      <CloudinaryContext cloudName={config.CLOUD_NAME} className='widget-context'>
+      <div cloudName={config.CLOUD_NAME} className='widget-context'>
         {imageUrl && 
           <Image publicId={imageUrl} type='fetch' name={imageUrl} className='widget-preview-image'>
             <Transformation quality='80' width='100' crop='scale' fetchFormat='auto' />
           </Image>
         }
-      </CloudinaryContext>
+      </div>
     </div>
   )
 }
