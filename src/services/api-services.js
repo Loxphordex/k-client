@@ -82,12 +82,12 @@ const ApiServices = {
 
   // Stripe API services
   testPaySessionEndpoint() {
-    return fetch(`${config.API_ENDPOINT}/api/pay/create-session`)
+    return fetch(`${config.API_ENDPOINT}/api/pay/create_session`)
       .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
   },
 
   testLocalPaymentSession(cart) {
-    return fetch(`${config.API_ENDPOINT}/api/pay/create-session`, {
+    return fetch(`${config.API_ENDPOINT}/api/pay/create_session`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -99,7 +99,7 @@ const ApiServices = {
 
   // Email services
   postTestEmail() {
-    return fetch(`http://localhost:8000/api/email/test_email`, {
+    return fetch(`${config.API_ENDPOINT}/api/email/test_email`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
