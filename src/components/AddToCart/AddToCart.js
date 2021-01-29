@@ -21,7 +21,7 @@ export default class AddToCart extends React.Component {
       <button 
         className={`add-to-cart ${this.checkIfDisabled()}`} 
         onClick={this.addShirtToCart}>
-        ADD TO CART
+        Add To Cart
       </button>
     )
   }

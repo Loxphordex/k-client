@@ -1,8 +1,10 @@
 import React from 'react'
 import './Footer.css'
 import ApiServices from '../../services/api-services'
+import TokenServices from '../../services/token-services'
 
 export default function Footer() {
+  const token = TokenServices.getJwt()
 
   function testEmail() {
     ApiServices.postTestEmail()
@@ -31,7 +33,7 @@ export default function Footer() {
           Email
         </a>
       </div>
-      {/* <div onClick={testEmail}>Test Email</div> */}
+      {token && <div onClick={testEmail}>Test Email</div>}
     </section>
   )
 }
