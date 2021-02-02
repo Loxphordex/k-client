@@ -30,7 +30,7 @@ export default class GenerateImages extends React.Component {
       <section className="generated-images">
         {images &&
           images.map(image => (
-            <>
+            <div key={image.id}>
               {this.imageMatchesModifier(image) && <div className="img-container fade-in" key={image.url}>
                 {token && (
                   <ImageEdit
@@ -42,7 +42,7 @@ export default class GenerateImages extends React.Component {
                 <GenerateImageElement image={image} width="250" />
                 <h2>{!!image.name && image.name}</h2>  
               </div>}
-            </>
+            </div>
           ))}
         <FalseDisplacementImage num={numPassing} />
       </section>

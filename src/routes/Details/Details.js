@@ -76,10 +76,7 @@ export default class Details extends React.Component {
     if (image) {
       return (
         <div className="details-container">
-          <div
-            cloudName={config.CLOUD_NAME}
-            className="cloud-context"
-          >
+          <div className="cloud-context">
             <div className="details-main">
               <DetailsImage pic={image} />
               <div className="details-info-container fade-in">

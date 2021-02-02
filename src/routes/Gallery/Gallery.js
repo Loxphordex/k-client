@@ -332,7 +332,7 @@ export default class Gallery extends React.Component {
           <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
         )}
 
-        <div cloudName={config.CLOUD_NAME} className="cloud-context">
+        <div className="cloud-context">
           <GenerateImages
             images={images}
             setEditorImageId={this.setEditorImageId}

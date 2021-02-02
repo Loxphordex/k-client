@@ -37,7 +37,7 @@ export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
       <button className='cloud-widget-add-image' onClick={() => showWidget(widget)}>
         { imageUrl ? 'Replace Image' : 'Select Image' }
       </button>
-      <div cloudName={config.CLOUD_NAME} className='widget-context'>
+      <div className='widget-context'>
         {imageUrl && 
           <Image publicId={imageUrl} type='fetch' name={imageUrl} className='widget-preview-image'>
             <Transformation quality='80' width='100' crop='scale' fetchFormat='auto' />
