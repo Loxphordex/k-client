@@ -1,5 +1,4 @@
 import React from 'react'
-import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'
@@ -332,7 +331,7 @@ export default class Gallery extends React.Component {
           <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
         )}
 
-        <div cloudName={config.CLOUD_NAME} className="cloud-context">
+        <div className="cloud-context">
           <GenerateImages
             images={images}
             setEditorImageId={this.setEditorImageId}

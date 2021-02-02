@@ -1,5 +1,4 @@
 import React from 'react'
-import config from '../../config'
 import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
 import ErrorAlert from '../../components/Error/ErrorAlert'
@@ -76,10 +75,7 @@ export default class Details extends React.Component {
     if (image) {
       return (
         <div className="details-container">
-          <div
-            cloudName={config.CLOUD_NAME}
-            className="cloud-context"
-          >
+          <div className="cloud-context">
             <div className="details-main">
               <DetailsImage pic={image} />
               <div className="details-info-container fade-in">

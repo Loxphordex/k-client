@@ -12,7 +12,7 @@ export default function Footer() {
       .catch(er => console.log(er))
   }
   return (
-    <section className="footer-container">
+    <section className="footer-container fade-in">
       <div className="social-link">
         {/* <i className="fab fa-instagram" /> */}
         <a

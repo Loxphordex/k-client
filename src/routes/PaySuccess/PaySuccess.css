@@ -1,0 +1,48 @@
+.confirm-success-container {
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 20vw;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  padding: 10px 3em;
+  max-width: 600px;
+}
+
+.confirm-success-container p {
+  font-weight: 500;
+  text-align: justify;
+  display: inline-block;
+  width: 100%;
+}
+
+.confirm-header {
+  width: 100%;
+  margin: 1.5em 0;
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+.confirm-icon-container {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.return-from-confirm {
+  cursor: pointer;
+  transition: all 120ms;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.return-from-confirm p {
+  padding-left: 8px;
+}
+
+.return-from-confirm:hover {
+  color: rgb(132, 220, 255);
+}

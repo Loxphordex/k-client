@@ -23,14 +23,14 @@ export default class GenerateImages extends React.Component {
     return count
   }
   render() {
-    const { images, setEditorImageId, setDeleteId, modifier } = this.props
+    const { images, setEditorImageId, setDeleteId } = this.props
     const token = TokenServices.getJwt()
     const numPassing = this.numImagesPassing()
     return (
       <section className="generated-images">
         {images &&
           images.map(image => (
-            <>
+            <div key={image.id}>
               {this.imageMatchesModifier(image) && <div className="img-container fade-in" key={image.url}>
                 {token && (
                   <ImageEdit
@@ -42,7 +42,7 @@ export default class GenerateImages extends React.Component {
                 <GenerateImageElement image={image} width="250" />
                 <h2>{!!image.name && image.name}</h2>  
               </div>}
-            </>
+            </div>
           ))}
         <FalseDisplacementImage num={numPassing} />
       </section>

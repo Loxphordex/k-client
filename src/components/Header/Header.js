@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../../components/NavBar/NavBar'
 import { cartScroll } from './cartScroll'
 import { Link } from 'react-router-dom'
 import { ShoppingCartSimple } from 'phosphor-react'

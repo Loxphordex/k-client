@@ -2,20 +2,19 @@ import React from 'react'
 import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
 import SizesInfo from './SizesInfo'
 import { removeFromCart } from '../../services/helper-functions'
-import config from '../../config'
 import { TrashSimple } from 'phosphor-react'
 import logo from '../../images/Pear.png'
 
 export default class GenerateCartList extends React.Component {
   render() {
-    const { cart, handleError, setCart, setTotalCost } = this.props
+    const { cart, setCart, setTotalCost } = this.props
     if (cart && cart.length > 0) {
       return cart.map(image => {
         return (
-          <>
+          <div key={image.id}>
             <li key={image.id} className="cart-item-container">
               <div className="cart-img-container">
-                <div cloudName={config.CLOUD_NAME} className="cloud-context">
+                <div className="cloud-context">
                   <GenerateImageElement image={image} width="160" />
                 </div>
               </div>
@@ -35,7 +34,7 @@ export default class GenerateCartList extends React.Component {
             <div className="total">
               {`Total: $${setTotalCost(cart)}`}
             </div>
-          </>
+          </div>
         )
       })
     }
