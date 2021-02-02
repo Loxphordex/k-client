@@ -1,5 +1,4 @@
 import React from 'react'
-import config from '../../config'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
 import './Gallery.css'

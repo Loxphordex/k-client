@@ -74,7 +74,7 @@ class App extends React.Component {
           <Route path="/login" render={({ history }) => <LoginRoute history={history} />} />
           <Route path="/cart" render={() => <Cart cart={this.state.cart} images={this.state.images} setCart={this.setCart} />} />
           <Route path="/details" render={({ location }) => <Details location={location} cart={this.state.cart} setCart={this.setCart} />} />
-          <Route path="/confirm"><Confirm cart={this.state.cart} /></Route>
+          <Route path="/confirm" render={({ history }) => <Confirm history={history} cart={this.state.cart} setCart={this.setCart} />} />
           <Route path="/"><Footer /></Route>
         </CloudinaryContext>
       </div>

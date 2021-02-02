@@ -1,5 +1,4 @@
 import React from 'react'
-import config from '../../config'
 import AddToCart from '../../components/AddToCart/AddToCart'
 import DetailsImage from '../../components/DetailsImage/DetailsImage'
 import ErrorAlert from '../../components/Error/ErrorAlert'
