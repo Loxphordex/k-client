@@ -37,7 +37,13 @@ export default function MobileHeader({ showIcon }) {
         </div>
         <h1 className={`main-brand-logo mobile-logo ${popoutVisible ? 'popout-brand-image' : String()}`}>
           <Link to='/'>
-            <img src={logo} className={`brand-image jelly`} id='mobile-brand-image' alt='Pearegrine' />
+            <img
+              src={logo} 
+              className={`brand-image jelly`}
+              id='mobile-brand-image'
+              alt='Pearegrine'
+              onClick={() => enableMenu(false)}
+            />
           </Link>
         </h1>
         <Link to='/cart'>
