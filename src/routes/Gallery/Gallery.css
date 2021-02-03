@@ -1,8 +1,11 @@
+.gallery-area {
+  padding-top: 148px;
+}
+
 .generated-images {
   display: flex;
   flex-flow: wrap;
   justify-content: space-evenly;
-  margin-top: 24px;
   margin-bottom: 6vh;
 }
 
