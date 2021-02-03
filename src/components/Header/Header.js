@@ -8,6 +8,7 @@ import './Header.css'
 import './MobileHeader.css'
 import './scroll.css'
 import '../../styles/jelly.css'
+import '../Popout/Popout.css'
 
 export default function Header({ cartCount }) {
 

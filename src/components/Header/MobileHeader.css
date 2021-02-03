@@ -9,11 +9,11 @@
     display: flex;
     min-height: 60px;
     width: 100%;
-    padding-top: 2em;
     padding-bottom: 2em;
     justify-content: center;
     transition: all 120ms;
     background-color: #f8f9fe;
+    z-index: 2000;
   }
 
   .mobile-popout-icon-container {
@@ -32,6 +32,8 @@
 
   .mobile-logo {
     margin: auto;
+    padding-top: 10px;
+    padding: 50px;
     max-width: 50px;
     position: fixed;
     left: 0;

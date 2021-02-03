@@ -113,6 +113,13 @@
 }
 
 @media only screen and (max-width: 760px) {
+  .main-header {
+    position: absolute;
+    top: 0;
+  }
+}
+
+@media only screen and (max-width: 760px) {
   .main-header-nav {
     display: none;
   }

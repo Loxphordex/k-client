@@ -88,7 +88,7 @@
   color: rgb(122, 131, 131);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 760px) {
   .details-container {
     max-width: 1120px;
     margin: auto;
@@ -127,5 +127,12 @@
     font-size: 12pt;
     font-weight: 500;
     color: rgb(71, 79, 105);
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .details-container {
+    padding-top: 148px;
+    margin-top: 0;
   }
 }
