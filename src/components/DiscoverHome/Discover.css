@@ -68,3 +68,9 @@
   margin: auto;
   width: 280px;
 }
+
+@media only screen and (max-width: 760px) {
+  .discover-container {
+    padding-top: 148px;
+  }
+}

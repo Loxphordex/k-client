@@ -306,7 +306,7 @@ export default class Gallery extends React.Component {
       modifier } = this.state
     const token = TokenServices.getJwt()
     return (
-      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`}>
+      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
         {editorOpen && (
           <EditorForm
             disableEditor={this.disableEditor}

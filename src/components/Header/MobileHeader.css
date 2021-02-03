@@ -1,0 +1,46 @@
+.mobile-header-container {
+  display: none;
+  background-color: #f8f9fe;
+}
+
+@media only screen and (max-width: 760px) {
+  .mobile-header-container {
+    position: fixed;
+    display: flex;
+    min-height: 60px;
+    width: 100%;
+    padding-bottom: 2em;
+    justify-content: center;
+    transition: all 120ms;
+    background-color: #f8f9fe;
+    z-index: 2000;
+  }
+
+  .mobile-popout-icon-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    top: 0;
+    left: 0;
+    margin: 4%;
+    background-color: #f8f9fe;
+    border-radius: 50%;
+  }
+
+  .mobile-logo {
+    margin: auto;
+    padding-top: 10px;
+    padding: 50px;
+    max-width: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
+
+  .mobile-cart-icon {
+    position: fixed;
+  }
+}

@@ -1,0 +1,27 @@
+.scroll {
+  position: fixed;
+  background-color: #f8f9fe;
+  z-index: 2000;
+}
+
+.cart-scroll {
+  -webkit-animation: cartColorFadeIn ease-in-out 200ms;
+  -moz-animation: cartColorFadeIn ease-in-out 200ms;
+  -o-animation: cartColorFadeIn ease-in-out 200ms;
+  animation: cartColorFadeIn ease-in-out 200ms;
+  background-color: rgb(132, 220, 255);
+}
+
+.header-scroll {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  transition: all 120ms;
+  padding: 0;
+}
+
+.header-scroll .mobile-logo {
+  max-width: 24px;
+  padding-top: 6px;
+}
