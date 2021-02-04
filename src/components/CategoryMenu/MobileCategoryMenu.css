@@ -1,12 +1,11 @@
 .mobile-category-menu-container {
   text-align: left;
-  color: rgb(110, 135, 144);
-  padding-top: 4px;
+  padding-top: 7px;
   min-height: 300px;
 }
 
 .categories-menu-header {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .mobile-category-menu-list {
@@ -14,8 +13,8 @@
 }
 
 .mobile-category-menu-list li a {
-  font-size: 16px;
-  color: rgb(110, 135, 144);
+  font-size: 14px;
+  color: rgb(98, 118, 126);
 }
 
 .details-enabled-color {
