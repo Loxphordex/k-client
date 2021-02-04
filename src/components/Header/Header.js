@@ -10,6 +10,7 @@ import './MobileHeader.css'
 import './scroll.css'
 import '../../styles/jelly.css'
 import '../Popout/Popout.css'
+import '../CategoryMenu/CategoryMenu.css'
 import '../CategoryMenu/MobileCategoryMenu.css'
 
 export default function Header({ cartCount }) {
