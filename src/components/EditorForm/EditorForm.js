@@ -42,7 +42,6 @@ export default function EditorForm({
 
   function populateExistingValues() {
     if (image) {
-      console.log('IMAGE NAME ', image.name)
       if (image.name) updateNewName(image.name)
       if (image.link) updateNewLink(image.link)
       if (image.description) updateNewDescription(image.description)
