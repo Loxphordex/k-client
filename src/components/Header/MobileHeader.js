@@ -46,7 +46,7 @@ export default function MobileHeader({ showIcon }) {
             />
           </Link>
         </h1>
-        <Link to='/cart'>
+        <Link to='/cart' onClick={() => enableMenu(false)}>
           <div className='cart-area mobile-cart-icon' id='cart-area'>
             {showIcon()}
             <ShoppingCartSimple size={30} color='black' />

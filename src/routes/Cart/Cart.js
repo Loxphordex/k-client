@@ -59,7 +59,7 @@ export default class Cart extends React.Component {
     const { cart, setCart } = this.props
     return ( 
       <div className="cart-page fade-in">
-        <h2 className="t-header cart-header">Cart</h2>
+        {cart && cart.length > 0 && <h2 className="t-header cart-header">Cart</h2>}
         <section className="cart-main">
           <ul className="cart-list">
             <GenerateCartList 
