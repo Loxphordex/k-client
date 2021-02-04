@@ -23,7 +23,7 @@
     padding-inline-start: 0;
     display: flex;
     flex-flow: column;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: left;
     background-color: #f8f9fe;
     padding-top: 10px;

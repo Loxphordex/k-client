@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './CategoryMenu.css'
 
 export default function CategoryMenu() {
   return (
