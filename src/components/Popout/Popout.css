@@ -47,6 +47,7 @@
   padding-right: 8px;
   padding-top: 148px;
   border-right: 3px solid #f8f9fe;
+  overflow: scroll;
 }
 
 .mobile-nav-links {
