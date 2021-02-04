@@ -1,0 +1,24 @@
+.mobile-category-menu-container {
+  text-align: left;
+  color: rgb(110, 135, 144);
+  padding-top: 4px;
+  min-height: 300px;
+}
+
+.categories-menu-header {
+  font-size: 20px;
+}
+
+.mobile-category-menu-list {
+  margin-top: 28px;
+}
+
+.mobile-category-menu-list li a {
+  font-size: 16px;
+  color: rgb(110, 135, 144);
+}
+
+.details-enabled-color {
+  background-color: rgb(237, 243, 245);
+  transition: all 600ms;
+}

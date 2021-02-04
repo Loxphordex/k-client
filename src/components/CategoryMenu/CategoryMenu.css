@@ -1,0 +1,40 @@
+@media only screen and (min-width: 760px) {
+  .category-menu-container {
+    display: none;
+    position: absolute;
+    width: 100px;
+    left: -10px;
+    right: 0;
+    top: 20px;
+    text-align: left;
+  }
+  
+  .clothing-hover-link {
+    position: relative;
+  }
+  
+  .clothing-hover-link:hover .category-menu-container {
+    display: inline-block;
+    z-index: 200;
+  }
+  
+  .category-menu-list {
+    box-sizing: border-box;
+    padding-inline-start: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    text-align: left;
+    background-color: #f8f9fe;
+    padding-top: 10px;
+  }
+  
+  .category-menu-list li {
+    text-align: left;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  
+}

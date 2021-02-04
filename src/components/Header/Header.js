@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import MobileHeader from './MobileHeader'
+import CategoryMenu from '../CategoryMenu/CategoryMenu'
 import { mobileScroll } from './scroll'
 import { Link } from 'react-router-dom'
 import { ShoppingCartSimple } from 'phosphor-react'
@@ -42,8 +43,9 @@ export default function Header({ cartCount }) {
           <li>
             <Link to='/gallery/arrivals'>New Arrivals</Link>
           </li>
-          <li>
+          <li className='clothing-hover-link'>
             <Link to='/gallery/all'>Clothing</Link>
+            <CategoryMenu />
           </li>
           <li>
             <Link to='/discover'>Discover</Link>

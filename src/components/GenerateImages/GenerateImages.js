@@ -10,6 +10,10 @@ export default class GenerateImages extends React.Component {
     if (!modifier || modifier === 'all') return true
     if (modifier === 'arrivals' && image.new_arrival) return true
     if (modifier === 'sale' && image.sale_enabled) return true
+    if (modifier === 'shirts' && image.category === 'shirt') return true
+    if (modifier === 'sweatshirts' && image.category === 'sweatshirt') return true
+    if (modifier === 'jeans' && image.category === 'jeans') return true
+    if (modifier === 'hats' && image.category === 'hat') return true
     return false
   }
 
