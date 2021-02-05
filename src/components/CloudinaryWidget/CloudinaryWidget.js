@@ -8,17 +8,19 @@ export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
 
   useEffect(() => {
     if (!widget) {
-      const unsetWidget = window.cloudinary.createUploadWidget(
-        {
-          cloudName: config.CLOUD_NAME,
-          uploadPreset: 'ufhbnsnq'
-        },
-        (error, result) => {
-          checkUploadResult(result)
-        }
-      )
-
-      setWidget(unsetWidget)
+      if (window && window.cloudinary) {
+        const unsetWidget = window.cloudinary.createUploadWidget(
+          {
+            cloudName: config.CLOUD_NAME,
+            uploadPreset: 'ufhbnsnq'
+          },
+          (error, result) => {
+            checkUploadResult(result)
+          }
+        )
+  
+        setWidget(unsetWidget)
+      }
     }
   }, [])
 
