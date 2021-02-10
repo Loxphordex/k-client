@@ -22,7 +22,7 @@ export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
         setWidget(unsetWidget)
       }
     }
-  }, [])
+  }, [imageUrl, setImageUrl])
 
   function checkUploadResult(resultEvent) {
     if (resultEvent.event === 'success') {
@@ -31,7 +31,9 @@ export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
   }
 
   function showWidget(wid) {
-    wid.open()
+    if (wid) {
+      wid.open()
+    }
   }
 
   return (
