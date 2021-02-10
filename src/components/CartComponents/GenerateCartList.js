@@ -3,7 +3,7 @@ import GenerateImageElement from '../GenerateImageElement/GenerateImageElement'
 import SizesInfo from './SizesInfo'
 import { removeFromCart } from '../../services/helper-functions'
 import { TrashSimple } from 'phosphor-react'
-import logo from '../../images/Pear.png'
+import emptyIcon from '../../images/empty_cart.png'
 
 export default class GenerateCartList extends React.Component {
   render() {
@@ -42,7 +42,7 @@ export default class GenerateCartList extends React.Component {
     return (
       <div className="cart-no-content fade-in">
         <span role="img" aria-label="pear" className="cart-pear">
-          <img className="empty-cart-logo" src={logo} alt='Pearegrine company logo' />
+          <img className="empty-cart-logo" src={emptyIcon} alt='Pearegrine company logo' />
         </span>
         <div className="cart-empty-message">Your cart is empty</div>
       </div>

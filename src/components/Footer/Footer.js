@@ -33,7 +33,6 @@ export default function Footer() {
           Email
         </a>
       </div>
-      {token && <div onClick={testEmail}>Test Email</div>}
     </section>
   )
 }
