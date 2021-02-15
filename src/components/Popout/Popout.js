@@ -30,7 +30,7 @@ export default function Popout({ popoutVisible, enableMenu }) {
             <Link to='/gallery/arrivals'>New Arrivals</Link>
           </li>
           <li onClick={(event) => toggleDetails(event)}>
-            <Link to='/gallery/all'>Clothing</Link>
+            <a>Clothing</a>
           </li>
           <li>
             <Link to='/discover'>Discover</Link>
