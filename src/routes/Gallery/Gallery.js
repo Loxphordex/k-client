@@ -133,6 +133,7 @@ export default class Gallery extends React.Component {
     }
     else {
       images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
+      this.setState({ allImagesWithModifier: [] })
     }
 
     this.setState({ images })
