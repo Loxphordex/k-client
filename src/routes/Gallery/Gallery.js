@@ -1,15 +1,12 @@
 import React from 'react'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
-import './Gallery.css'
-// import './GalleryCard.css'
-
-// COMPONENTS
 import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
 import { Link } from 'react-router-dom'
+import './Gallery.css'
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -19,6 +16,7 @@ export default class Gallery extends React.Component {
       index: 1,
       pages: 1,
       images: [],
+      allImagesWithModifier: [],
       allImages: [],
       imagesPerPage: 12,
       modifier: '',
@@ -52,12 +50,13 @@ export default class Gallery extends React.Component {
   componentDidUpdate = () => {
     window.scrollTo(0, 0)
     this.displayImages()
+    this.setNumberOfPages()
     const { match } = this.props
     const mod = match.params.modifier
     const { modifier } = this.state
 
     if (mod !== modifier) {
-      this.setState({ modifier: mod })
+      this.setState({ modifier: mod }, this.setDisplayedImages)
     }
   }
 
@@ -73,19 +72,30 @@ export default class Gallery extends React.Component {
   }
 
   setNumberOfPages = () => {
-    const { allImages, imagesPerPage } = this.state
+    const { allImages, allImagesWithModifier, imagesPerPage, pages } = this.state
     if (allImages && imagesPerPage) {
       let maxPages = 1
-      let count = allImages.length
+      let count
+      if (allImagesWithModifier.length > 0) {
+        count = allImagesWithModifier.length
+      } 
+      else {
+        count = allImages.length
+      }
 
       while (count > imagesPerPage) {
         maxPages++
         count = count - imagesPerPage
       }
 
-      this.setState({ pages: maxPages })
+      if (pages !== maxPages) {
+        this.setState({ pages: maxPages })
+      }
+
     } else {
-      this.setState({ pages: 1 })
+      if (pages !== 1) {
+        this.setState({ pages: 1 })
+      }
     }
   }
 
@@ -109,23 +119,47 @@ export default class Gallery extends React.Component {
     const { index, allImages, imagesPerPage } = this.state
     const { setImages } = this.props
     const imagesDisplayed = index * imagesPerPage
-    const images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
+    let imageStateProperty = this.imagePropertyBasedOnModifier()
+    let images
+    if (imageStateProperty) {
+      if (imageStateProperty.category) {
+        images = allImages.filter(i => i.category === imageStateProperty.category)
+      }
+      else {
+        images = allImages.filter(i => !!i[imageStateProperty.property])
+      }
+
+      this.setState({ allImagesWithModifier: images })
+    }
+    else {
+      images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
+    }
+
     this.setState({ images })
     setImages(allImages)
   }
 
-  switchModifierCallback = (modifier) => {
-    if (modifier === 'sale') this.getAndDisplayImages(ApiServices.getImagesOnSale)
-    if (modifier === 'arrivals') this.getAndDisplayImages(ApiServices.getImagesOnNewArrival)
-    else this.getAndDisplayImages()
+  imagePropertyBasedOnModifier = () => {
+    const { modifier } = this.state
+    if (modifier && modifier !== 'all') {
+      let imageProp = {}
+      if (modifier === 'sale') imageProp.property = 'sale_enabled'
+      if (modifier === 'arrivals') imageProp.property = 'new_arrival'
+      if (modifier === 'shirts') imageProp.category = 'shirt'
+      if (modifier === 'sweatshirts') imageProp.category = 'sweatshirt'
+      if (modifier === 'jeans') imageProp.category = 'jeans'
+      if (modifier === 'hats') imageProp.category = 'hat'
+
+      return imageProp
+    }
   }
 
   getAndDisplayImages = (fetchImages = ApiServices.getImages) => {
     fetchImages()
       .then(allImages => this.setState({ allImages: allImages.mappedImages }))
-      .then(() => this.setNumberOfPages())
       .then(() => this.setCurrentPage())
       .then(() => this.setDisplayedImages())
+      .then(() => this.setNumberOfPages())
       .then(() => this.clearError())
       .catch(e => this.handleError(e))
   }

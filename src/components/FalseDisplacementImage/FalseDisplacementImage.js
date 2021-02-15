@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 // num: number of images
 export default function FalseDisplacementImage({ num }) {
@@ -24,7 +25,7 @@ export default function FalseDisplacementImage({ num }) {
   while (numberOfComponents > 0) {
     numberOfComponents--
     outputComponents.push(
-      <div className="img-container">
+      <div className='img-container' key={uuidv4()}>
         <h2></h2>
       </div>
     )
