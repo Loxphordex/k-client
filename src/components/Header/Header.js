@@ -13,7 +13,7 @@ import '../Popout/Popout.css'
 import '../CategoryMenu/CategoryMenu.css'
 import '../CategoryMenu/MobileCategoryMenu.css'
 
-export default function Header({ match, cartCount }) {
+export default function Header({ cartCount }) {
 
   useEffect(() => {
     window.onscroll = function() { mobileScroll() }
@@ -29,7 +29,7 @@ export default function Header({ match, cartCount }) {
 
   return (
     <header role='heading' className='main-header'>
-      <MobileHeader match={match} showIcon={showIcon} />
+      <MobileHeader showIcon={showIcon} />
       <nav role='navigation' className='main-header-nav'>
         <ul className='main-nav-links'>
           <li>

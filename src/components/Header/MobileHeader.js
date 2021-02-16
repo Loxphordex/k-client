@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom'
 import logo from '../../images/Pear.png'
 import { ShoppingCartSimple, List } from 'phosphor-react'
 
-export default function MobileHeader({ match, showIcon }) {
+export default function MobileHeader({ showIcon }) {
   const [popoutVisible, setPopoutVisible] = useState(false)
-  const [page, setPage] = useState(null)
 
   useEffect(() => {
-    setPage(match.params.modifier)
     return () => {
       enableMenu(false)
     }
@@ -54,9 +52,6 @@ export default function MobileHeader({ match, showIcon }) {
             <ShoppingCartSimple size={30} color='black' />
           </div>
         </Link>
-        <div className='page-decal'>
-          <h2>{page && page}</h2>
-        </div>
       </div>
       <Popout popoutVisible={popoutVisible} enableMenu={enableMenu} />
     </>

@@ -63,7 +63,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <CloudinaryContext cloudName={config.CLOUD_NAME}>
-          <Route path="/:path/:modifier" render={({ match }) => <Header cartCount={this.state.cartCount} match={match} />} />
+          <Route path="/:path/:modifier" render={() => <Header cartCount={this.state.cartCount} />} />
           <Route exact path="/"><RedirectFromLanding /></Route>
           <Route exact path="/gallery/:modifier" render={({ history, match }) => <Gallery history={history} match={match} setImages={this.setImages} />} />
           <Route exact path="/discover" render={({ history }) => <Discover history={history} />} />
