@@ -6,10 +6,11 @@ export default class DisplayImage extends React.Component {
     const { pic } = this.props
 
     if (pic) {
+      const jpgUrl = pic.url.slice(0, pic.url.length - 3) + 'jpg'
       return (
-        <div className="details-image">
-          <Image publicId={pic.url} type="fetch" name={pic.url} className="fade-in">
-            <Transformation quality="90" width="400" fetchFormat="auto" />
+        <div className='details-image'>
+          <Image publicId={jpgUrl} type='fetch' name={pic.url} className='fade-in'>
+            <Transformation quality='auto' width='400' fetchFormat='auto' flags='lossy' />
           </Image>
         </div>
       )

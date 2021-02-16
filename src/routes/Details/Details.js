@@ -114,6 +114,12 @@ export default class Details extends React.Component {
       )
     }
 
-    return <></>
+    return (
+      <div className='details-preloader'>
+        <h3>
+          Loading...
+        </h3>
+      </div>
+    )
   }
 }
