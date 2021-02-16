@@ -342,58 +342,63 @@ export default class Gallery extends React.Component {
       editorImageId } = this.state
     const token = TokenServices.getJwt()
     return (
-      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
-        {editorOpen && (
-          <EditorForm
-            images={images}
-            editorImageId={editorImageId}
-            editorOpen={editorOpen}
-            disableEditor={this.disableEditor}
-            updateNewName={this.updateNewName}
-            updateNewLink={this.updateNewLink}
-            updateNewDescription={this.updateNewDescription}
-            updateNewPrice={this.updateNewPrice}
-            updateCategory={this.updateCategory}
-            updateNewArrival={this.updateNewArrival}
-            updateSalePrice={this.updateSalePrice}
-            updateSaleEnabled={this.updateSaleEnabled}
-            updateSmall={this.updateSmallCount}
-            updateMedium={this.updateMediumCount}
-            updateLarge={this.updateLargeCount}
-            updateXLarge={this.updateXLargeCount}
-            updateXXLarge={this.updateXXLargeCount}
-            handleSubmitEdit={this.handleSubmitEdit}
-          />
-        )}
-
-        {deleteFormOpen && (
-          <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
-        )}
-
-        <div className="cloud-context">
-          <GenerateImages
-            images={images}
-            setEditorImageId={this.setEditorImageId}
-            setDeleteId={this.setDeleteId}
-            modifier={modifier}
-          />
-        </div>
-
-        <div className="page-container">
-          {index > 1 && 
-            <Link to={this.getNextPage(-1)} className="page-control control-previous">
-              <button className="page-control control-previous">Prev</button>
-            </Link>
-          }
-          {index < pages && 
-            <Link to={this.getNextPage(1)} className="page-control control-next">
-              <button className="page-control control-next">Next</button>
-            </Link>
-          }
-        </div>
-
-        {token && <AuthFooter history={history} />}
-      </section>
+      <>
+        {images &&  <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
+          {editorOpen && (
+            <EditorForm
+              images={images}
+              editorImageId={editorImageId}
+              editorOpen={editorOpen}
+              disableEditor={this.disableEditor}
+              updateNewName={this.updateNewName}
+              updateNewLink={this.updateNewLink}
+              updateNewDescription={this.updateNewDescription}
+              updateNewPrice={this.updateNewPrice}
+              updateCategory={this.updateCategory}
+              updateNewArrival={this.updateNewArrival}
+              updateSalePrice={this.updateSalePrice}
+              updateSaleEnabled={this.updateSaleEnabled}
+              updateSmall={this.updateSmallCount}
+              updateMedium={this.updateMediumCount}
+              updateLarge={this.updateLargeCount}
+              updateXLarge={this.updateXLargeCount}
+              updateXXLarge={this.updateXXLargeCount}
+              handleSubmitEdit={this.handleSubmitEdit}
+            />
+          )}
+  
+          {deleteFormOpen && (
+            <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
+          )}
+  
+          <div className="cloud-context">
+            <GenerateImages
+              images={images}
+              setEditorImageId={this.setEditorImageId}
+              setDeleteId={this.setDeleteId}
+              modifier={modifier}
+            />
+          </div>
+  
+          <div className="page-container">
+            {index > 1 && 
+              <Link to={this.getNextPage(-1)} className="page-control control-previous">
+                <button className="page-control control-previous">Prev</button>
+              </Link>
+            }
+            {index < pages && 
+              <Link to={this.getNextPage(1)} className="page-control control-next">
+                <button className="page-control control-next">Next</button>
+              </Link>
+            }
+          </div>
+  
+          {token && <AuthFooter history={history} />}
+        </section>}
+        {!images && <section>
+            <h3>Nothing to see here</h3>
+          </section>}
+      </>
     )
   }
 }
