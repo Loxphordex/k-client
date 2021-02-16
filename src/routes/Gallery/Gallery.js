@@ -123,14 +123,16 @@ export default class Gallery extends React.Component {
     let imageStateProperty = this.imagePropertyBasedOnModifier()
     let images
     if (imageStateProperty) {
+      let allImagesWithModifier
       if (imageStateProperty.category) {
-        images = allImages.filter(i => i.category === imageStateProperty.category)
+        allImagesWithModifier = allImages.filter(i => i.category === imageStateProperty.category)
       }
       else {
-        images = allImages.filter(i => !!i[imageStateProperty.property])
+        allImagesWithModifier = allImages.filter(i => !!i[imageStateProperty.property])
       }
 
-      this.setState({ allImagesWithModifier: images })
+      this.setState({ allImagesWithModifier })
+      images = allImagesWithModifier.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
     }
     else {
       images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
