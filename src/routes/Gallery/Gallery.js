@@ -6,6 +6,7 @@ import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
 import { Link } from 'react-router-dom'
+import { SmileyXEyes } from 'phosphor-react'
 import './Gallery.css'
 
 export default class Gallery extends React.Component {
@@ -330,6 +331,13 @@ export default class Gallery extends React.Component {
     return currentUrl
   }
 
+  pageHasContent = () => {
+    const { images, allImagesWithModifier } = this.state
+    if (images && images.length > 0) return true
+    if (allImagesWithModifier && allImagesWithModifier.length > 0) return true
+    return false
+  }
+
   render() {
     const { history } = this.props
     const {
@@ -343,7 +351,7 @@ export default class Gallery extends React.Component {
     const token = TokenServices.getJwt()
     return (
       <>
-        {images &&  <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
+        {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
           {editorOpen && (
             <EditorForm
               images={images}
@@ -395,8 +403,12 @@ export default class Gallery extends React.Component {
   
           {token && <AuthFooter history={history} />}
         </section>}
-        {!images && <section>
-            <h3>Nothing to see here</h3>
+        {!this.pageHasContent() && <section className='gallery-no-content'>
+            <h3>
+              <SmileyXEyes size={48} />
+              <SmileyXEyes size={48} />
+              <SmileyXEyes size={48} />
+            </h3>
           </section>}
       </>
     )
