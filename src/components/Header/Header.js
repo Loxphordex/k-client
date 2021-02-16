@@ -14,7 +14,6 @@ import '../CategoryMenu/CategoryMenu.css'
 import '../CategoryMenu/MobileCategoryMenu.css'
 
 export default function Header({ cartCount }) {
-
   useEffect(() => {
     window.onscroll = function() { mobileScroll() }
   }, [])

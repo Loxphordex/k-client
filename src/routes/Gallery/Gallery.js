@@ -17,7 +17,6 @@ export default class Gallery extends React.Component {
       index: 1,
       pages: 1,
       images: [],
-      allImagesWithModifier: [],
       allImages: [],
       imagesPerPage: 12,
       modifier: '',
@@ -73,16 +72,10 @@ export default class Gallery extends React.Component {
   }
 
   setNumberOfPages = () => {
-    const { allImages, allImagesWithModifier, imagesPerPage, pages } = this.state
+    const { allImages, imagesPerPage, pages } = this.state
     if (allImages && imagesPerPage) {
       let maxPages = 1
-      let count
-      if (allImagesWithModifier.length > 0) {
-        count = allImagesWithModifier.length
-      } 
-      else {
-        count = allImages.length
-      }
+      let count = allImages.length
 
       while (count > imagesPerPage) {
         maxPages++
@@ -131,12 +124,10 @@ export default class Gallery extends React.Component {
         allImagesWithModifier = allImages.filter(i => !!i[imageStateProperty.property])
       }
 
-      this.setState({ allImagesWithModifier })
       images = allImagesWithModifier.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
     }
     else {
       images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
-      this.setState({ allImagesWithModifier: [] })
     }
 
     this.setState({ images })
@@ -334,9 +325,8 @@ export default class Gallery extends React.Component {
   }
 
   pageHasContent = () => {
-    const { images, allImagesWithModifier } = this.state
+    const { images } = this.state
     if (images && images.length > 0) return true
-    if (allImagesWithModifier && allImagesWithModifier.length > 0) return true
     return false
   }
 
