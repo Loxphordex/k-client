@@ -6,6 +6,7 @@ import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
 import { Link } from 'react-router-dom'
+import { SmileyXEyes } from 'phosphor-react'
 import './Gallery.css'
 
 export default class Gallery extends React.Component {
@@ -330,10 +331,18 @@ export default class Gallery extends React.Component {
     return currentUrl
   }
 
+  pageHasContent = () => {
+    const { images, allImagesWithModifier } = this.state
+    if (images && images.length > 0) return true
+    if (allImagesWithModifier && allImagesWithModifier.length > 0) return true
+    return false
+  }
+
   render() {
     const { history } = this.props
     const {
       images,
+      allImages,
       editorOpen,
       deleteFormOpen,
       index,
@@ -342,58 +351,72 @@ export default class Gallery extends React.Component {
       editorImageId } = this.state
     const token = TokenServices.getJwt()
     return (
-      <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
-        {editorOpen && (
-          <EditorForm
-            images={images}
-            editorImageId={editorImageId}
-            editorOpen={editorOpen}
-            disableEditor={this.disableEditor}
-            updateNewName={this.updateNewName}
-            updateNewLink={this.updateNewLink}
-            updateNewDescription={this.updateNewDescription}
-            updateNewPrice={this.updateNewPrice}
-            updateCategory={this.updateCategory}
-            updateNewArrival={this.updateNewArrival}
-            updateSalePrice={this.updateSalePrice}
-            updateSaleEnabled={this.updateSaleEnabled}
-            updateSmall={this.updateSmallCount}
-            updateMedium={this.updateMediumCount}
-            updateLarge={this.updateLargeCount}
-            updateXLarge={this.updateXLargeCount}
-            updateXXLarge={this.updateXXLargeCount}
-            handleSubmitEdit={this.handleSubmitEdit}
-          />
-        )}
-
-        {deleteFormOpen && (
-          <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
-        )}
-
-        <div className="cloud-context">
-          <GenerateImages
-            images={images}
-            setEditorImageId={this.setEditorImageId}
-            setDeleteId={this.setDeleteId}
-            modifier={modifier}
-          />
-        </div>
-
-        <div className="page-container">
-          {index > 1 && 
-            <Link to={this.getNextPage(-1)} className="page-control control-previous">
-              <button className="page-control control-previous">Prev</button>
-            </Link>
-          }
-          {index < pages && 
-            <Link to={this.getNextPage(1)} className="page-control control-next">
-              <button className="page-control control-next">Next</button>
-            </Link>
-          }
-        </div>
-
-        {token && <AuthFooter history={history} />}
-      </section>
+      <>
+        {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
+          {editorOpen && (
+            <EditorForm
+              images={images}
+              editorImageId={editorImageId}
+              editorOpen={editorOpen}
+              disableEditor={this.disableEditor}
+              updateNewName={this.updateNewName}
+              updateNewLink={this.updateNewLink}
+              updateNewDescription={this.updateNewDescription}
+              updateNewPrice={this.updateNewPrice}
+              updateCategory={this.updateCategory}
+              updateNewArrival={this.updateNewArrival}
+              updateSalePrice={this.updateSalePrice}
+              updateSaleEnabled={this.updateSaleEnabled}
+              updateSmall={this.updateSmallCount}
+              updateMedium={this.updateMediumCount}
+              updateLarge={this.updateLargeCount}
+              updateXLarge={this.updateXLargeCount}
+              updateXXLarge={this.updateXXLargeCount}
+              handleSubmitEdit={this.handleSubmitEdit}
+            />
+          )}
+  
+          {deleteFormOpen && (
+            <DeleteForm closeDeleteForm={this.closeDeleteForm} handleDelete={this.handleDelete} />
+          )}
+  
+          <div className="cloud-context">
+            <GenerateImages
+              images={images}
+              setEditorImageId={this.setEditorImageId}
+              setDeleteId={this.setDeleteId}
+              modifier={modifier}
+            />
+          </div>
+  
+          <div className="page-container">
+            {index > 1 && 
+              <Link to={this.getNextPage(-1)} className="page-control control-previous">
+                <button className="page-control control-previous">Prev</button>
+              </Link>
+            }
+            {index < pages && 
+              <Link to={this.getNextPage(1)} className="page-control control-next">
+                <button className="page-control control-next">Next</button>
+              </Link>
+            }
+          </div>
+  
+          {token && <AuthFooter history={history} />}
+        </section>}
+        {!this.pageHasContent() && allImages && allImages.length > 0 && <section className='gallery-no-content'>
+            <h3>
+              <SmileyXEyes size={48} />
+              <SmileyXEyes size={48} />
+              <SmileyXEyes size={48} />
+            </h3>
+          </section>}
+        {!allImages || allImages.length === 0 && <section className='gallery-preloader'>
+            <h3>
+              Loading...
+            </h3>
+          </section>}
+      </>
     )
   }
 }

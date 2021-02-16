@@ -80,6 +80,22 @@
   color: inherit;
 }
 
+.gallery-no-content {
+  min-height: 40vh;
+  padding-top: 148px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-preloader {
+  min-height: 40vh;
+  padding-top: 148px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 760px) {
   .gallery-area {
     padding-top: 5px;
