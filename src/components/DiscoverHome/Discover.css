@@ -69,6 +69,13 @@
   width: 280px;
 }
 
+.discover-home-preloader {
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 760px) {
   .discover-container {
     padding-top: 148px;
