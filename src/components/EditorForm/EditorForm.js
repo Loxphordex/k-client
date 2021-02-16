@@ -178,7 +178,7 @@ export default function EditorForm({
               id='category-none'
               name='category'
               className='t-input t-radio t-category'
-              checked={image && !image.category}
+              // checked={image && !image.category}
               onChange={event => updateCategory(event.target.value)}
               value=''
             />
@@ -188,7 +188,7 @@ export default function EditorForm({
               id='category-shirt'
               name='category'
               className='t-input t-radio t-category'
-              checked={image && image.category === 'shirt'}
+              // checked={image && image.category === 'shirt'}
               onChange={event => updateCategory(event.target.value)}
               value='shirt'
             />
@@ -198,7 +198,7 @@ export default function EditorForm({
               id='category-sweatshirt'
               name='category'
               className='t-input t-radio t-category'
-              checked={image && image.category === 'sweatshirt'}
+              // checked={image && image.category === 'sweatshirt'}
               onChange={event => updateCategory(event.target.value)}
               value='sweatshirt'
             />
@@ -208,7 +208,7 @@ export default function EditorForm({
               id='category-jeans'
               name='category'
               className='t-input t-radio t-category'
-              checked={image && image.category === 'jeans'}
+              // checked={image && image.category === 'jeans'}
               onChange={event => updateCategory(event.target.value)}
               value='jeans'
             />
@@ -218,7 +218,7 @@ export default function EditorForm({
               id='category-hat'
               name='category'
               className='t-input t-radio t-category'
-              checked={image && image.category === 'hat'}
+              // checked={image && image.category === 'hat'}
               onChange={event => updateCategory(event.target.value)}
               value='hat'
             />
