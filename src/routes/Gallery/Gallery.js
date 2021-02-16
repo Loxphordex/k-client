@@ -342,6 +342,7 @@ export default class Gallery extends React.Component {
     const { history } = this.props
     const {
       images,
+      allImages,
       editorOpen,
       deleteFormOpen,
       index,
@@ -403,11 +404,16 @@ export default class Gallery extends React.Component {
   
           {token && <AuthFooter history={history} />}
         </section>}
-        {!this.pageHasContent() && <section className='gallery-no-content'>
+        {!this.pageHasContent() && allImages && allImages.length > 0 && <section className='gallery-no-content'>
             <h3>
               <SmileyXEyes size={48} />
               <SmileyXEyes size={48} />
               <SmileyXEyes size={48} />
+            </h3>
+          </section>}
+        {!allImages || allImages.length === 0 && <section className='gallery-preloader'>
+            <h3>
+              Loading...
             </h3>
           </section>}
       </>
