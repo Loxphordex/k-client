@@ -46,6 +46,13 @@ export default function DiscoverHome({ history }) {
             })}
           </div>
       }
+      {!articles &&
+        <div className='discover-home-preloader'>
+          <h3>
+            Loading...
+          </h3>
+        </div>
+      }
       {token && 
         <>
           <Link to='new_discover_entry' className='discover-new-entry'>
