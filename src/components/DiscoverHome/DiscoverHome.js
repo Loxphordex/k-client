@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import config from '../../config'
 import ArticleLink from './ArticleLink'
 import AuthFooter from '../AuthFooter/AuthFooter'
 import ApiServices from '../../services/api-services'
 import TokenServices from '../../services/token-services'
+import BarDecal from '../BarDecal/BarDecal'
 import './Discover.css'
 
 export default function DiscoverHome({ history }) {
@@ -36,6 +36,8 @@ export default function DiscoverHome({ history }) {
   return (
     <div className='discover-home'>
       {articles && articles.length > 0 &&
+        <>
+          <BarDecal page={'discover'} />
           <div className='discover-list'>
             {articles.map(article => {
               return (
@@ -45,6 +47,7 @@ export default function DiscoverHome({ history }) {
               )
             })}
           </div>
+        </>
       }
       {!articles &&
         <div className='discover-home-preloader'>

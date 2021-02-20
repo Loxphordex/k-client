@@ -5,6 +5,7 @@ import GenerateImages from '../../components/GenerateImages/GenerateImages'
 import AuthFooter from '../../components/AuthFooter/AuthFooter'
 import EditorForm from '../../components/EditorForm/EditorForm'
 import DeleteForm from '../../components/DeleteForm/DeleteForm'
+import BarDecal from '../../components/BarDecal/BarDecal'
 import { Link } from 'react-router-dom'
 import { SmileyXEyes } from 'phosphor-react'
 import './Gallery.css'
@@ -346,11 +347,7 @@ export default class Gallery extends React.Component {
       <>
         {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
 
-          <div className='bar-decal'>
-            <h3 className='bar-decal-header'>
-              {modifier && modifier}
-            </h3>
-          </div>
+          <BarDecal page={modifier} />
 
           {editorOpen && (
             <EditorForm
