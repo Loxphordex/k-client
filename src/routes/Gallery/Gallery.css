@@ -98,7 +98,7 @@
 
 @media only screen and (min-width: 760px) {
   .gallery-area {
-    padding-top: 5px;
+    padding-top: 0;
   }
   .generated-images {
     display: flex;
