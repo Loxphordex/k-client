@@ -7,5 +7,6 @@
 }
 
 .bar-decal-header {
-  margin: 0;
+  margin: auto;
+  max-width: 1034px;
 }
