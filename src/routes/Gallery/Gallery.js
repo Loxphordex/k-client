@@ -347,7 +347,7 @@ export default class Gallery extends React.Component {
       <>
         {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
 
-          <BarDecal page={modifier} />
+          {/* <BarDecal page={modifier} /> */}
 
           {editorOpen && (
             <EditorForm
