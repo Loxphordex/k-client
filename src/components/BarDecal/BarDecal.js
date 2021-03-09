@@ -10,7 +10,7 @@ export default function BarDecal({ page }) {
       else cased = page[0].toUpperCase() + page.slice(1)
       setCasedPage(cased)
     }
-  }, [])
+  }, [page])
 
   return (
     <div className='bar-decal'>
