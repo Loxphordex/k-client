@@ -99,6 +99,10 @@
     color: rgb(132, 220, 255);
   }
 
+  .main-nav-links .clothing-hover-link a:hover {
+    color: rgb(39, 47, 78);
+  }
+
   .cart-area {
     animation: none;
     background-color: rgb(132, 220, 255);

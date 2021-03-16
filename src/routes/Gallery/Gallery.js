@@ -73,8 +73,14 @@ export default class Gallery extends React.Component {
   }
 
   setNumberOfPages = () => {
-    const { allImages, imagesPerPage, pages } = this.state
-    if (allImages && imagesPerPage) {
+    const { images, allImages, imagesPerPage, pages } = this.state
+
+    if (images && images.length < imagesPerPage) {
+      if (pages !== 1) {
+        this.setState({ pages: 1 })
+      }
+    }
+    else if (allImages && imagesPerPage) {
       let maxPages = 1
       let count = allImages.length
 
@@ -87,7 +93,8 @@ export default class Gallery extends React.Component {
         this.setState({ pages: maxPages })
       }
 
-    } else {
+    }
+    else {
       if (pages !== 1) {
         this.setState({ pages: 1 })
       }
