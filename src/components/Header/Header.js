@@ -45,7 +45,7 @@ export default function Header({ cartCount }) {
             <Link to='/gallery/arrivals'>New Arrivals</Link>
           </li>
           <li className='clothing-hover-link'>
-            <Link to='/gallery/all?page=1'>Clothing</Link>
+            <a>Clothing</a>
             <CategoryMenu />
           </li>
           <li>
