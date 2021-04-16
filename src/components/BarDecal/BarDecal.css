@@ -15,4 +15,8 @@
   .bar-decal {
     margin-bottom: 20px;
   }
+
+  .bar-decal-header {
+    max-width: 300px;
+  }
 }
