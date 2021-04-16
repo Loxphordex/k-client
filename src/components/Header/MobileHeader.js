@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Popout from '../Popout/Popout'
 import { Link } from 'react-router-dom'
-import logo from '../../images/Pear.png'
+import logo from '../../images/PearegrinestarlargeNBG.png'
 import { ShoppingCartSimple, List } from 'phosphor-react'
 
 export default function MobileHeader({ showIcon }) {
