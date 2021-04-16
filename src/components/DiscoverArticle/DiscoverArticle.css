@@ -12,17 +12,19 @@
 }
 
 .article-main-header-container {
-  padding: 2em 3em 6em 3em;
+  padding: 2em 3em 3em 3em;
+  width: 70%;
+  margin: auto;
 }
 
 .article-main-header {
   font-size: 4em; 
   background-color: #f8f9fe;
   margin: 0;
+  padding: 10px;
 }
 
 .discover-article-container {
-  background-color: #f8f9fe;
   margin-top: 30em;
 }
 
@@ -57,12 +59,12 @@
     top: 10em;
   }
   .discover-article-container {
-    margin-top: 24em;
+    margin-top: 32em;
     background-color: initial;
   }
   .article-main-header-container {
-    padding: 1em 1em 2em 1em;
-    width: 70%;
+    padding: 1em 1em 0em 1em;
+    width: 82%;
     margin: auto;
     background-color: #f8f9fe;
   }

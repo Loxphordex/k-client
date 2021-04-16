@@ -73,16 +73,17 @@ export default class Gallery extends React.Component {
   }
 
   setNumberOfPages = () => {
-    const { images, allImages, imagesPerPage, pages } = this.state
+    const { images, allImages, imagesPerPage, pages, modifier } = this.state
 
     if (images && images.length < imagesPerPage) {
       if (pages !== 1) {
         this.setState({ pages: 1 })
       }
     }
-    else if (allImages && imagesPerPage) {
+    else if (allImages && imagesPerPage && modifier) {
+      const convertedModifier = this.convertModifierToCategory()
       let maxPages = 1
-      let count = allImages.length
+      let count = allImages.filter(i => i.category === convertedModifier).length
 
       while (count > imagesPerPage) {
         maxPages++
@@ -336,6 +337,18 @@ export default class Gallery extends React.Component {
     const { images } = this.state
     if (images && images.length > 0) return true
     return false
+  }
+
+  convertModifierToCategory = () => {
+    const { modifier } = this.state
+    let convertedModifier
+
+    if (modifier === 'shirts') convertedModifier = 'shirt'
+    else if (modifier === 'sweatshirts') convertedModifier = 'sweatshirt'
+    else if (modifier === 'hats') convertedModifier = 'hat'
+    else convertedModifier = modifier
+
+    return convertedModifier
   }
 
   render() {
