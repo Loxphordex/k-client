@@ -27,7 +27,11 @@
   }
 
   .bar-decal-header {
-    max-width: 300px;
     text-align: center;
+  }
+
+  .bar-decal-temp .bar-decal-header {
+    text-align: left;
+    margin-left: 5%;
   }
 }
