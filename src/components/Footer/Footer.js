@@ -18,7 +18,7 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.instagram.com/pearegrine_nyc/"
+          href="https://www.instagram.com/pearegrine_official/"
         >
           Instagram
         </a>
