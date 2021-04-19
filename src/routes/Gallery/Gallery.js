@@ -428,7 +428,7 @@ export default class Gallery extends React.Component {
             </h3>
           </section>}
         {!allImages || allImages.length === 0 && <section className='gallery-preloader'>
-            <h3>
+            <h3 className='loader'>
               Loading...
             </h3>
           </section>}

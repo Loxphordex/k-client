@@ -36,7 +36,7 @@ function removeJelly() {
 }
 
 export function mobileScroll() {
-  removeJelly()
+  // removeJelly()
   cartScroll()
   headerScroll()
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Popout from '../Popout/Popout'
 import { Link } from 'react-router-dom'
-import logo from '../../images/PearegrinestarlargeNBG.png'
+import logo from '../../images/pearegrinenewfinalNBG.png'
 import { ShoppingCartSimple, List } from 'phosphor-react'
 
 export default function MobileHeader({ showIcon }) {
@@ -39,7 +39,7 @@ export default function MobileHeader({ showIcon }) {
           <Link to='/'>
             <img
               src={logo} 
-              className={`brand-image jelly`}
+              className={`brand-image`}
               id='mobile-brand-image'
               alt='Pearegrine'
               onClick={() => enableMenu(false)}

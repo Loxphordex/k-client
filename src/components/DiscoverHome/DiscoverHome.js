@@ -51,7 +51,7 @@ export default function DiscoverHome({ history }) {
       }
       {!articles &&
         <div className='discover-home-preloader'>
-          <h3>
+          <h3 className='loader'>
             Loading...
           </h3>
         </div>

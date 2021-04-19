@@ -6,6 +6,12 @@
   padding: 0 5%;
 }
 
+.bar-decal-temp {
+  background-color: #f8f9fe;
+  color: #d9d9d9;
+  font-size: 25pt;
+}
+
 .bar-decal-header {
   margin: auto;
   max-width: 1034px;
@@ -16,7 +22,16 @@
     margin-bottom: 20px;
   }
 
+  .bar-decal-temp {
+    margin-bottom: 20px;
+  }
+
   .bar-decal-header {
-    max-width: 300px;
+    text-align: center;
+  }
+
+  .bar-decal-temp .bar-decal-header {
+    text-align: left;
+    margin-left: 5%;
   }
 }
