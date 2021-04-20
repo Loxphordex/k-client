@@ -1,20 +1,10 @@
 import React from 'react'
 import './Footer.css'
-import ApiServices from '../../services/api-services'
-import TokenServices from '../../services/token-services'
 
 export default function Footer() {
-  const token = TokenServices.getJwt()
-
-  function testEmail() {
-    ApiServices.postTestEmail()
-      .then(res => console.log(res))
-      .catch(er => console.log(er))
-  }
   return (
     <section className="footer-container fade-in">
       <div className="social-link">
-        {/* <i className="fab fa-instagram" /> */}
         <a
           target="_blank"
           rel="noopener noreferrer"
