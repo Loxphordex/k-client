@@ -55,10 +55,11 @@
     background-color: initial;
   }
   .article-main-header-container {
-    padding: 1em 1em 0em 1em;
+    padding: 13em 1em 0em 1em;
     width: 82%;
     margin: auto;
     background-color: #f8f9fe;
+    text-align: left;
   }
   
   .article-main-header {
