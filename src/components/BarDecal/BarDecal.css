@@ -1,15 +1,7 @@
 .bar-decal {
-  background-color: rgb(207 211 213);
-  color: white;
-  font-size: 16pt;
-  margin: 0;
-  padding: 0 5%;
-}
-
-.bar-decal-temp {
   background-color: #f8f9fe;
   color: #d9d9d9;
-  font-size: 25pt;
+  font-size: 16pt;
 }
 
 .bar-decal-header {
@@ -19,10 +11,6 @@
 
 @media only screen and (max-width: 768px) {
   .bar-decal {
-    margin-bottom: 20px;
-  }
-
-  .bar-decal-temp {
     margin-bottom: 20px;
   }
 
