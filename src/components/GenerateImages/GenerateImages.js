@@ -26,6 +26,7 @@ export default class GenerateImages extends React.Component {
 
     return count
   }
+
   render() {
     const { images, setEditorImageId, setDeleteId } = this.props
     const token = TokenServices.getJwt()

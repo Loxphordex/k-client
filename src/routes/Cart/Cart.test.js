@@ -1,9 +1,9 @@
 import React from 'react'
-import AuthRoute from './AuthRoute'
+import Cart from './Cart'
 import { render } from '@testing-library/react'
 
 it('renders without crashing', () => {
   render(
-    <AuthRoute />
+    <Cart />
   )
 })

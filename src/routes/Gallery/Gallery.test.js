@@ -1,20 +1,24 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { shallow, configure } from 'enzyme'
-import toJson from 'enzyme-to-json'
-import Adapter from 'enzyme-adapter-react-16'
 import Gallery from './Gallery'
+import config from '../../config/config'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+import { render } from '@testing-library/react'
 
-configure({ adapter: new Adapter() })
+const server = setupServer(
+  rest.get('/images', (req, res, ctx) => {
+    return res(ctx.json({ 
+      id: 1
+     }))
+  })
+)
 
-describe('Gallery', () => {
-  it('renders the complete page', () => {
-    const wrapper = shallow(<Gallery />)
-    expect(toJson(wrapper)).toMatchSnapshot()
+it('renders the complete page', async () => {
+  server.use('/images', (res, req, ctx) => {
+    return res(ctx.status(200))
   })
-  it('renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<Gallery />, div)
-    ReactDOM.unmountComponentAtNode(div)
-  })
+
+  render(
+    <Gallery />
+  )
 })
