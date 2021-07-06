@@ -45,15 +45,20 @@ export default class Gallery extends React.Component {
   }
 
   componentDidMount = () => {
-    this.getAndDisplayImages()
+    const { testUrl } = this.props
+    if (testUrl) {
+      this.getAndDisplayImages(ApiServices.mockEndpoint)
+    } else {
+      this.getAndDisplayImages()
+    }
   }
 
   componentDidUpdate = () => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     this.displayImages()
     this.setNumberOfPages()
     const { match } = this.props
-    const mod = match.params.modifier
+    const mod = match?.params?.modifier
     const { modifier } = this.state
 
     if (mod !== modifier) {
@@ -124,23 +129,25 @@ export default class Gallery extends React.Component {
     const imagesDisplayed = index * imagesPerPage
     let imageStateProperty = this.imagePropertyBasedOnModifier()
     let images
-    if (imageStateProperty) {
-      let allImagesWithModifier
-      if (imageStateProperty.category) {
-        allImagesWithModifier = allImages.filter(i => i.category === imageStateProperty.category)
+    if (setImages) {
+      if (imageStateProperty) {
+        let allImagesWithModifier
+        if (imageStateProperty.category) {
+          allImagesWithModifier = allImages.filter(i => i.category === imageStateProperty.category)
+        }
+        else {
+          allImagesWithModifier = allImages.filter(i => !!i[imageStateProperty.property])
+        }
+  
+        images = allImagesWithModifier.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
       }
       else {
-        allImagesWithModifier = allImages.filter(i => !!i[imageStateProperty.property])
+        images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
       }
-
-      images = allImagesWithModifier.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
+  
+      this.setState({ images })
+      setImages(allImages)
     }
-    else {
-      images = allImages.slice(imagesDisplayed - imagesPerPage, imagesDisplayed)
-    }
-
-    this.setState({ images })
-    setImages(allImages)
   }
 
   imagePropertyBasedOnModifier = () => {
@@ -159,13 +166,19 @@ export default class Gallery extends React.Component {
   }
 
   getAndDisplayImages = (fetchImages = ApiServices.getImages) => {
+    console.log('TEST: getAndDisplayImages ran')
     fetchImages()
-      .then(allImages => this.setState({ allImages: allImages.mappedImages }))
+      .then(allImages => {
+        console.log('allImages: ', allImages)
+        this.setState({ allImages: allImages.mappedImages })})
       .then(() => this.setCurrentPage())
       .then(() => this.setDisplayedImages())
       .then(() => this.setNumberOfPages())
       .then(() => this.clearError())
-      .catch(e => this.handleError(e))
+      .catch(e => {
+        console.log('error: ', e)
+        this.handleError(e)
+      })
   }
 
   handleError = error => {
@@ -365,7 +378,7 @@ export default class Gallery extends React.Component {
     const token = TokenServices.getJwt()
     return (
       <>
-        {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area'>
+        {this.pageHasContent() && <section className={`gallery-area ${editorOpen ? 'no-scroll' : String()}`} id='gallery-area' data-testid='gallery-area'>
 
           <BarDecal page={modifier} />
 
@@ -427,7 +440,7 @@ export default class Gallery extends React.Component {
               <SmileyXEyes size={48} />
             </h3>
           </section>}
-        {!allImages || allImages.length === 0 && <section className='gallery-preloader'>
+        {!allImages || allImages.length === 0 && <section className='gallery-preloader' data-testid='gallery-preloader'>
             <h3 className='loader'>
               Loading...
             </h3>
