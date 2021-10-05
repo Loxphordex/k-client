@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/config'
 import TokenServices from './token-services'
 import { generateUpdateEndpoint } from './helper-functions'
 

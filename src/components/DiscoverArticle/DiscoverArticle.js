@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ApiServices from '../../services/api-services'
 import { Image, Transformation } from 'cloudinary-react'
-import config from '../../config'
 import parse from 'html-react-parser'
 import './DiscoverArticle.css'
 

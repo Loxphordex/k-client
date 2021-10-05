@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Image, Transformation } from 'cloudinary-react'
-import config from '../../config'
+import config from '../../config/config'
 import './CloudinaryWidget.css'
 
 export default function CloudinaryWidget({ imageUrl, setImageUrl }) {
