@@ -45,12 +45,7 @@ export default class Gallery extends React.Component {
   }
 
   componentDidMount = () => {
-    const { testUrl } = this.props
-    if (testUrl) {
-      this.getAndDisplayImages(ApiServices.mockEndpoint)
-    } else {
-      this.getAndDisplayImages()
-    }
+    this.getAndDisplayImages()
   }
 
   componentDidUpdate = () => {
@@ -166,10 +161,8 @@ export default class Gallery extends React.Component {
   }
 
   getAndDisplayImages = (fetchImages = ApiServices.getImages) => {
-    console.log('TEST: getAndDisplayImages ran')
     fetchImages()
       .then(allImages => {
-        console.log('allImages: ', allImages)
         this.setState({ allImages: allImages.mappedImages })})
       .then(() => this.setCurrentPage())
       .then(() => this.setDisplayedImages())

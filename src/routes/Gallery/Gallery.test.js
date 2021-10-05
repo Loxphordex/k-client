@@ -1,33 +1,46 @@
 import React from 'react'
 import Gallery from './Gallery'
+import config from '../../config/config'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import { render, screen, waitFor } from '@testing-library/react'
+import fetchMock from 'jest-fetch-mock'
 
-const server = setupServer(
-  rest.get('/testImages', (req, res, ctx) => {
-    return res(ctx.json({ message: 'default message' }))
+// const server = setupServer(
+//   rest.get('/testImages', (req, res, ctx) => {
+//     return res(ctx.json({ message: 'default message' }))
+//   })
+// )
+
+beforeAll(() => {
+  // server.listen()
+  fetchMock.mockIf(config.API_ENDPOINT, req => {
+    if (req.url.endsWith('/api/images')) {
+      return {allImages}
+    } else {
+      return {
+        status: 404,
+        body: 'Not found'
+      }
+    }
   })
-)
-
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
-
-it('renders the complete page', async () => {
-  render(
-    <Gallery />
-  )
 })
+// afterEach(() => server.resetHandlers())
+// afterAll(() => server.close())
+
+  it('renders the complete page', async () => {
+    render(
+      <Gallery />
+    )
+  })
 
 it('renders loader, then removes loader after initial API call returns', async () => {
-  server.use('/testImages', (res, req, ctx) => {
-    console.log('TEST /testImages hit, json: ', ctx.json())
-    return res(ctx.json({ message: 'default message' }))
-  })
+  // server.use('/testImages', (res, req, ctx) => {
+  //   return res(ctx.json({ message: 'default message' }))
+  // })
 
   render(
-    <Gallery testUrl='/testImages' />
+    <Gallery />
   )
 
   expect(screen.getByTestId('gallery-preloader')).toBeTruthy()
