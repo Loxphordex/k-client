@@ -41,8 +41,8 @@ export default class NewImageRoute extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const { url, name, link } = this.state
-    const newImage = { url, name, link }
+    const { url, name, link, category } = this.state
+    const newImage = { url, name, link, category }
 
     if (!url) {
       this.setState({ error: 'Image not selected' })

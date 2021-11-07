@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/config'
 import { classList } from '../components/CartComponents/getCartInfo'
 import { sizes } from '../constants/sizes'
 

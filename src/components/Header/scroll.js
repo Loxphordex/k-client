@@ -22,21 +22,7 @@ export function headerScroll() {
   }
 }
 
-function removeJelly() {
-  const jelly = document.getElementById('mobile-brand-image')
-  const sticky = jelly.offsetTop
-
-  if (window.pageYOffset > sticky) {
-    jelly.classList.remove('jelly')
-    jelly.classList.add('jelly-again')
-  } else {
-    jelly.classList.add('jelly')
-    jelly.classList.remove('jelly-again')
-  }
-}
-
 export function mobileScroll() {
-  // removeJelly()
   cartScroll()
   headerScroll()
 }
